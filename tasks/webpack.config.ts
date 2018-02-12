@@ -1,8 +1,8 @@
 const path = require('path')
-const merge = require("webpack-merge");
 const nodeExternals = require("webpack-node-externals");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const ROOT = path.resolve(__dirname, "..");
 const getRoot = path.join.bind(path, ROOT);
@@ -46,7 +46,8 @@ module: {
 
 plugins: [
     new FriendlyErrorsWebpackPlugin({ clearConsole: env === "development" }),
-     new CopyPlugin([{from: 'src/app/app.html', to: ""}]),
+    new CopyPlugin([{from: 'src/app/app.html', to: ""}]),
+    new CleanWebpackPlugin('dist', {root: getRoot()})
     ]
   };
 };

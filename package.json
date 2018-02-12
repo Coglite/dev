@@ -20,11 +20,11 @@
     "publish": null
   },
   "scripts": {
+    "start": "ts-node tasks/start.ts",
     "updatedeps": "electron-builder install-app-deps",
     "preunit": "webpack --config=tasks/webpack.unit.config.js --env=test --display=none",
     "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register",
     "test": "npm run unit",
-    "start": "ts-node tasks/start.ts",
     "release": "npm test && webpack --config=tasks/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
@@ -60,6 +60,7 @@
     "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
     "chai": "4.1.2",
     "chalk": "2.3.1",
+    "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "4.4.1",
     "css-loader": "0.28.9",
     "electron": "1.8.2",
