@@ -1,6 +1,4 @@
 import './styles/main.scss';
-
-
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/sql/sql.js';
 import 'sql-formatter/dist/sql-formatter.js';

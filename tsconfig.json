@@ -6,7 +6,7 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "sourceMap": true,
     "noImplicitAny": false,
     "noImplicitThis": true,
@@ -20,9 +20,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": false
+    "skipDefaultLibCheck": false,
+    "lib": ["dom", "es2015", "es2016", "es2017"]
   },
-
   "include":["tasks/definitions", "src"],
   "exclude": ["node_modules"]
 }

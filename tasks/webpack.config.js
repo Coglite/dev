@@ -35,12 +35,13 @@ devtool: "source-map",
 
 module: {
   rules: [
-    {test: /\.[tj]sx?$/,use: ["babel-loader"]},
+    {test: /\.[tj]sx?$/,use: ["ts-loader"]},
     {test: /\.less$/,use: ["style-loader", "css-loader", "less-loader"]},
     {test: /\.scss$/,use: ["style-loader","css-loader","sass-loader"]},
     {test: /\.css$/,use: ["style-loader", "css-loader"]},
-    {test: /\.(ttf2?|eot|svg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: "file-loader"},
-    {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,loader: "url-loader?limit=10000&mimetype=application/font-woff"},
+    { test: /\.json$/, loader: 'json-loader' },
+    { test: /\.(jp?g|png|gif)$/, loader: 'file-loader', options: { hash: 'sha512', digest: 'hex', name: 'images/[hash].[ext]' } },
+    { test: /\.(eot|woff2?|svg|ttf|otf)([\?]?.*)$/, loader: 'file-loader', options: { hash: 'sha512', digest: 'hex', name: 'fonts/[hash].[ext]' } }
   ]
 },
 

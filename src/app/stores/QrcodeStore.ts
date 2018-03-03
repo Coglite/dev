@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 import * as QRCode from 'qrcode';
-import toSJIS from 'qrcode/helper/to-sjis';
+import * as toSJIS from 'qrcode/helper/to-sjis';
 import { InputOnChangeData } from 'semantic-ui-react';
 
 
