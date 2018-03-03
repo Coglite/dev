@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es2015",
+    "target": "es2016",
+    "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "sourceMap": true,
     "noImplicitAny": false,
     "noImplicitThis": true,

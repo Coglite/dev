@@ -14,16 +14,16 @@ entry: {
       desktop: getRoot("src/desktop/desktop.ts"),
       app: getRoot("src/app/app.tsx")
     },
-    output: {
+output: {
       filename: "[name].js",
       path: path.resolve(__dirname, "../dist")
     },
-    mode: `${env}`,
 
+mode: `${env}`,
 
 target: "node",
 
-node: {__dirname: false,__filename: false},
+node: {__dirname: false, __filename: false},
 
 externals: [nodeExternals()],
 
@@ -39,7 +39,7 @@ module: {
     {test: /\.less$/,use: ["style-loader", "css-loader", "less-loader"]},
     {test: /\.scss$/,use: ["style-loader","css-loader","sass-loader"]},
     {test: /\.css$/,use: ["style-loader", "css-loader"]},
-    {test: /\.(ttf2?|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: "file-loader"},
+    {test: /\.(ttf2?|eot|svg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: "file-loader"},
     {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,loader: "url-loader?limit=10000&mimetype=application/font-woff"},
   ]
 },
