@@ -6,5 +6,6 @@ Thumbs.db
 
 /dist
 /temp
+/.wip
 
 yarn.lock
