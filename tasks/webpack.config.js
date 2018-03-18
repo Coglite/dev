@@ -31,7 +31,7 @@ resolve: {
   extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
   alias: {env: path.resolve(__dirname, `./config/env.${env}.ts`)}},
 
-devtool: "source-map",
+devtool: "#source-map",
 
 module: {
   rules: [
