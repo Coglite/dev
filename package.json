@@ -19,12 +19,14 @@
     "dotenv": "^5.0.1",
     "execa": "0.10.0",
     "fs-jetpack": "1.3.0",
+    "lodash": "^4.17.5",
     "mobx": "4.1.0",
     "mobx-react": "5.0.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-router": "4.2.0",
-    "react-router-dom": "4.2.2"
+    "react-router-dom": "4.2.2",
+    "storm-react-diagrams": "^5.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.42",
@@ -39,6 +41,7 @@
     "@babel/preset-react": "7.0.0-beta.42",
     "@babel/preset-typescript": "7.0.0-beta.42",
     "@types/execa": "0.9.0",
+    "@types/lodash": "^4.14.105",
     "@types/node": "9.4.5",
     "@types/react": "16.0.40",
     "@types/react-dom": "16.0.4",
