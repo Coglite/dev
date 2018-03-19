@@ -7,19 +7,19 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ROOT = path.resolve(__dirname, "..");
 const getRoot = path.join.bind(path, ROOT);
 
+module.exports = env => { return {
 
-module.exports = env => {
-return {
-entry: {
-      desktop: getRoot("src/desktop/main.ts"),
-      app: getRoot("src/app/app.tsx")
-    },
-    output: {
-      filename: "[name].js",
-      path: path.resolve(__dirname, "../dist")
-    },
-    mode: `${env}`,
+entry: { 
+  desktop: getRoot("src/desktop/main.ts"),
+  app: getRoot("src/app/app.tsx")
+},
 
+output: {
+  filename: "[name].js",
+  path: path.resolve(__dirname, "../dist")
+ },
+
+mode: `${env}`,
 
 target: "node",
 
@@ -28,8 +28,8 @@ node: {__dirname: false,__filename: false},
 externals: [nodeExternals()],
 
 resolve: {
-  extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
-  alias: {env: path.resolve(__dirname, `./config/env.${env}.ts`)}},
+  extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"]
+},
 
 devtool: "#source-map",
 

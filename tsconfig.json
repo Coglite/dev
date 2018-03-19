@@ -22,7 +22,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": false
   },
-
-  "include":["tasks/definitions", "src"],
+  "files": ["globals.d.ts"],
+  "include":["src"],
   "exclude": ["node_modules"]
 }
