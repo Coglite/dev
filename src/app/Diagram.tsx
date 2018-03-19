@@ -3,11 +3,9 @@ import { BodyWidget } from "./components/BodyWidget";
 import { Application } from "./Application";
 
 
-
-export let Diagram = () => {
-	var app = new Application();
-
-	return <BodyWidget app={app} />;
+export function Diagram() {
+	var App = new Application();
+	return <BodyWidget app={App}/>
 };
 
-export default Diagram
+export {Diagram as default, Diagram}

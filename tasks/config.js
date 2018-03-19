@@ -1,19 +1,17 @@
 
 const path = require('path')
 const nodeExternals = require("webpack-node-externals");
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-
-
 //const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 //const CopyPlugin = require('copy-webpack-plugin')
 //const CleanWebpackPlugin = require('clean-webpack-plugin')
 //const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 
 const ROOT = path.resolve(__dirname, '..');
 const getRoot = path.join.bind(path, ROOT);
 
+module.exports = env => {
 
 const common = {
     
@@ -21,10 +19,7 @@ const common = {
     
     mode: 'development',
     
-    module: { rules: [
-      //{test: /\.[tj]sx?$/, use: ["babel-loader"] exclude: /node_modules/ }
-      {test: /\.tsx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
-      ]},
+    module: {rules: [{test: /\.[tj]sx?$/,use: ["babel-loader"]}]},
     
     resolve: { 
       extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
@@ -38,7 +33,9 @@ const common = {
       __dirname: false,
       __filename: false
     },
+    
     externals: [nodeExternals()],
+
   }
 
 
@@ -66,10 +63,9 @@ const app = {
       //plugins: [new ExtractTextPlugin({ filename: `${distDir}/app.css` }), definePlugin]
     }
 
-
 const appConfig = merge.smart(app, common, )
 const desktopConfig = merge.smart(desktop, common)
 
-const webpackConfig = {appConfig, desktopConfig}
+return appConfig, desktopConfig
 
-module.exports = webpackConfig
+}

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "es2015",
+    "target": "es2016",
+    "module": "commonjs",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "jsx": "react",
+    "jsx":"preserve",
     "sourceMap": true,
     "noImplicitAny": false,
     "noImplicitThis": true,
@@ -22,7 +22,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": false
   },
-
-  "include":["tasks/definitions", "src"],
+  "files": ["types.d.ts"],
+  "include":["src"],
   "exclude": ["node_modules"]
 }
