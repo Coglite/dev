@@ -11,7 +11,7 @@ const getRoot = path.join.bind(path, ROOT);
 module.exports = env => {
 return {
 entry: {
-      desktop: getRoot("src/desktop/desktop.ts"),
+      desktop: getRoot("src/desktop/main.ts"),
       app: getRoot("src/app/app.tsx")
     },
     output: {
