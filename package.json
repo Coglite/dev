@@ -19,6 +19,7 @@
     "release": "npm test && webpack --config=tasks/webpack.app.config.js --env=production && electron-builder"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "codemirror": "5.36.0",
     "electron-is-dev": "0.3.0",
     "electron-log": "2.2.14",
@@ -51,6 +52,7 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.3",
     "@types/codemirror": "0.0.55",
     "@types/color": "3.0.0",
     "@types/execa": "0.9.0",
@@ -61,6 +63,7 @@
     "@types/react-dom": "16.0.4",
     "@types/react-router": "4.0.23",
     "@types/react-router-dom": "4.2.5",
+    "@types/react-transition-group": "^2.0.7",
     "chai": "4.1.2",
     "chalk": "2.3.2",
     "clean-webpack-plugin": "0.1.19",

@@ -13,7 +13,9 @@ const styles = theme => ({
   },
 });
 
-class CogliteAppBaseComponent extends React.Component<any, any> {
+
+
+class CogliteAppBase extends React.Component<any, any> {
   state = {open: false};
 
   handleClose = () => {this.setState({open: false})};
@@ -51,5 +53,5 @@ class CogliteAppBaseComponent extends React.Component<any, any> {
 }
 
 
-export let CogliteAppBase = withRoot(withStyles(styles)(CogliteAppBaseComponent));
+export let CogliteApp = withRoot(withStyles(styles)(CogliteAppBase));
 
