@@ -1,7 +1,7 @@
 const path = require('path')
 var webpack = require('webpack');
 
-import WriteFilePlugin from 'write-file-webpack-plugin';
+
 const nodeExternals = require("webpack-node-externals");
 const CopyPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -96,7 +96,6 @@ module: {
   },
 
 plugins: [
-    //new ExitZeroWebpackPlugin({active: true}),
     new HtmlWebpackPlugin({template: 'src/app/app.html', excludeChunks: 'desktop'}),
     new ExtractTextPlugin({filename: 'styles.css', disable: !isProduction}),
     new CleanWebpackPlugin('dist', {root: helpers.root()})

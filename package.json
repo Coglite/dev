@@ -8,10 +8,7 @@
   "copyright": "© 2017, Coglite inc.",
   "main": "dist/desktop.js",
   "scripts": {
-    "lite": "lite-server",
-    "reload": "reload -d dist",
     "startdev": "electron . --color --inspect",
-    "dev": "webpack-dev-server",
     "build": "webpack -p --progress --colors",
     "start": "node tools/start.js",
     "dev2": "webpack-dev-server --hot --config=tools/webpack.config.js",
@@ -51,7 +48,7 @@
     "semantic-ui-react": "0.79.0",
     "sql-formatter": "2.2.0",
     "ts-dot-prop": "1.4.0",
-    "tslib": "1.9.0"
+    "tslib": "^1.9.0"
   },
   "devDependencies": {
     "@types/codemirror": "0.0.55",
@@ -64,7 +61,6 @@
     "@types/react-dom": "16.0.4",
     "@types/react-router": "4.0.23",
     "@types/react-router-dom": "4.2.5",
-    "babel-loader": "7.1.4",
     "chai": "4.1.2",
     "chalk": "2.3.2",
     "clean-webpack-plugin": "0.1.19",
@@ -96,7 +92,6 @@
     "prettier": "1.11.1",
     "raw-loader": "0.5.1",
     "react-hot-loader": "4.0.0",
-    "reload": "2.2.2",
     "sass-loader": "6.0.7",
     "semantic-ui-css": "2.3.1",
     "source-map-loader": "0.2.3",
@@ -107,14 +102,10 @@
     "typescript": "2.7.2",
     "url-loader": "1.0.1",
     "webpack": "4.2.0",
-    "webpack-cleanup-plugin": "0.5.1",
     "webpack-cli": "2.0.13",
     "webpack-dev-server": "3.1.1",
-    "webpack-electron-connect-plugin": "1.0.4",
-    "webpack-hot-middleware": "2.21.2",
     "webpack-merge": "4.1.2",
-    "webpack-node-externals": "1.6.0",
-    "write-file-webpack-plugin": "4.2.0"
+    "webpack-node-externals": "1.6.0"
   },
   "build": {
     "appId": "com.example.coglite",

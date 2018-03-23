@@ -2,11 +2,8 @@ import * as isDev from 'electron-is-dev';
 import * as log from 'electron-log';
 import { autoUpdater } from 'electron-updater';
 
-/**
- * Should we peform the auto-update check?
- */
+/** Should we peform the auto-update check?*/
 const shouldCheck = !isDev
-
 
 export function createUpdater(app: Electron.App): void {
   // jet if we shouldn't be here
@@ -14,10 +11,8 @@ export function createUpdater(app: Electron.App): void {
     return
   }
 
-  // configure the autoUpdater's logger
   autoUpdater.logger = log
 
-  // fires when the app is ready
   app.on("ready", () => {
     autoUpdater.checkForUpdates()
   })
@@ -26,12 +21,10 @@ export function createUpdater(app: Electron.App): void {
     log.info("checking for update")
   })
 
-//@ts-ignore
   autoUpdater.on("update-available", (info: string) => {
     log.info("update available")
   })
 
-//@ts-ignore
   autoUpdater.on("update-not-available", (info: string) => {
     log.info("update not available")
   })
@@ -44,9 +37,6 @@ export function createUpdater(app: Electron.App): void {
     log.info(`${info.percent}%`)
   })
 
-
-  // fires when an update has been downloaded
-  //@ts-ignore
   autoUpdater.signals.updateDownloaded(info => {
     log.info("update downloaded")
     autoUpdater.quitAndInstall()

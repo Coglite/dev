@@ -12,16 +12,10 @@ export = class ElectronDevWebpackPlugin {
   private process: ChildProcess[] = []
   private timer?: NodeJS.Timer
 
-  constructor ({
-    port = 5858 // electron inspect端口
-  } = {}) {
+  constructor ({port = 5858} = {}){
     this.port = port
-  }
+    }
 
-  /**
-   * webpack调用接口
-   * @param {*} compiler
-   */
   public apply (compiler: any) {
     portfinder.basePort = this.port
     compiler.plugin('done', () => {
@@ -31,10 +25,7 @@ export = class ElectronDevWebpackPlugin {
     })
   }
 
-  /**
-   * 启动新进程
-   * @param {Number|undefined} port
-   */
+
   private spawn (port?: number) {
     this.clear()
       .then(() => {
@@ -56,14 +47,11 @@ export = class ElectronDevWebpackPlugin {
       })
   }
 
-  /**
-   * 清理旧进程
-   */
+
   private clear (): Promise<void> {
     return new Promise((resolve, reject) => {
       const next = () => {
         this.kill()
-        // 检查旧进程，防止没有被清理掉
         if (this.timer) {
           clearTimeout(this.timer)
         }
@@ -77,9 +65,7 @@ export = class ElectronDevWebpackPlugin {
     })
   }
 
-  /**
-   * 杀掉进程
-   */
+
   private kill () {
     this.process = this.process.reduce((p: ChildProcess[], cp: ChildProcess) => {
       if (!cp.killed) {
@@ -99,10 +85,7 @@ export = class ElectronDevWebpackPlugin {
     }, [])
   }
 
-  /**
-   * 打印主进程输出
-   * @param {*} data
-   */
+
   private log (data: string) {
     console.log('------------Main Process Log Start------------')
     console.log(data)

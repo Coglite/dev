@@ -12,8 +12,7 @@ const watching = compiler.watch({}, (err, stats) => {
   if (!err && !stats.hasErrors() && !electronStarted) {
     electronStarted = true;
 
-    execa
-      (electron, ["."], { stdio: "inherit" })
+    execa(electron, ["."], { stdio: "inherit" })
       .on("close", () => {
         watching.close();
         //elecronStarted = false;

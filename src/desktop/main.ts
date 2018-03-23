@@ -1,7 +1,3 @@
-// This is the main process entry point. It is the
-// first file that is run on startup.
-//
-// It is responsible for launching a renderer window.
 import { app, dialog } from 'electron';
 import * as isDev from 'electron-is-dev';
 
