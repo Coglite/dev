@@ -1,6 +1,6 @@
-import { autoUpdater } from "electron-updater"
-import * as log from "electron-log"
-import * as isDev from "electron-is-dev"
+import * as isDev from 'electron-is-dev';
+import * as log from 'electron-log';
+import { autoUpdater } from 'electron-updater';
 
 /**
  * Should we peform the auto-update check?

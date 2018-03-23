@@ -22,7 +22,7 @@ output:
 resolve:
   { 
     extensions: [".ts", ".tsx", ".js"],
-    //mainFields: ['module', 'browser', 'main'], req for antd
+    mainFields: ['module', 'browser', 'main'], //req for antd
   },
 
 //devtool: "eval",
@@ -37,24 +37,6 @@ node:
 externals: [nodeExternals()]
 };
 
-
-const desktopConfig =
- Object.assign(
-  {
-    target: "electron-main",
-    entry: {desktop: "./src/desktop/main.ts"},
-    module: { 
-      rules:
-      [
-        {test: /\.[tj]sx?$/,
-        include: path.join(__dirname, 'src/desktop'),
-        loader: "ts-loader", options: { transpileOnly: !isProduction }}
-      ]
-    }
-  }, 
-  commonConfig
-  
-);
 
 const appConfig = Object.assign(
   {
@@ -82,7 +64,25 @@ const appConfig = Object.assign(
         new CleanWebpackPlugin('dist')
       ],
   
- }, commonConfig
+ }, 
+ commonConfig
+);
+
+const desktopConfig =
+ Object.assign(
+  {
+    target: "electron-main",
+    entry: {desktop: "./src/desktop/main.ts"},
+    module: { 
+      rules:
+      [
+        {test: /\.[tj]sx?$/,
+        include: path.join(__dirname, 'src/desktop'),
+        loader: "ts-loader", options: { transpileOnly: !isProduction }}
+      ]
+    }
+  }, 
+  commonConfig
 );
 
 module.exports = [desktopConfig, appConfig];

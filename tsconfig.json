@@ -21,7 +21,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "lib": ["dom", "es2015", "es2016", "es2017"]
+    "lib": ["dom", "es2015", "es2016", "es2017", "esnext"]
   },
   "include":["tasks/definitions", "src"],
   "exclude": ["node_modules", ".wip"]

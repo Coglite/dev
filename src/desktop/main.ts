@@ -2,12 +2,12 @@
 // first file that is run on startup.
 //
 // It is responsible for launching a renderer window.
+import { app, dialog } from 'electron';
+import * as isDev from 'electron-is-dev';
 
-import { app, dialog } from "electron"
-import { createMainWindow, loadURL } from "./core"
-import * as log from "electron-log"
-import * as isDev from "electron-is-dev"
-import { createMenu } from "./menus"
+import { createMainWindow } from './core';
+import { createMenu } from './menus';
+
 
 
 let mainWindow: Electron.BrowserWindow
@@ -38,4 +38,3 @@ app.on("ready", () => {
 })
 
 app.on("window-all-closed", app.quit)
-
