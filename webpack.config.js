@@ -1,108 +1,90 @@
 var webpack = require('webpack');
 var path = require('path');
 
-// variables
-var isProduction = process.argv.indexOf('-p') >= 0;
-var sourcePath = path.join(__dirname, './src/app');
-var outPath = path.join(__dirname, './dist/app');
+const isProduction = process.env['NODE_ENV'] === 'production'? true : false;
 
 // plugins
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const nodeExternals = require("webpack-node-externals");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
-
-module.exports = {
-  context: sourcePath,
-  entry: {main: './index.tsx'},
-  output: {
-    path: outPath,
-    filename: 'bundle.js',
-    chunkFilename: '[chunkhash].js',
-    publicPath: '/'
+const commonConfig =
+{
+mode: 'development',
+output:
+  {
+    path: path.join(__dirname, 'dist'),
+    pathinfo: true,
+    filename: '[name].js',
+    publicPath: ''
   },
-  target: 'web',
-  
-  resolve: {extensions: ['.js', '.ts', '.tsx'],
-    // Fix webpack's default behavior to not load packages with jsnext:main module
-    // (jsnext:main directs not usually distributable es6 format, but es6 sources)
-    mainFields: ['module', 'browser', 'main'],
-    alias: {'app': path.resolve(__dirname, 'src/app/')}
+resolve:
+  { 
+    extensions: [".ts", ".tsx", ".js"],
+    //mainFields: ['module', 'browser', 'main'], req for antd
   },
 
-  module: {
-    rules: [
+//devtool: "eval",
 
-      {test: /\.tsx?$/, use: isProduction ? 'ts-loader': ['babel-loader?plugins=react-hot-loader/babel', 'ts-loader']},
-
-      {test: /\.css$/,use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {loader: 'css-loader', query: {
-                modules: true,
-                sourceMap: !isProduction,
-                importLoaders: 1,
-                localIdentName: '[local]__[hash:base64:5]'
-              }
-            },
-            {loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                plugins: [
-                  require('postcss-import')({ addDependencyTo: webpack }),
-                  require('postcss-url')(),
-                  require('postcss-cssnext')(),
-                  require('postcss-reporter')(),
-                  require('postcss-browser-reporter')({disabled: isProduction})
-                ]
-              }
-            }
-          ]
-        })
-      },
-      // static assets
-      { test: /\.html$/, use: 'html-loader' },
-      { test: /\.png$/, use: 'url-loader?limit=10000' },
-      { test: /\.jpg$/, use: 'file-loader' }
-    ]
+node: 
+  {
+    __dirname: false,
+    __filename: false
   },
 
-  optimization: {
-    splitChunks: {
-      name: true,
-      cacheGroups: {
-        commons: {
-          chunks: 'initial',
-          minChunks: 2
-        },
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          priority: -10
-        }
-      }
-    },
-    runtimeChunk: true
-  },
-  plugins: [
-    new WebpackCleanupPlugin(),
-    new ExtractTextPlugin({filename: 'styles.css', disable: !isProduction}),
-    new HtmlWebpackPlugin({template: 'index.html'})
-  ],
-  devServer: {
-    contentBase: sourcePath,
-    hot: true,
-    inline: true,
-    historyApiFallback: {
-      disableDotRule: true
-    },
-    stats: 'minimal'
-  },
-  devtool: 'cheap-module-eval-source-map',
-  node: {
-    // workaround for webpack-dev-server issue
-    // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
-    fs: 'empty',
-    net: 'empty'
-  }
+//nodeExternals({ whitelist: [/\.css$/] })
+externals: [nodeExternals()]
 };
+
+
+const desktopConfig =
+ Object.assign(
+  {
+    target: "electron-main",
+    entry: {desktop: "./src/desktop/main.ts"},
+    module: { 
+      rules:
+      [
+        {test: /\.[tj]sx?$/,
+        include: path.join(__dirname, 'src/desktop'),
+        loader: "ts-loader", options: { transpileOnly: !isProduction }}
+      ]
+    }
+  }, 
+  commonConfig
+  
+);
+
+const appConfig = Object.assign(
+  {
+    target: "electron-renderer",
+    entry: {app: ["./src/app/index.tsx"]},
+    module: {
+      rules: [
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      {test: /\.css$/,loader: 'style-loader!css-loader!postcss-loader'},
+      { 
+        test: /\.[tj]sx?$/, 
+        include: path.join(__dirname, 'src/app'),
+        use: [{loader: 'ts-loader'}],
+        exclude: /node_modules/
+      },
+      {test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: 'file-loader',},
+      {test: /\.html$/, use: 'html-loader' },
+      ]
+    },
+    plugins:
+      [
+        //new webpack.HotModuleReplacementPlugin(),
+       // new ExtractTextPlugin({filename: 'styles.css'}), // disable: !isProduction
+        new HtmlWebpackPlugin({template: 'src/app/index.html'}),
+        new CleanWebpackPlugin('dist')
+      ],
+  
+ }, commonConfig
+);
+
+module.exports = [desktopConfig, appConfig];
+
+

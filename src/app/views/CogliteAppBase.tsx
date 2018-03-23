@@ -14,21 +14,10 @@ const styles = theme => ({
 });
 
 class CogliteAppBaseComponent extends React.Component<any, any> {
-  state = {
-    open: false,
-  };
+  state = {open: false};
 
-  handleClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
-
-  handleClick = () => {
-    this.setState({
-      open: true,
-    });
-  };
+  handleClose = () => {this.setState({open: false})};
+  handleClick = () => {this.setState({open: true})};
 
   render() {
     const { classes } = this.props;
@@ -54,7 +43,7 @@ class CogliteAppBaseComponent extends React.Component<any, any> {
           example project
         </Typography>
         <Button variant="raised" color="secondary" onClick={this.handleClick}>
-          Super Secret Password
+          Super Secret Passworddd
         </Button>
       </div>
     );

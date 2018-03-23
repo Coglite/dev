@@ -1,30 +1,20 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import {CogliteAppContainer} from './views/CogliteAppContainer';
-
-import { createStores } from './stores';
-import { createBrowserHistory } from 'history';
 import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
+import { NavigationStore } from './stores';
+import { CogliteAppContainer } from './views/CogliteAppContainer';
 
-
-// enable MobX strict mode
 useStrict(true);
 
-// default fixtures for TodoStore
-//const defaultTodos = [
-//  new TodoModel('Use Mobx'),
-//  new TodoModel('Use React', true)
-//];
-
-// prepare MobX stores
-const history = createBrowserHistory();
-const rootStore = createStores(history);
+const store = {
+nav: new NavigationStore()
+}
 
 
 ReactDOM.render(
-  <Provider {...rootStore}>
-    <CogliteAppContainer history={history} />
+  <Provider {...store}>
+    <CogliteAppContainer/>
   </Provider>,
 document.querySelector('#root'));

@@ -1,6 +1,7 @@
 const path = require('path')
 var webpack = require('webpack');
 
+import WriteFilePlugin from 'write-file-webpack-plugin';
 const nodeExternals = require("webpack-node-externals");
 const CopyPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -33,7 +34,7 @@ externals: [nodeExternals()],
 
 resolve: {
   extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".html", ".css", ".scss"],
-  modules: [helpers.root(), helpers.root("src"), helpers.root("node_modules")],
+  modules: [helpers.root(), helpers.root("src"), helpers.root("node_modules")]
 },
 
 

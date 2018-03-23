@@ -1,7 +1,7 @@
 const execa = require('execa')
 const electron = require("electron");
 const webpack = require("webpack");
-const config = require("./webpack.config");
+const config = require("../webpack.config");
 
 const env = "development";
 

@@ -8,11 +8,6 @@ import * as isDev from "electron-is-dev"
 const shouldCheck = !isDev
 
 
-/**
- * Setup the auto-update capabilities.
- *
- * @param app The electron app.
- */
 export function createUpdater(app: Electron.App): void {
   // jet if we shouldn't be here
   if (!shouldCheck) {

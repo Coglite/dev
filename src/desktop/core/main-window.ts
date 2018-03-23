@@ -1,6 +1,7 @@
-const { BrowserWindow } = require("electron")
-const WindowStateManager = require("electron-window-state-manager")
-import { loadURL } from "./load-url"
+import { BrowserWindow, Menu } from 'electron';
+import * as WindowStateManager from 'electron-window-state-manager';
+
+import { loadURL } from './load-url';
 
 
 export const DIMENSIONS = { width: 600, height: 500, minWidth: 450, minHeight: 450 }
@@ -63,6 +64,17 @@ export function createMainWindow(appPath: string, showDelay: number = 100) {
       window.focus()
     }, showDelay)
   })
+
+   // this adds 'inspect element' on right click in the browser
+  window.webContents.on("context-menu", (e, props) => {
+      Menu.buildFromTemplate([
+        {
+          label: "Inspect element",
+          click() { window.webContents.inspectElement(props.x, props.y)}
+        }
+      ]).popup(window);
+    })
+
 
   return window
 }
