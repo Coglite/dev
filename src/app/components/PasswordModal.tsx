@@ -1,32 +1,20 @@
+import { Div } from 'glamorous';
 import Button from 'material-ui/Button';
 import Dialog, { DialogActions, DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog';
-import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import * as React from 'react';
 
-import withRoot from '../withRoot';
-
-const styles = theme => ({
-  root: {
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
-  },
-});
-
-
-
-class CogliteAppBase extends React.Component<any, any> {
+export class PasswordModal extends React.Component<any, any> {
   state = {open: false};
 
   handleClose = () => {this.setState({open: false})};
   handleClick = () => {this.setState({open: true})};
 
   render() {
-    const { classes } = this.props;
     const { open } = this.state;
 
     return (
-      <div className={classes.root}>
+     <Div textAlign='center'>
         <Dialog open={open} onClose={this.handleClose}>
           <DialogTitle>Super Secret Password</DialogTitle>
           <DialogContent>
@@ -47,11 +35,7 @@ class CogliteAppBase extends React.Component<any, any> {
         <Button variant="raised" color="secondary" onClick={this.handleClick}>
           Super Secret Password
         </Button>
-      </div>
+      </Div>
     );
   }
 }
-
-
-export let CogliteApp = withRoot(withStyles(styles)(CogliteAppBase));
-

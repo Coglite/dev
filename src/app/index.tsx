@@ -2,13 +2,13 @@ import { Provider } from 'mobx-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { store } from './stores';
-import { CogliteAppContainer } from './modules/CogliteAppContainer';
+import { CogliteApp } from './App';
+import { store, Store } from './stores';
 
 
 
 ReactDOM.render(
-  <Provider {...store}>
-    <CogliteAppContainer/>
+  <Provider {...store as Store}>
+    <CogliteApp/>
   </Provider>,
-document.querySelector('#root'));
+document.querySelector('#root') as HTMLElement);

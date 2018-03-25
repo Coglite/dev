@@ -75,7 +75,7 @@ export = class ElectronDevWebpackPlugin {
           }
           cp.kill()
         } catch (e) {
-          console.log(`kill ${chalk.red(cp.pid.toString())} process is failed, ${chalk.red(e)}`)
+          console.log(`kill ${chalk.red(cp.pid.toString())} process failed, ${chalk.red(e)}`)
         }
       }
       if (!cp.killed) {
