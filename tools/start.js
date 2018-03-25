@@ -1,4 +1,5 @@
 const execa = require('execa')
+var cp = require('child_process')
 const electron = require("electron");
 const webpack = require("webpack");
 const config = require("../webpack.config");
@@ -12,7 +13,7 @@ const watching = compiler.watch({}, (err, stats) => {
   if (!err && !stats.hasErrors() && !electronStarted) {
     electronStarted = true;
 
-    execa(electron, ["."], { stdio: "inherit" })
+    cp.spawn(electron, ["."], { stdio: "inherit" })
       .on("close", () => {
         watching.close();
         //elecronStarted = false;

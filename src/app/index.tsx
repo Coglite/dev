@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { store } from './stores';
-import { CogliteAppContainer } from './views/CogliteAppContainer';
+import { CogliteAppContainer } from './modules/CogliteAppContainer';
 
 
 

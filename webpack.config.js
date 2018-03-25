@@ -22,7 +22,7 @@ resolve:{
     mainFields: ['module', 'browser', 'main'],
   },
 
-devtool: "#source-map",
+devtool: "#eval",
 
 node: {__dirname: false,  __filename: false},
 
@@ -46,6 +46,7 @@ module: { rules: [
           exclude: /node_modules/},
       {test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: 'file-loader',},
       {test: /\.html$/, use: 'html-loader' },
+      {test: /\.json$/,loader: "json-loader"},
   ]},
 
 plugins:[

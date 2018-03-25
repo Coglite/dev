@@ -1,5 +1,5 @@
-import { join } from "path"
-import { format } from "url"
+import { join } from 'path';
+import { format } from 'url';
 
 
 export function loadURL(window: Electron.BrowserWindow, appPath: string,) {

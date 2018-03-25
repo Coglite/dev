@@ -4,12 +4,15 @@ import * as isDev from 'electron-is-dev';
 import { createMainWindow } from './core';
 import { createMenu } from './menus';
 
-
-
 let mainWindow: Electron.BrowserWindow
 
 const appPath = app.getAppPath()
 
+
+require('electron-reload')(__dirname, {
+    electron: appPath,
+    hardResetMethod: 'exit'
+  });
 
 app.on("ready", () => {
   mainWindow = createMainWindow(appPath)
