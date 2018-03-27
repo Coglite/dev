@@ -23,7 +23,7 @@ import {
     uninstallComponentKit,
     uninstallModule,
     writeCode,
-} from '../../lib/middleMan/client';
+} from '../../../lib/middleMan/client';
 import {editorSessionStore} from '../EditorSessionStore';
 import {workspaceStore} from '../WorkspaceStore';
 import {ComponentKitConfig} from './ComponentKitConfig';
