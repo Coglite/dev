@@ -8,7 +8,7 @@ import * as React from 'react';
 
 import ComponentMeta from '../../stores/ComponentMeta';
 import { IEditorSessionComponentProps } from '../../stores/EditorSessionStore';
-import Row from './Row';
+import {Row} from './Row';
 
 
 interface IInsightPanelProps {
@@ -19,7 +19,7 @@ interface IInsightPanelProps {
 }
 
 @observer
-export default class InsightPanel extends React.Component<IInsightPanelProps, {}> {
+export class InsightPanel extends React.Component<IInsightPanelProps, {}> {
     public render() {
         const rows = this.props.componentProps.map(item => {
             return <Row componentProps={item} componentNode={this.props.componentNode} onChange={this.props.onChange}/>;

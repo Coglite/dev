@@ -1,7 +1,7 @@
 var npmi = require('npmi');
 var npm = require('npm-programmatic');
-var path = require('path');
-var fs = require('fs-extra');
+import * as path from 'path'
+import * as fs from 'fs-extra'
 
 import { getProjectDirectory } from './locationService';
 

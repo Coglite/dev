@@ -1,4 +1,5 @@
-var socket = require('socket.io-client');
+import * as socket from 'socket.io-client';
+
 var client = undefined as any;
 
 export function initialize(url) {

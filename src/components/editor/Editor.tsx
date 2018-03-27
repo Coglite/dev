@@ -38,7 +38,7 @@ function collect(connect, monitor) {
 
 @observer
 @DropTarget('ACTION', squareTarget, collect)
-export default class Editor extends React.Component<ISequencePanelProps, {x: number, y: number}> {
+export class Editor extends React.Component<ISequencePanelProps, {x: number, y: number}> {
     public connection: any;
     ace: any;
 

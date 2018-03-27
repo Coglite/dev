@@ -1,5 +1,5 @@
-var fs = require('fs-extra');
-var path = require('path');
+import * as fs from 'fs-extra'
+import * as path from 'path'
 import { getProjectDirectory } from './locationService';
 
 export function writeIndexFile(entryFilePath) {
@@ -28,7 +28,7 @@ export function writeWebpackConfigFile(componentKitModuleName) {
 }
 
 export function cleanProjectDirectory() {
-    fs.emptydirSync(getProjectDirectory());
+    fs.emptyDirSync(getProjectDirectory());
 }
 
 export function writePackageJson(componentKitModuleName) {

@@ -1,5 +1,5 @@
-var path = require('path');
-var express = require('express');
+import * as path from 'path'
+import * as express from 'express'
 var app = express();
 const { initializeMessageHandler } = require('./messageHandler');
 var createWebpackDevServer = require('./webpackServer');

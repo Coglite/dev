@@ -12,7 +12,7 @@ interface INotificationProps {
 }
 
 @observer
-export default class Notification extends React.Component<INotificationProps, {}> {
+export class Notification extends React.Component<INotificationProps, {}> {
     public toaster: Toaster;
     componentDidReceiveProps = (nextProps: INotificationProps) => {
         if (nextProps.message !== '' && nextProps.message !== this.props.message) {

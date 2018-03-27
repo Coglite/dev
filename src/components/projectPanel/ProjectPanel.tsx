@@ -18,7 +18,7 @@ interface IProjectPanelState {
     isConfirmOpen: boolean;
 }
 
-export default class ProjectPanel extends React.Component<IProjectPanelProps, IProjectPanelState> {
+export class ProjectPanel extends React.Component<IProjectPanelProps, IProjectPanelState> {
     public clickedNode: ITreeNode;
     constructor(props) {
         super(props);

@@ -1,5 +1,5 @@
-var fs = require('fs-extra');
-var path = require('path');
+import * as fs from 'fs-extra'
+import * as path from 'path'
 import { getDataJsonPath } from './locationService';
 
 export function readProjectConfig() {
@@ -14,4 +14,3 @@ export function changeActiveKit(name) {
     dataObj.activeComponentKit = name;
     fs.writeJSONSync(file, dataObj);
 }
-

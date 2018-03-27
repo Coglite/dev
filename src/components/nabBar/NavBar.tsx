@@ -43,7 +43,7 @@ interface INavBarState {
 }
 
 @observer
-class NavBar extends React.Component<INavBarProps, INavBarState> {
+export class NavBar extends React.Component<INavBarProps, INavBarState> {
     public fileNameInput: HTMLInputElement;
     constructor(props) {
         super(props);
@@ -303,4 +303,3 @@ class NavBar extends React.Component<INavBarProps, INavBarState> {
     }
 }
 
-export default NavBar;

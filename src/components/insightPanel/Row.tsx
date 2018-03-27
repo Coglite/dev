@@ -21,7 +21,7 @@ interface IRowProps {
 }
 
 @observer
-export default class Row extends React.Component<IRowProps, {}> {
+export class Row extends React.Component<IRowProps, {}> {
     public render() {
         let knob = null;
 

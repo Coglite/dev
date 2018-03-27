@@ -1,4 +1,4 @@
-var path = require('path');
+import * as path from 'path'
 var express = require('express');
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');

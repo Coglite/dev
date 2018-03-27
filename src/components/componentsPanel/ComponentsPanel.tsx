@@ -6,8 +6,7 @@ import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
 import ComponentMeta from '../../stores/ComponentMeta';
-import ComponentItem from './item';
-import SnippetItem from './snippetItem';
+import {SnippetItem, ComponentItem, } from './items';
 
 
 interface IComponentPanelProps {
@@ -20,7 +19,7 @@ interface IComponentPanelProps {
 }
 
 @observer
-export default class ComponentsPanel extends React.Component<IComponentPanelProps, {}> {
+export class ComponentsPanel extends React.Component<IComponentPanelProps, {}> {
 
     public handleSearch = (e) => {
         const val = e.target.value;

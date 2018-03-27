@@ -1,4 +1,4 @@
-var socket = require('socket.io');
+import * as socket from 'socket.io';
 import {readProjectConfig} from '../configManager';
 var io = null;
 

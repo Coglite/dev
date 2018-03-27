@@ -8,12 +8,12 @@ import 'flexboxgrid/css/flexboxgrid.css';
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 
-import Editor from '../components/editor';
-import InsightPanel from '../components/insightPanel';
-import LeftPanel from '../components/leftPanel';
-import NavBar from '../components/nabBar';
-import Notification from '../components/notification';
-import getSnippets from '../services/snippetService';
+import {Editor} from '../components/editor';
+import {InsightPanel} from '../components/insightPanel';
+import {LeftPanel} from '../components/leftPanel';
+import{NavBar} from '../components/nabBar';
+import {Notification} from '../components/notification';
+import {getSnippets} from '../services/snippetService';
 import { ConfigStore } from '../stores/config/ConfigStore';
 import { EditorSession } from '../stores/EditorSessionStore';
 import { WorkspaceStore } from '../stores/WorkspaceStore';

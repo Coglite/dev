@@ -8,7 +8,7 @@ export interface ISnippet {
     code: string;
 }
 
-export default function getSnippets() {
+export function getSnippets() {
     const snippets: ISnippet[] = [{
         name: 'React ES6 Component',
         description: 'ES6 component snippet',

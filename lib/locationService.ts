@@ -1,4 +1,4 @@
-var path = require('path');
+import * as path from 'path'
 
 export function getProjectDirectory() {
     return path.resolve(__dirname, '../../proj');

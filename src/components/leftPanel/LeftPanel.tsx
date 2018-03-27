@@ -5,8 +5,8 @@ import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
 import ComponentMeta from '../../stores/ComponentMeta';
-import ComponentsPanel from '../componentsPanel';
-import ProjectPanel from '../projectPanel';
+import {ComponentsPanel} from '../componentsPanel';
+import {ProjectPanel} from '../projectPanel';
 
 
 interface ILeftPanelProps {
@@ -24,7 +24,7 @@ interface ILeftPanelProps {
     snippets: ISnippet[];
 }
 
-export default class LeftPanel extends React.Component<ILeftPanelProps, {}> {
+export class LeftPanel extends React.Component<ILeftPanelProps, {}> {
     public render() {
         return (
             <div className='pt-card' style={{ height: '100%', padding: '0px' }}>

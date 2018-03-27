@@ -32,7 +32,7 @@ interface IActionMiniProps {
 }
 
 @DragSource('ACTION', knightSource, collect)
-export default class ComponentItem extends React.Component<IActionMiniProps, {}> {
+export class SnippetItem extends React.Component<IActionMiniProps, {}> {
     public render() {
         const { connectDragSource } = this.props;
         return connectDragSource(
