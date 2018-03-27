@@ -1,0 +1,16 @@
+{
+  "installedComponentKits": [
+    {
+      "name": "react-slate-blueprint-js-kit",
+      "label": "Blueprint JS",
+      "version": "0.0.1"
+    },
+    {
+      "name": "react-slate-starter-kit",
+      "label": "React Starter",
+      "version": "0.0.1"
+    }
+  ],
+  "activeComponentKit": "react-slate-blueprint-js-kit",
+  "activeFile": "index.jsx"
+}

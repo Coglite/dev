@@ -1,0 +1,10 @@
+.property-panel {
+    height: calc(90vh);
+    overflow: auto;
+    width: 100%;
+}
+
+.property-description {
+    max-width: 400px;
+    word-wrap: break-word;
+}
