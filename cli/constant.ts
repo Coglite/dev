@@ -1,3 +1,5 @@
-export default { 
-    availableComponentKitsUrl: 'https://rawgit.com/Raathigesh/react-slate/master/componentKits.json'
-};
+let availableComponentKitsUrl: 'https://rawgit.com/Raathigesh/react-slate/master/componentKits.json'
+
+export {
+    availableComponentKitsUrl
+}

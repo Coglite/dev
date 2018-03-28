@@ -1,0 +1,4 @@
+
+messanger handler 'details' typed as any , gotta find / create model for it
+
+also removed 'onCreateProject' referencing lib/middleman/server .. which doesnt exist at all wtf

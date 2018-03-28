@@ -1,7 +1,7 @@
 import * as path from 'path'
-const request = require('superagent');
+import * as request from 'superagent';
 
-const {
+import {
     writeWebpackConfigFile,
     writeIndexFile,
     writeFileContent,
@@ -13,41 +13,37 @@ const {
     readProjectFile,
     deleteProjectFile,
     copyFilesToProjectDirectory
-} = require('../src/lib/fileHandler');
-const {initialize,onCreateProject} = require('../src/lib/middleMan/server');
+} from '../lib/fileHandler';
+import {initialize} from '../lib/middleMan/server';
 
-const {
+//import {initialize, onCreateProject} from '../lib/middleMan/server';
+
+import {
     installModuleToProjectDirectory,
     unInstallModuleToProjectDirectory,
     readDependencies,
     getComponentKitDetails
-} = require('../src/lib/moduleHandler');
+} from '../lib/moduleHandler';
 
-const {
-    availableComponentKitsUrl
-} = require('./constant');
+import {availableComponentKitsUrl} from './constant';
 
-const { readProjectConfig, changeActiveKit } = require('../lib/configManager');
-const { getProjectDirectory } = require('../lib/locationService');
-const createWebpackDevServer = require('./webpackServer');
+import { readProjectConfig, changeActiveKit } from '../lib/configManager';
+import { getProjectDirectory } from '../lib/locationService';
+import {createWebpackDevServer} from './webpackServer';
 
 
 let availableComponentKits = null;
 let projectConfig = readProjectConfig();
 const currentComponentKit = require(projectConfig.activeComponentKit);
 
-/**
- * Writes the initial content to the project folder
- */
+/** Writes the initial content to the project folder*/
 function writeFreshProjectToProjectDirectory() {
     writePackageJson(projectConfig.activeComponentKit);
     writeIndexFile(currentComponentKit.entryFilePath);
     copyFilesToProjectDirectory(currentComponentKit.files);
 }
 
-/**
- * Change the component kit
- */
+/** Change the component kit */
 function changeCurrentComponentKit(nameOfNewKit) {
     // clean the current project directory
     cleanProjectDirectory();
@@ -62,9 +58,7 @@ function changeCurrentComponentKit(nameOfNewKit) {
     writeFreshProjectToProjectDirectory();
 }
 
-/**
- * Fetches all the available component kit list from through the remote endpoint
- */
+/** Fetches all the available component kit list from through the remote endpoint */
 function fetchAllAvailableComponentKits() {
     return request
         .get(availableComponentKitsUrl)
@@ -72,19 +66,15 @@ function fetchAllAvailableComponentKits() {
         .set('Accept', 'application/json');
 }
 
-/**
- * Read the webpack config from the current component kit
- */
+/** Read the webpack config from the current component kit */
 function getWebpackConfig() {
     // while reading, pass the current project directory
     return currentComponentKit.webpackConfig(getProjectDirectory());
 }
 
-/**
- * Emits the list of files in the project directory through the socket.
+/** Emits the list of files in the project directory through the socket.
  * This could be invoked when a file is deleted or created, to send the
- * new list of files to the front-end UI.
- */
+ * new list of files to the front-end UI. */
 function emitCurrentProjectFiles(socket) {
     readProjectFiles().then((files) => {
         socket.emit('projectFileInfo', {
@@ -94,21 +84,15 @@ function emitCurrentProjectFiles(socket) {
     });
 }
 
-/**
- * Initializes the messaging handlers and start webpack dev server
- */
+/** Initializes the messaging handlers and start webpack dev server*/
 export function initializeMessageHandler(serverApp, webpackDevServerPort) {
     initialize(serverApp, {
-        /**
-         * When a project is newly created
-         */
+        /** When a project is newly created */
         onCreateProject: (data) => {
             writeFreshProjectToProjectDirectory();
         },
 
-        /**
-         * When a connection is established with the front-end UI
-         */
+        /** When a connection is established with the front-end UI */
         onConnection: (socket) => {
             socket.emit('initialConfig', projectConfig);
             console.log(currentComponentKit.kit)
@@ -126,16 +110,12 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
             socket.emit('readProjectFile', readProjectFile(path.basename(currentComponentKit.entryFilePath)));
         },
 
-        /**
-         * When a file should be saved. File name and content should be provided
-         */
+        /** When a file should be saved. File name and content should be provided*/
         onCodeChange: (data) => {
             writeFileContent(data.fileName, data.content);
         },
 
-        /**
-         * When the active component kit is changed
-         */
+        /** When the active component kit is changed */
         onKitChange: (kit, socket) => {
             changeCurrentComponentKit(kit);
             socket.emit('componentKit', currentComponentKit.kit);
@@ -148,12 +128,10 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
             createWebpackDevServer(getWebpackConfig(), webpackDevServerPort);
         },
 
-        /**
-         * When a npm module is installed
-         */
+        /** When a npm module is installed */
         onModuleInstall: (moduleName, socket) => {
             installModuleToProjectDirectory(moduleName)
-                .then((detail) => {
+                .then((detail: any) => {
                     socket.emit('message', {
                         messageType: 'success',
                         message: 'Installed ' + detail.name + '@' + detail.version
@@ -168,9 +146,7 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
                 });
         },
 
-        /**
-         * When an npm module is un-installed
-         */
+        /** When an npm module is un-installed */
         onModuleUninstall: (moduleName, socket) => {
             unInstallModuleToProjectDirectory(moduleName)
                 .then(() => {
@@ -188,9 +164,7 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
                 });
         },
 
-        /**
-         * When an installed compoennt kit should be uninstalled
-         */
+        /** When an installed compoennt kit should be uninstalled */
         onComponentKitUninstall: (moduleName, socket) => {
             unInstallModuleToProjectDirectory(moduleName)
                 .then(() => {
@@ -209,12 +183,10 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
                 });
         },
 
-        /**
-         * When a component kit should be installed
-         */
+        /** When a component kit should be installed */
         onComponentKitInstall: (moduleName, socket) => {
             installModuleToProjectDirectory(moduleName)
-                .then((detail) => {
+                .then((detail: any) => {
                     socket.emit('message', {
                         messageType: 'success',
                         message: 'Installed ' + detail.name + '@' + detail.version
@@ -230,24 +202,18 @@ export function initializeMessageHandler(serverApp, webpackDevServerPort) {
                 });
         },
 
-        /**
-         * When a new file should be created
-         */
+        /** When a new file should be created*/
         onCreateNewFile: (fileName, socket) => {
             createProjectFile(fileName);
             emitCurrentProjectFiles(socket);
         },
 
-        /**
-         * When a file is selected, the content should be read and given
-         */
+        /** When a file is selected, the content should be read and given */
         onReadFile: (fileName, socket) => {
             socket.emit('readProjectFile', readProjectFile(fileName));
         },
 
-        /**
-         * When a file should be deleted
-         */
+        /** When a file should be deleted*/
         onDeleteFile: (fileName, socket) => {
             deleteProjectFile(fileName);
             emitCurrentProjectFiles(socket);
