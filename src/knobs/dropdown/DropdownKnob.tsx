@@ -4,16 +4,16 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import Model from './DropdownModel';
+import {DropdownKnobModel} from './DropdownModel';
 
 
-interface IBooleanComponentProps {
-    model: Model;
-    onChange: (model: Model) => void;
+interface IDropdownKnobProps {
+    model: DropdownKnobModel;
+    onChange: (model: DropdownKnobModel) => void;
 }
 
 @observer
-export default class BooleanComponent extends React.Component<IBooleanComponentProps, {}> {
+export class DropdownKnob extends React.Component<IDropdownKnobProps, {}> {
     public handleChange = (e) => {
         if (e.target.value === 'Choose an item...') {
             this.props.model.setValue('');

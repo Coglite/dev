@@ -6,7 +6,7 @@ import { action, observable } from 'mobx';
 import { getInitialValue, update } from './TextNodeManipulator';
 
 
-export default class TextKonb {
+export class TextKnobModel {
     @observable public text: string;
     public node: any;
     public propName: string;

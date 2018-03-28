@@ -5,10 +5,10 @@ import { Tooltip } from '@blueprintjs/core';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import { Component as BooleanKnob } from '../../knobs/boolean';
-import { Component as DropdownKnob } from '../../knobs/dropdown';
-import { Component as NumberKnob } from '../../knobs/number';
-import { Component as TextKnob } from '../../knobs/text';
+import { BooleanKnob } from '../../knobs/boolean';
+import { DropdownKnob } from '../../knobs/dropdown';
+import { NumberKnob } from '../../knobs/number';
+import { TextKnob } from '../../knobs/text';
 import componentPropTypes from '../../services/componentPropType';
 import { IEditorSessionComponentProps } from '../../stores/EditorSessionStore';
 

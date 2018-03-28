@@ -12,8 +12,9 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 
 const AceEditor = require('react-ace').default;
-
 const { DropTarget } = require('react-dnd');
+
+
 interface ISequencePanelProps {
     connectDropTarget?: any;
     code: string;

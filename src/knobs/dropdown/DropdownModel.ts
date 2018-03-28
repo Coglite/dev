@@ -6,7 +6,7 @@ import { action, observable } from 'mobx';
 import { getInitialValue, update } from './DropdownNodeManipulator';
 
 
-export default class BooleanKonb {
+export class DropdownKnobModel {
     @observable public options: {
         label: string;
         value: string;

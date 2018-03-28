@@ -3,7 +3,7 @@
  */
 import { addOrUpdatePropertyOfReactComponent, getReactComponentAttributeValue } from '../../services/astHelper';
 import componentPropType from '../../services/componentPropType';
-import BooleanKnobModel from './boolean.model';
+import {BooleanKnobModel} from './BooleanModel';
 
 
 export default function(model: BooleanKnobModel, node) {

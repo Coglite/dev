@@ -1,11 +1,8 @@
 /**
  * Export stuff
  */
-import Component from './DropdownKnob';
-import Model from './DropdownModel';
+import {DropdownKnob} from './DropdownKnob';
+import {DropdownKnobModel} from './DropdownModel';
 
 
-export {
-    Component,
-    Model
-};
+export {DropdownKnob,DropdownKnobModel};

@@ -1,11 +1,5 @@
-/**
- * Export stuff
- */
-import Component from './TextKnob';
-import Model from './TextModel';
+import {TextKnob} from './TextKnobComponent';
+import {TextKnobModel} from './TextModel';
 
 
-export {
-    Component,
-    Model
-};
+export {TextKnob,TextKnobModel};

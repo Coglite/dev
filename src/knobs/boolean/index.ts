@@ -1,11 +1,11 @@
 /**
  * Export stuff
  */
-import Component from './BooleanComponent';
-import Model from './boolean.model';
+import {BooleanKnob}from './BooleanComponent';
+import {BooleanKnobModel} from './BooleanModel';
 
 
 export {
-    Component,
-    Model
+    BooleanKnob,
+    BooleanKnobModel
 };

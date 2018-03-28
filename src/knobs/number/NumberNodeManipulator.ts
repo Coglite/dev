@@ -3,10 +3,10 @@
  */
 import { addOrUpdatePropertyOfReactComponent, getReactComponentAttributeValue } from '../../services/astHelper';
 import componentPropType from '../../services/componentPropType';
-import TextKnobModel from './NumberModel';
+import {NumberKnobModel} from './NumberModel';
 
 
-export default function(model: TextKnobModel, node) {
+export default function(model: NumberKnobModel, node) {
     node.value = model.value;
 }
 

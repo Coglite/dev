@@ -4,16 +4,16 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import Model from './NumberModel';
+import {NumberKnobModel} from './NumberModel';
 
 
-interface ITextKnobProp {
-    model: Model;
-    onChange: (model: Model) =>  void;
+interface INumberKnobProp {
+    model: NumberKnobModel;
+    onChange: (model: NumberKnobModel) =>  void;
 }
 
 @observer
-export default class Text extends React.Component<ITextKnobProp, {}> {
+export class NumberKnob extends React.Component<INumberKnobProp, {}> {
     public handleChange = (e) => {
         this.props.model.setText(Number(e.target.value));
         this.props.onChange(this.props.model);

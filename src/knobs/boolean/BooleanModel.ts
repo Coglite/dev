@@ -3,10 +3,10 @@
  */
 import { action, observable } from 'mobx';
 
-import { getInitialValue, update } from './boolean.nodeManipulator';
+import { getInitialValue, update } from './BooleanNodeManipulator';
 
 
-export default class BooleanKonb {
+export class BooleanKnobModel {
     @observable public isTrue: boolean;
     public node: any;
     public propName: string;

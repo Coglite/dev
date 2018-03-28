@@ -11,10 +11,10 @@ import {
     getAllImportDeclarations,
 } from '../services/astHelper';
 import componentPropsTypes from '../services/componentPropType';
-import { Model as BooleanModel } from './../knobs/boolean';
-import { Model as DropdownModel } from './../knobs/dropdown';
-import { Model as NumberModel } from './../knobs/number';
-import { Model as TextModel } from './../knobs/text';
+import { BooleanKnobModel } from './../knobs/boolean';
+import { DropdownKnobModel } from './../knobs/dropdown';
+import { NumberKnobModel } from './../knobs/number';
+import { TextKnobModel } from './../knobs/text';
 import ComponentMeta, { IComponentExport, IComponentProp } from './ComponentMeta';
 import ComponentsKit from './ComponentsKit';
 
@@ -148,13 +148,13 @@ export class EditorSession {
             let model = null;
 
             if (prop.propType === componentPropsTypes.string) {
-                model = new TextModel(prop.name, this.componentNode);
+                model = new TextKnobModel(prop.name, this.componentNode);
             } else if (prop.propType === componentPropsTypes.boolean) {
-                model = new BooleanModel(prop.name, this.componentNode);
+                model = new BooleanKnobModel(prop.name, this.componentNode);
             } else if (prop.propType === componentPropsTypes.number) {
-                model = new NumberModel(prop.name, this.componentNode);
+                model = new NumberKnobModel(prop.name, this.componentNode);
             } else if (prop.propType === componentPropsTypes.options) {
-                model = new DropdownModel(prop.name, this.componentNode, prop.options);
+                model = new DropdownKnobModel(prop.name, this.componentNode, prop.options);
             }
 
             const propWithModel = {
