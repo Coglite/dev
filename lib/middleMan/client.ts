@@ -1,9 +1,9 @@
-import * as socket from 'socket.io-client';
+import * as io from 'socket.io-client';
 
 var client = undefined as any;
 
 export function initialize(url) {
-    client = socket(url);
+    client = io(url);
     return client;
 }
 

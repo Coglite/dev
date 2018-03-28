@@ -5,7 +5,7 @@ export function getProjectDirectory() {
 }
 
 export function getDataJsonPath() {
-    return path.resolve(__dirname, '../../data/config.json');
+    return path.resolve(__dirname, '../data/config.json');
 }
 
 
