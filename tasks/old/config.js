@@ -1,10 +1,6 @@
 
 const path = require('path')
 const nodeExternals = require("webpack-node-externals");
-//const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-//const CopyPlugin = require('copy-webpack-plugin')
-//const CleanWebpackPlugin = require('clean-webpack-plugin')
-//const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 

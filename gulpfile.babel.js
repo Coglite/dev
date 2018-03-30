@@ -4,21 +4,26 @@ var gulp = require('gulp')
 const execa = require('execa')
 const webpackStream = require('webpack-stream')
 const webpack = require('webpack')
-var webpackConfig = require('./tasks/webpack.config')
+const {appConfig, desktopConfig} = require('./tasks/webpack.config')
+var webpackDevServer = require('webpack-dev-server')
+var del = require('del')
 
+//var webpackDevConfig = new webpackDevServer(webpack(appConfig))
 
-
-gulp.task('webpack1', async () => {
+gulp.task('build.app', async () => {
   return gulp.src(["src/app/app.tsx"])
-  .pipe(webpackStream(webpackConfig.appConfig, webpack))
+  .pipe(webpackStream(appConfig, webpack))
     .pipe(gulp.dest('dist/app'))
 })
 
-gulp.task('webpack2', async () => {
+gulp.task('build.desktop', async () => {
   return gulp.src(["src/desktop/main.ts"])
-  .pipe(webpackStream(webpackConfig.desktopConfig, webpack))
+  .pipe(webpackStream(desktopConfig, webpack))
     .pipe(gulp.dest('dist/desktop'))
 })
+
+
+
 
 gulp.task("static", async () => {
     return gulp.src(["src/**/*.ttf",
@@ -29,31 +34,16 @@ gulp.task("static", async () => {
                     "src/**/*.woff",
                     "src/**/*.woff2",
                     "src/**/*.png"])
-        .pipe(gulp.dest("dist"))})
+                    .pipe(gulp.dest("dist"))})
 
-gulp.task('webpack', gulp.parallel('webpack1', 'webpack2', 'static'))
+gulp.task('webpack', gulp.parallel('build.app', 'build.desktop', 'static'))
+
+gulp.task('clean', async () => del(['dist']));
 
 
 gulp.task('watch', () => {
-  gulp.watch(['src/app**/*.ts'], gulp.parallel('webpack1'));
-  gulp.watch(['src/app**/*.tsx'], gulp.parallel('webpack1'));
+  gulp.watch(['src/app/**/*.ts'], gulp.parallel('build.app'));
+  gulp.watch(['src/app/**/*.tsx'], gulp.parallel('build.app'));
 });
 
 
-
-//const env = "development";
-//const compiler = webpack(config(env));
-/*
-let electronStarted = false;
-
-const watching = compiler.watch({}, (err, stats) => {
-  if (!err && !stats.hasErrors() && !electronStarted) {
-    electronStarted = true;
-
-    execa(electron, ["."], { stdio: "inherit" })
-      .on("close", () => {
-        watching.close();
-      });
-  }
-});
-*/

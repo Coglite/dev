@@ -1,4 +1,4 @@
-.srd-node{
+.srd-node {
   position: absolute;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -6,7 +6,7 @@
   cursor: move;
   pointer-events: all;
 
-  &--selected{
+  &--selected {
     > * {
       border-color:rgb(0,192,255) !important;
     }

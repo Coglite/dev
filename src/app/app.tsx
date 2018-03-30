@@ -2,7 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 //import './styles/main.scss'
-import "./sass/main.scss";
+import "./styles/main.scss";
+import "normalize.css/normalize.css"
+
 
 import {Diagram}  from "./Diagram";
 

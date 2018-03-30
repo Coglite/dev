@@ -3,27 +3,16 @@ const path = require('path')
 const nodeExternals = require("webpack-node-externals");
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+ 
+const {getRoot} = require('./helpers')
 
 
-//const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-//const CopyPlugin = require('copy-webpack-plugin')
-//const CleanWebpackPlugin = require('clean-webpack-plugin')
-//const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-
-const ROOT = path.resolve(__dirname, '..');
-const getRoot = path.join.bind(path, ROOT);
-
-
-const common = {
-    
-    target: "node",
-    
-    mode: 'development',
-    
+const common = {    
+    target: "node",   
+    mode: 'development',   
     module: { rules: [
-      //{test: /\.[tj]sx?$/, use: ["babel-loader"] exclude: /node_modules/ }
-      {test: /\.tsx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
+      {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
       ]},
     
     resolve: { 
@@ -43,16 +32,14 @@ const common = {
 
 
 const desktop = {
-      //target: "electron-main",
-      //entry: "./src/main/index.ts",
-      output: {filename: 'desktop.js' }
+      output: {
+        filename: 'desktop.js',
+        publicPath: '/' }
     }
 
 
 const app = {
-  //target: "electron-renderer",
-  //entry: "./src/renderer/app.tsx",
-  output: { filename: 'app.js' },
+  output: { filename: 'app.js', publicPath: '/' },
   module: {
   rules: [
     {test: /\.less$/,use: ["style-loader", "css-loader", "less-loader"]},
@@ -62,8 +49,10 @@ const app = {
     {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,loader: "url-loader?limit=10000&mimetype=application/font-woff"},
   ]
       },
-      plugins: [new webpack.NamedModulesPlugin]
-      //plugins: [new ExtractTextPlugin({ filename: `${distDir}/app.css` }), definePlugin]
+      plugins: [
+        new webpack.NamedModulesPlugin,
+        
+      ]
     }
 
 
