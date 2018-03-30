@@ -1,6 +1,8 @@
 /** Home view*/
 import './style.scss';
-import '@blueprintjs/core/dist/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/table/lib/css/table.css';
 import 'flexboxgrid/css/flexboxgrid.css';
 
 import { inject, observer } from 'mobx-react';
@@ -12,12 +14,13 @@ import { LeftPanel } from '../components/leftPanel';
 import { NavBar } from '../components/nabBar';
 import { Notification } from '../components/notification';
 import { getSnippets } from '../services/snippetService';
-import { ConfigStore } from '../stores/config/ConfigStore';
+import { ConfigStore } from '../stores/ConfigStore';
 import { EditorSession } from '../stores/EditorSessionStore';
 import { WorkspaceStore } from '../stores/WorkspaceStore';
 
 const { DragDropContext } = require('react-dnd');
 const Html5Backend = require('react-dnd-html5-backend');
+
 interface IHomeProps {
     editorSessionStore?: EditorSession;
     configStore?: ConfigStore;
@@ -62,7 +65,7 @@ export default class Home extends React.Component<IHomeProps, {}> {
                       dependencies={editorSessionStore.dependencies}
                       onModuleUninstall={configStore.uninstallModule}
                       isInProgress={configStore.isInProgress}
-                      componentKitInfo={configStore.componentKitInfo}
+                      config={configStore}
                       onComponentInstall={configStore.installComponentKit}
                       onComponentUnInstall={configStore.uninstallComponentKit}
                       onCreateFile={configStore.createFile}
@@ -87,7 +90,8 @@ export default class Home extends React.Component<IHomeProps, {}> {
                         />
                     </div>
                     <div className='col-md-7 editorPanel'>
-                        {workspaceStore.activeFile !== '' && <Editor
+                        {workspaceStore.activeFile !== '' && 
+                        <Editor
                             ref={editor => this.editor = editor}
                             onChange={editorSessionStore.setCode}
                             code={editorSessionStore.code}

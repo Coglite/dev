@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import Home from './containers/Home';
-import * as stores from './stores';
+import {stores} from './stores';
 
 
 

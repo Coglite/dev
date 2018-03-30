@@ -1,10 +1,10 @@
-import { configStore } from './config/ConfigStore';
+import { configStore } from './ConfigStore';
 import { editorSessionStore } from './EditorSessionStore';
 import { workspaceStore } from './WorkspaceStore';
 
 
 
-export {
+export const stores = {
     editorSessionStore,
     configStore,
     workspaceStore

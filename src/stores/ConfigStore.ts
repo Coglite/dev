@@ -20,9 +20,9 @@ import {
     uninstallComponentKit,
     uninstallModule,
     writeCode,
-} from '../../../lib/middleMan/client';
-import { editorSessionStore } from '../EditorSessionStore';
-import { workspaceStore } from '../WorkspaceStore';
+} from '../../lib/middleMan/client';
+import { editorSessionStore } from './EditorSessionStore';
+import { workspaceStore } from './WorkspaceStore';
 import { ComponentKitConfig } from './ComponentKitConfig';
 
 
@@ -194,7 +194,7 @@ export class ConfigStore {
     }
 
     @action
-    private getComponentKitByKey = (componentKey: string) => {
+    getComponentKitByKey = (componentKey: string) => {
         for (const kit of this.installedComponentKits) {
             if (kit.name === componentKey) {
                 return kit;

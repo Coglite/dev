@@ -3,7 +3,8 @@ import * as React from 'react';
 import { ISnippet } from '../../../services/snippetService';
 
 
-const { DragSource } = require('react-dnd');
+import { DragSource } from 'react-dnd';
+
 const knightSource = {
     beginDrag(props) {
         return {
@@ -25,7 +26,7 @@ function collect(connect, monitor) {
 }
 
 interface IActionMiniProps {
-    detail: ISnippet;
+    detail?: ISnippet;
     connectDragSource?: any;
     isDragging?: boolean;
     onDropped?: (detail: any) => void;

@@ -1,4 +1,3 @@
-/** Navigation bar*/
 import {
     AnchorButton,
     Button,
@@ -8,15 +7,15 @@ import {
     PopoverInteractionKind,
     Position,
     Tab,
-    TabList,
-    TabPanel,
     Tabs,
 } from '@blueprintjs/core';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 
-import { ComponentKitConfig } from '../../stores/config/ComponentKitConfig';
+import { ComponentKitConfig } from '../../stores/ComponentKitConfig';
+import { ConfigStore } from '../../stores/ConfigStore';
 import { IPackageDependency } from '../../stores/EditorSessionStore';
+import { InstalledPluginPanel, UninstalledPluginPanel } from './PluginPanels';
 
 
 
@@ -28,7 +27,7 @@ interface INavBarProps {
     dependencies: IPackageDependency;
     onModuleUninstall: (name: string) => void;
     isInProgress: boolean;
-    componentKitInfo: any;
+    config: ConfigStore;
     onComponentInstall: (name: string) => void;
     onComponentUnInstall: (name: string) => void;
     onCreateFile: (name: string) => void;
@@ -40,9 +39,11 @@ interface INavBarState {
     newKitName?: string;
 }
 
+@inject('configStore')
 @observer
 export class NavBar extends React.Component<INavBarProps, INavBarState> {
     public fileNameInput: HTMLInputElement;
+    
     constructor(props) {
         super(props);
 
@@ -51,8 +52,9 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
             newKitName: ''
         };
     }
-    public getPreferenceComponentContent = () => {
-        const installedKits = this.props.componentKitInfo.installedKits.map((item) => {
+    
+     getPreferenceComponentContent(){
+        const installedKits = this.props.config.componentKitInfo.installedKits.map((item) => {
             return (
                 <tr>
                     <td>{item.label}</td>
@@ -64,7 +66,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
             );
         });
 
-        const uninstalledKits = this.props.componentKitInfo.uninstalledKits.map((item) => {
+        const uninstalledKits = this.props.config.componentKitInfo.uninstalledKits.map((item) => {
             return (
                 <tr>
                     <td>{item.label}</td>
@@ -74,27 +76,18 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                 </tr>
             );
         });
+        
         return (
             <div>
-                <Tabs>
-                    <TabList>
-                        <Tab>Installed Kits</Tab>
-                        <Tab>Install New Kits</Tab>
-                    </TabList>
-                    <TabPanel>
-                        <table className='pt-table pt-condensed pt-bordered'>
-                            <tbody>
-                                {installedKits}
-                            </tbody>
-                        </table>
-                    </TabPanel>
-                    <TabPanel>
-                        <table className='pt-table pt-condensed pt-bordered'>
-                            <tbody>
-                                {uninstalledKits}
-                            </tbody>
-                        </table>
-                    </TabPanel>
+                <Tabs id="InstalledPlugins">
+                        <Tab
+                        id="InstalledPlugins"
+                        panel={<InstalledPluginPanel/>}
+                        >Installed Kits</Tab>
+                        <Tab
+                        id="InstallNewPlugins"
+                        panel={<UninstalledPluginPanel/>}
+                        >Install New Kits</Tab>
                 </Tabs>
                 {this.props.isInProgress && <div className='pt-progress-bar'>
                     <div className='pt-progress-meter' />
@@ -110,14 +103,14 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
         }
     }
 
-    public getNodeModuleComponentContent = () => {
+    getNodeModuleComponentContent() {
         const dependencies = this.props.dependencies.dependencies.map((dependency) => {
             return (
                 <tr>
                     <td>{dependency.name}</td>
                     <td>{dependency.version}</td>
                     <td>
-                        <a onClick={this.props.onModuleUninstall.bind(null, dependency.name)}>
+                        <a onClick={this.props.onModuleUninstall.bind(this, dependency.name)}>
                             Uninstall
                         </a>
                     </td>
@@ -131,7 +124,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                     <td>{dependency.name}</td>
                     <td>{dependency.version}</td>
                     <td>
-                        <a onClick={this.props.onModuleUninstall.bind(null, dependency.name)}>
+                        <a onClick={this.props.onModuleUninstall.bind(this, dependency.name)}>
                             Uninstall
                         </a>
                     </td>
@@ -163,7 +156,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
         );
     }
 
-    public handleDialogClose = () => {
+    public handleDialogClose(){
         this.setState({
             isModalOpen: false
         });
@@ -176,7 +169,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
         });
     }
 
-    public handleKitChangeConfirm = () => {
+    public handleKitChangeConfirm(){
         this.setState({
             isModalOpen: false
         });
@@ -189,7 +182,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
         this.fileNameInput.value = '';
     }
 
-    public handlePreviewLinkClick = () => {
+    public handlePreviewLinkClick(){
 
     }
 
@@ -221,7 +214,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                         content={componentKitList}
                         interactionKind={PopoverInteractionKind.CLICK}
                         position={Position.BOTTOM}
-                        useSmartPositioning={false}>
+                        >
                         <button type='button' className='pt-button'>
                             <span className='pt-icon-standard pt-icon-control' />
                             {this.props.activeComponentKit.label}
@@ -230,11 +223,11 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                     </Popover>
                     <span className='pt-navbar-divider' />
                     <Popover
+                        usePortal={false}
                         content={this.getNodeModuleComponentContent()}
                         popoverClassName='pt-popover-content-sizing'
                         interactionKind={PopoverInteractionKind.CLICK}
                         position={Position.BOTTOM_RIGHT}
-                        useSmartPositioning={false}
                         >
                         <button type='button' className='pt-button'>
                             <span className='pt-icon-standard pt-icon-add' />
@@ -263,7 +256,7 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                 <div className='pt-navbar-group pt-align-right'>
                     <AnchorButton
                         text={`http://localhost:${this.props.webpackPort}`}
-                        iconName='pt-icon-application'
+                        icon='application'
                         className='pt-minimal'
                         onClick={this.handlePreviewLinkClick}
                         href={`http://localhost:${this.props.webpackPort}`}
@@ -275,13 +268,12 @@ export class NavBar extends React.Component<INavBarProps, INavBarState> {
                         popoverClassName='pt-popover-content-sizing'
                         interactionKind={PopoverInteractionKind.CLICK}
                         position={Position.BOTTOM_RIGHT}
-                        useSmartPositioning={false}
                         >
                         <button className='pt-button pt-minimal pt-icon-cog' />
                     </Popover>
                 </div>
                 <Dialog
-                    iconName='inbox'
+                    icon='inbox'
                     isOpen={this.state.isModalOpen}
                     onClose={this.handleDialogClose}
                     title='Are you sure?'

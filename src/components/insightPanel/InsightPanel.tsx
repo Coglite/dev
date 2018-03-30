@@ -4,7 +4,7 @@ import './style.scss';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import ComponentMeta from '../../stores/ComponentMeta';
+import {ComponentMeta} from '../../stores/ComponentMeta';
 import { IEditorSessionComponentProps } from '../../stores/EditorSessionStore';
 import { Row } from './Row';
 

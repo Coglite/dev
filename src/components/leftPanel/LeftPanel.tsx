@@ -4,7 +4,7 @@
 import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
-import ComponentMeta from '../../stores/ComponentMeta';
+import {ComponentMeta} from '../../stores/ComponentMeta';
 import { ComponentsPanel } from '../componentsPanel';
 import { ProjectPanel } from '../projectPanel';
 

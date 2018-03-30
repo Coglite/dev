@@ -14,7 +14,7 @@ interface INotificationProps {
 @observer
 export class Notification extends React.Component<INotificationProps, {}> {
     public toaster: Toaster;
-    componentDidReceiveProps = (nextProps: INotificationProps) => {
+    componentWillReceiveProps(nextProps: INotificationProps){
         if (nextProps.message !== '' && nextProps.message !== this.props.message) {
             this.toaster.show({
                 message: nextProps.message

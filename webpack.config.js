@@ -3,8 +3,6 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-
-
 var applicationEntries = []
 
 module.exports = {
@@ -31,7 +29,7 @@ module.exports = {
     new CopyWebpackPlugin([{ from: 'src/favicon.png' },])
   ],
 
-  devServer: {
+devServer: {
     historyApiFallback: { index: '/' },
   },
 

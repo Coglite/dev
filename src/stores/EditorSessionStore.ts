@@ -12,13 +12,14 @@ import { BooleanKnobModel } from './../knobs/boolean';
 import { DropdownKnobModel } from './../knobs/dropdown';
 import { NumberKnobModel } from './../knobs/number';
 import { TextKnobModel } from './../knobs/text';
-import ComponentMeta, { IComponentExport, IComponentProp } from './ComponentMeta';
-import ComponentsKit from './ComponentsKit';
+import {ComponentMeta, IComponentExport, IComponentProp } from './ComponentMeta';
+import {ComponentsKit} from './ComponentsKit';
 
 
 
 
-const recast = require('recast');
+import * as recast from 'recast'
+
 export interface IEditorSessionComponentProps extends IComponentProp {
     model: any;
 }

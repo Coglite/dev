@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
-import ComponentMeta from '../../stores/ComponentMeta';
+import {ComponentMeta} from '../../stores/ComponentMeta';
 import { ComponentItem, SnippetItem } from './items';
 
 
@@ -18,6 +18,7 @@ interface IComponentPanelProps {
     snippets: ISnippet[];
 }
 
+
 @observer
 export class ComponentsPanel extends React.Component<IComponentPanelProps, {}> {
 
@@ -30,7 +31,7 @@ export class ComponentsPanel extends React.Component<IComponentPanelProps, {}> {
         this.props.onSnippetDropped(detail.code);
     }
 
-    public render() {
+    render() {
         const components = this.props.components
         .filter(item => {
             if (item.isVisibleInComponentPanel === undefined) {
@@ -72,9 +73,9 @@ export class ComponentsPanel extends React.Component<IComponentPanelProps, {}> {
                 </div>
                 <div style={{height: '75vh', overflow: 'auto'}}>
                     <div className='components-header'>Snippets</div>
-                    {snippets}
+                    {...snippets}
                     <div className='components-header'>Components from the kit</div>
-                    {components}
+                    {...components}
                 </div>
             </div>
         );

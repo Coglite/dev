@@ -2,9 +2,9 @@ import './style.scss';
 
 import * as React from 'react';
 
-import ComponentMeta from '../../../stores/ComponentMeta';
+import {ComponentMeta} from '../../../stores/ComponentMeta';
 
-const { DragSource } = require('react-dnd');
+import { DragSource } from 'react-dnd';
 
 const knightSource = {
     beginDrag(props) {
@@ -27,7 +27,7 @@ function collect(connect, monitor) {
 }
 
 interface IActionMiniProps {
-    detail: ComponentMeta;
+    detail?: ComponentMeta;
     connectDragSource?: any;
     isDragging?: boolean;
     onDropped?: (id: string) => void;

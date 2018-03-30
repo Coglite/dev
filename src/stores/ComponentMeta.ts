@@ -20,7 +20,8 @@ export interface IComponentProp {
     description?: string;
 }
 
-export default class ComponentMeta {
+
+export class ComponentMeta {
     @observable public id: string;
     @observable public name: string;
     @observable public description: string;

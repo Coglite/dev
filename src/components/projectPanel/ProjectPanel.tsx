@@ -58,7 +58,7 @@ export class ProjectPanel extends React.Component<IProjectPanelProps, IProjectPa
     public render() {
         const nodes: ITreeNode = {
             id: 'asas',
-            iconName: 'folder-close',
+            icon: 'folder-close',
             isExpanded: true,
             label: 'project',
             childNodes: [],
@@ -80,7 +80,7 @@ export class ProjectPanel extends React.Component<IProjectPanelProps, IProjectPa
             );
             nodes.childNodes.push({
                 id: file,
-                iconName: 'document',
+                icon: 'document',
                 label: `${file} ${isDirtyLabel}`,
                 isSelected: this.props.activeFileName === file,
                 secondaryLabel
