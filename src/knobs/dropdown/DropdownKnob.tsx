@@ -1,10 +1,8 @@
-/**
- * Dropdown component
- */
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import {DropdownKnobModel} from './DropdownModel';
+import { DropdownKnobModel } from './DropdownModel';
+
 
 
 interface IDropdownKnobProps {

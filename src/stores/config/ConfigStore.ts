@@ -1,6 +1,3 @@
-/**
- * Stores config meta
- */
 import { action, observable } from 'mobx';
 
 import {
@@ -24,9 +21,10 @@ import {
     uninstallModule,
     writeCode,
 } from '../../../lib/middleMan/client';
-import {editorSessionStore} from '../EditorSessionStore';
-import {workspaceStore} from '../WorkspaceStore';
-import {ComponentKitConfig} from './ComponentKitConfig';
+import { editorSessionStore } from '../EditorSessionStore';
+import { workspaceStore } from '../WorkspaceStore';
+import { ComponentKitConfig } from './ComponentKitConfig';
+
 
 
 interface INotification {

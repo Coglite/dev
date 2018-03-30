@@ -1,5 +1,7 @@
 import * as socket from 'socket.io';
-import {readProjectConfig} from '../configManager';
+
+import { readProjectConfig } from '../configManager';
+
 var io = null;
 
 export function initialize(app, handlers) {

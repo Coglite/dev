@@ -1,7 +1,7 @@
-/** AST node manipulator for text*/
 import { addOrUpdatePropertyOfReactComponent, getReactComponentAttributeValue } from '../../services/astHelper';
 import componentPropType from '../../services/componentPropType';
-import {DropdownKnobModel} from './DropdownModel';
+import { DropdownKnobModel } from './DropdownModel';
+
 
 
 export default function(model: DropdownKnobModel, node) {

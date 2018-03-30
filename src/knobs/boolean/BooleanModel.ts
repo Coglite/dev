@@ -1,6 +1,3 @@
-/**
- * Boolean prop model
- */
 import { action, observable } from 'mobx';
 
 import { getInitialValue, update } from './BooleanNodeManipulator';

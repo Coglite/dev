@@ -1,9 +1,7 @@
-/**
- * Text knob model
- */
 import { action, observable } from 'mobx';
 
 import { getInitialValue, update } from './NumberNodeManipulator';
+
 
 
 export class NumberKnobModel {

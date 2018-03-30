@@ -1,10 +1,10 @@
-var npmi = require('npmi');
-var npm = require('npm-programmatic');
-import * as path from 'path'
-import * as fs from 'fs-extra'
+import * as fs from 'fs-extra';
+import * as path from 'path';
 
 import { getProjectDirectory } from './locationService';
 
+var npmi = require('npmi');
+var npm = require('npm-programmatic');
 export function installModuleToProjectDirectory(name) {
     return new Promise(function (resolve, reject) {
         var options = {

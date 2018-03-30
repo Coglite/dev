@@ -1,9 +1,7 @@
-/**
- * AST node manipulator for text
- */
 import { addOrUpdatePropertyOfReactComponent, getReactComponentAttributeValue } from '../../services/astHelper';
 import componentPropType from '../../services/componentPropType';
-import {TextKnobModel} from './TextModel';
+import { TextKnobModel } from './TextModel';
+
 
 
 export default function(model: TextKnobModel, node) {

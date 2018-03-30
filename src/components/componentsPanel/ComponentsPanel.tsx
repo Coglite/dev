@@ -1,4 +1,3 @@
-
 import './style.scss';
 
 import { observer } from 'mobx-react';
@@ -6,7 +5,8 @@ import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
 import ComponentMeta from '../../stores/ComponentMeta';
-import {SnippetItem, ComponentItem, } from './items';
+import { ComponentItem, SnippetItem } from './items';
+
 
 
 interface IComponentPanelProps {

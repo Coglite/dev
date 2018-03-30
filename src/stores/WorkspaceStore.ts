@@ -1,7 +1,5 @@
-/**
- * Workspace store
- */
 import { action, computed, observable } from 'mobx';
+
 
 
 export class WorkspaceStore {

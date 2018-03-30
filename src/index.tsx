@@ -1,12 +1,10 @@
-/**
- * Entry of the app
- */
-
-import * as React from 'react';
 import { Provider } from 'mobx-react';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as stores from './stores';
+
 import Home from './containers/Home';
+import * as stores from './stores';
+
 
 
 ReactDOM.render(

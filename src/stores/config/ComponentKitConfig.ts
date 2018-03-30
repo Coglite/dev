@@ -1,7 +1,5 @@
-/**
- * Component kit config
- */
 import { observable } from 'mobx';
+
 
 
 export class ComponentKitConfig {

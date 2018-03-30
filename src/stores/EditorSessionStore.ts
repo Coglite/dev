@@ -1,6 +1,3 @@
-/**
- * Editor session
- */
 import { action, computed, isObservableArray, observable } from 'mobx';
 
 import {
@@ -17,6 +14,7 @@ import { NumberKnobModel } from './../knobs/number';
 import { TextKnobModel } from './../knobs/text';
 import ComponentMeta, { IComponentExport, IComponentProp } from './ComponentMeta';
 import ComponentsKit from './ComponentsKit';
+
 
 
 

@@ -1,6 +1,6 @@
-/**Helper service which allows to work with the AST */
 import { IComponentExport } from './../stores/ComponentMeta';
 import componentPropType from './componentPropType';
+
 
 
 const traverse = require('ast-traverse');

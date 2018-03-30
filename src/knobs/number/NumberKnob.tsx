@@ -1,10 +1,8 @@
-/**
- * A text knob
- */
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import {NumberKnobModel} from './NumberModel';
+import { NumberKnobModel } from './NumberModel';
+
 
 
 interface INumberKnobProp {

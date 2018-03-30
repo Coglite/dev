@@ -1,6 +1,4 @@
-/**
- * Property panel row
- */
+/**Property panel row*/
 import { Tooltip } from '@blueprintjs/core';
 import { observer } from 'mobx-react';
 import * as React from 'react';

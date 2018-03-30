@@ -1,10 +1,8 @@
-/**
- * Components kit
- */
 import { action, IObservableArray, observable } from 'mobx';
 
 import { IImportStatement } from '../services/astHelper';
 import ComponentMeta from './ComponentMeta';
+
 
 
 export default class ComponentsKit {

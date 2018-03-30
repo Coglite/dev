@@ -1,9 +1,7 @@
-/**
- * AST node manipulator for text
- */
 import { addOrUpdatePropertyOfReactComponent, getReactComponentAttributeValue } from '../../services/astHelper';
 import componentPropType from '../../services/componentPropType';
-import {BooleanKnobModel} from './BooleanModel';
+import { BooleanKnobModel } from './BooleanModel';
+
 
 
 export default function(model: BooleanKnobModel, node) {

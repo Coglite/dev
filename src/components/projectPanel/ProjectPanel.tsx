@@ -1,6 +1,4 @@
-/**
- * Project panel component
- */
+/** Project panel component*/
 import { Alert, Classes, Intent, ITreeNode, Tooltip, Tree } from '@blueprintjs/core';
 import * as React from 'react';
 

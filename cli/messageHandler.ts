@@ -1,35 +1,30 @@
-import * as path from 'path'
+import * as path from 'path';
 import * as request from 'superagent';
 
+import { changeActiveKit, readProjectConfig } from '../lib/configManager';
 import {
-    writeWebpackConfigFile,
-    writeIndexFile,
-    writeFileContent,
-    getStarterFileTemplate,
     cleanProjectDirectory,
-    writePackageJson,
-    readProjectFiles,
+    copyFilesToProjectDirectory,
     createProjectFile,
-    readProjectFile,
     deleteProjectFile,
-    copyFilesToProjectDirectory
+    readProjectFile,
+    readProjectFiles,
+    writeFileContent,
+    writeIndexFile,
+    writePackageJson,
 } from '../lib/fileHandler';
-import {initialize} from '../lib/middleMan/server';
+import { getProjectDirectory } from '../lib/locationService';
+import { initialize } from '../lib/middleMan/server';
+import {
+    getComponentKitDetails,
+    installModuleToProjectDirectory,
+    readDependencies,
+    unInstallModuleToProjectDirectory,
+} from '../lib/moduleHandler';
+import { availableComponentKitsUrl } from './constant';
+import { createWebpackDevServer } from './webpackServer';
 
 //import {initialize, onCreateProject} from '../lib/middleMan/server';
-
-import {
-    installModuleToProjectDirectory,
-    unInstallModuleToProjectDirectory,
-    readDependencies,
-    getComponentKitDetails
-} from '../lib/moduleHandler';
-
-import {availableComponentKitsUrl} from './constant';
-
-import { readProjectConfig, changeActiveKit } from '../lib/configManager';
-import { getProjectDirectory } from '../lib/locationService';
-import {createWebpackDevServer} from './webpackServer';
 
 
 let availableComponentKits = null;

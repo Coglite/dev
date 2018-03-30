@@ -1,2 +1,3 @@
-import {InsightPanel} from './InsightPanel'
+import { InsightPanel } from './InsightPanel';
+
 export {InsightPanel}

@@ -1,7 +1,5 @@
-/**
- * Component meta
- */
 import { observable } from 'mobx';
+
 
 
 export interface IComponentExport {

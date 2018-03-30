@@ -1,6 +1,3 @@
-/**
- * Sninppet service
- */
 
 export interface ISnippet {
     name: string;

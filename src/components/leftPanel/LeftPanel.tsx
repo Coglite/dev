@@ -5,8 +5,8 @@ import * as React from 'react';
 
 import { ISnippet } from '../../services/snippetService';
 import ComponentMeta from '../../stores/ComponentMeta';
-import {ComponentsPanel} from '../componentsPanel';
-import {ProjectPanel} from '../projectPanel';
+import { ComponentsPanel } from '../componentsPanel';
+import { ProjectPanel } from '../projectPanel';
 
 
 interface ILeftPanelProps {

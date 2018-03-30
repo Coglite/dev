@@ -1,11 +1,9 @@
-/**
- * Boolean component
- */
+/** Boolean component*/
 import { Checkbox } from '@blueprintjs/core';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import {BooleanKnobModel} from './BooleanModel';
+import { BooleanKnobModel } from './BooleanModel';
 
 
 interface IBooleanComponentProps {

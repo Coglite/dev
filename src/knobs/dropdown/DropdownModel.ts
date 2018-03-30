@@ -1,9 +1,7 @@
-/**
- * Dropdown prop model
- */
 import { action, observable } from 'mobx';
 
 import { getInitialValue, update } from './DropdownNodeManipulator';
+
 
 
 export class DropdownKnobModel {

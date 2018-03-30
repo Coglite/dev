@@ -1,6 +1,3 @@
-/**
- * Code editor
- */
 import './style.scss';
 import 'brace';
 import 'brace/mode/css';

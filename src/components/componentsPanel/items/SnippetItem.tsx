@@ -1,9 +1,9 @@
-
 import * as React from 'react';
-import ComponentMeta from '../../../stores/ComponentMeta';
-const { DragSource } = require('react-dnd');
+
 import { ISnippet } from '../../../services/snippetService';
 
+
+const { DragSource } = require('react-dnd');
 const knightSource = {
     beginDrag(props) {
         return {

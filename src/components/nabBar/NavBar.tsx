@@ -1,6 +1,4 @@
-/**
- * Navigation bar
- */
+/** Navigation bar*/
 import {
     AnchorButton,
     Button,
@@ -17,7 +15,7 @@ import {
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import {ComponentKitConfig} from '../../stores/config/ComponentKitConfig';
+import { ComponentKitConfig } from '../../stores/config/ComponentKitConfig';
 import { IPackageDependency } from '../../stores/EditorSessionStore';
 
 
