@@ -1,10 +1,8 @@
 import * as path from 'path'
 import * as webpack from 'webpack'
-//import * as HtmlWebpackPlugin from 'html-webpack-plugin'
-//import * as cp from 'child_process'
 import * as nodeExternals from "webpack-node-externals";
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
-//import * as ExecaPlugin from "execa-webpack-plugin";
+
 
 const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);

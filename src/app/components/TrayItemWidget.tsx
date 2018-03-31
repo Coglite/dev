@@ -9,7 +9,7 @@ export interface TrayItemWidgetProps {
 export interface TrayItemWidgetState {}
 
 export class TrayItemWidget extends React.Component<TrayItemWidgetProps, TrayItemWidgetState> {
-	constructor(props: TrayItemWidgetProps) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}

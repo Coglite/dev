@@ -7,14 +7,13 @@ import { TrayItemWidget } from './TrayItemWidget';
 import { TrayWidget } from './TrayWidget';
 
 export interface BodyWidgetProps {
-	app: Application;
+	app?: Application;
 }
 
 export interface BodyWidgetState {}
 
-
 export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState> {
-	constructor(props: BodyWidgetProps) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}
@@ -23,7 +22,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 		return (
 			<div className="body">
 				<div className="header">
-					<div className="title">Storm React Diagrams- demottzz 5!!</div>
+					<div className="title">Storm React Diagrams- demo 5!</div>
 				</div>
 				<div className="content">
 					<TrayWidget>

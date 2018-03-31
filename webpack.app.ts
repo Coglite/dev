@@ -12,8 +12,9 @@ const SRC = getRoot('src')
 const appConfig: webpack.Configuration = {
   //dont target electron-renderer bc it fucks up
   mode: "development",
-  entry: ['react-hot-loader/patch', getRoot('src/app/app'), 'webpack-hot-middleware/client'],
+  entry: ['webpack-hot-middleware/client', getRoot('src/app/app')],
   output: {
+    publicPath: '/',
     path: path.join(__dirname, 'dist/app'),
     filename: 'app.js',
   },
@@ -33,9 +34,10 @@ const appConfig: webpack.Configuration = {
     //modules: ["src", "node_modules"]
   },
   plugins: [
-            new HtmlWebpackPlugin({template: "src/app/app.html"}),
-            new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin(),
+      new HtmlWebpackPlugin({template: "src/app/app.html"}),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NamedModulesPlugin(),
+      //new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}})
 ],
 
   stats: {

@@ -17,7 +17,7 @@ const isProd = process.env.NODE_ENV === 'production' ? true : false;
 let mainWindow: any
 
 let createMainWindow = async () => {
-  await installExtensions();
+  installExtensions();
   
   mainWindow = new BrowserWindow({
     width: 800,
@@ -59,7 +59,7 @@ let createMainWindow = async () => {
 
 mainWindow.on('closed', function () {
   mainWindow = null
-  //process.kill(process.pid)
+  process.kill(process.pid)
   });
 
 return mainWindow

@@ -8,7 +8,7 @@ export interface TrayWidgetState {}
 export class TrayWidget extends React.Component<TrayWidgetProps, TrayWidgetState> {
 	public static defaultProps: TrayWidgetProps = {};
 
-	constructor(props: TrayWidgetProps) {
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}

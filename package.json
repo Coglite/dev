@@ -9,7 +9,7 @@
   "main": "dist/desktop/desktop.js",
   "scripts": {
     "prestart1": "yarn build.desktop",
-    "start": "run-p build.desktop build.hot",
+    "start": "ts-node webDevServer",
     "build.desktop": "webpack --config=webpack.desktop.ts",
     "build.hot": "ts-node webDevServer",
     "clean": "rimraf dist",
@@ -80,6 +80,7 @@
     "chalk": "2.3.2",
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.1",
+    "cross-env": "^5.1.4",
     "css-loader": "0.28.11",
     "dotenv": "5.0.1",
     "electron": "1.8.4",
