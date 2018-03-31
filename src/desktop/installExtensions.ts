@@ -6,7 +6,7 @@ export const installExtensions = async () => {
 
         for (const extension of extensions)
           {
-            try {installer.default(installer[extension], forceDownload)} 
+            try {installer.default(installer[extension]), forceDownload} 
             catch (error){
               //console.log(error)
               }

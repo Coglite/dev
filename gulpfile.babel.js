@@ -1,7 +1,10 @@
 var path = require('path')
 var fs = require('fs')
 var gulp = require('gulp')
-const execa = require('execa')
+var shell = require('gulp-shell')
+var cp = require('child_process')
+var execa = require('execa')
+var electron = require('electron')
 const webpackStream = require('webpack-stream')
 const webpack = require('webpack')
 const {appConfig, desktopConfig} = require('./tasks/webpack.config')
@@ -15,16 +18,32 @@ gulp.task('prod.app', async () => {
     .pipe(gulp.dest('dist/app'))
 })
 
-gulp.task('dev.app', async () => {execa('yarn dev')})
 
-gulp.task('desktop', async () => {
+gulp.task('desktop', async function() {
   return gulp.src(["src/desktop/main.ts"])
   .pipe(webpackStream(desktopConfig, webpack))
     .pipe(gulp.dest('dist/desktop'))
 })
 
+gulp.task("run.desktop", async (callback) => {
+    exceca(electron, ["."], {stdio: "inherit"})
+    .on("close", function () {
+        callback();
+    })
+})
+
 
 gulp.task("static", async () => {
+    return gulp.src(["src/static/**/*"])
+                    .pipe(gulp.dest("dist/static"))
+})
+
+
+gulp.task('clean', async () => del(['dist']));
+
+
+
+gulp.task("static2", async () => {
     return gulp.src(["src/**/*.ttf",
                     "src/**/*.svg",
                     "src/**/*.jpg",
@@ -34,12 +53,3 @@ gulp.task("static", async () => {
                     "src/**/*.woff2",
                     "src/**/*.png"])
                     .pipe(gulp.dest("dist"))})
-
-gulp.task('webpack', gulp.parallel('dev.app', 'desktop', 'static'))
-
-gulp.task('clean', async () => del(['dist']));
-
-gulp.task('watch', () => {
-  gulp.watch(['src/static/**/*'], gulp.parallel('static'));
-});
-

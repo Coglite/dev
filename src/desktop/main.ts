@@ -3,7 +3,9 @@ import * as path from 'path';
 import {format} from 'url';
 import { resolve } from 'app-root-path';
 
-import { installExtensions } from './installExtensions';
+
+
+//import { installExtensions } from './installExtensions';
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -15,8 +17,6 @@ const isProd = process.env.NODE_ENV === 'production' ? true : false;
 let mainWindow: any
 
 let createMainWindow = async () => {
-  
-
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -28,36 +28,37 @@ let createMainWindow = async () => {
       experimentalCanvasFeatures: true,
       experimentalFeatures: true
       }
-  })
+  });
   
-
-
   const devPath = 'http://localhost:8080'; 
   const prodPath = format({
-    pathname: resolve('dist/index.html'),
+    pathname: resolve('dist/app/index.html'),
     protocol: 'file:',
     slashes: true
   });
   const url = isProd ? prodPath : devPath;
   mainWindow.loadURL(url);
 
-  mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
 
   mainWindow.webContents.on("context-menu", (e: any, props: any) => {
       Menu.buildFromTemplate([{
           label: "Inspect element",
           click() { mainWindow.webContents.inspectElement(props.x, props.y)}}])
       .popup(mainWindow);
-    })
+    });
 
 
-  mainWindow.on('closed', function () {mainWindow = null})
+  mainWindow.on('closed', function () {mainWindow = null});
 
 
-installExtensions()
+const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require('electron-devtools-installer');
+installExtension(REACT_DEVELOPER_TOOLS);
+installExtension(REDUX_DEVTOOLS);
 
 return mainWindow
-}
+
+};
 
 
 app.on('ready', createMainWindow);

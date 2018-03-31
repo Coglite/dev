@@ -4,8 +4,8 @@ const nodeExternals = require("webpack-node-externals");
 const webpack = require('webpack');
 const merge = require('webpack-merge');
  
-const {getRoot} = require('./helpers')
-
+const ROOT = path.resolve(__dirname, '..');
+const getRoot = path.join.bind(path, ROOT);
 
 
 const common = {    
@@ -18,7 +18,7 @@ const common = {
     resolve: { 
       extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
       mainFields: ['browser','module','jsnext:main','main'],
-      modules: [getRoot(), getRoot("src"), getRoot("node_modules")]
+      //modules: [getRoot(), getRoot("src"), getRoot("node_modules")]
      },
     
     devtool: "#source-map",
@@ -33,8 +33,8 @@ const common = {
 
 const desktop = {
       output: {
-        filename: 'desktop.js',
-        publicPath: '/' }
+        filename: 'desktop.js'
+        }
     }
 
 
