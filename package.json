@@ -9,10 +9,9 @@
   "main": "dist/desktop/desktop.js",
   "scripts": {
     "prestart": "yarn build.desktop",
-    "start": "yarn run.hot",
-    "build.desktop": "gulp desktop",
-    "run.hot": "webpack-dev-server --hot",
-    "run.desktop": "electron .",
+    "start": "yarn build.hot",
+    "build.desktop": "webpack --config=webpack.desktop.ts",
+    "build.hot": "webpack-dev-server --hot --config=webpack.app.ts",
     "clean": "rimraf dist",
     "updatedeps": "electron-builder install-app-deps",
     "preunit": "webpack --config=tasks/webpack.unit.config.js --env=test --display=none",

@@ -3,10 +3,10 @@ import * as webpack from 'webpack'
 import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as cp from 'child_process'
 
-const ROOT = path.resolve(__dirname, '');
+const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);
 
- const appConfig = {
+const appConfig: webpack.Configuration = {
   mode: "development",
   entry: getRoot('src/app/app'),
   output: {
