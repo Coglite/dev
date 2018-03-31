@@ -5,10 +5,14 @@ import * as cp from 'child_process'
 
 const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);
+const SRC = getRoot('src')
+
+
 
 const appConfig: webpack.Configuration = {
+  //dont target electron-renderer bc it fucks up
   mode: "development",
-  entry: getRoot('src/app/app'),
+  entry: [getRoot('src/app/app'), 'webpack-hot-middleware/client'],
   output: {
     path: path.join(__dirname, 'dist/app'),
     filename: 'app.js',
@@ -30,17 +34,18 @@ const appConfig: webpack.Configuration = {
   },
   plugins: [
             new HtmlWebpackPlugin({template: "src/app/app.html"}),
+            new webpack.HotModuleReplacementPlugin(),
             new webpack.NamedModulesPlugin()
            ],
 
-devServer: {
+/*devServer: {
 		contentBase: path.join(__dirname, 'dist/app'),
 		stats: {
 			colors: true,
 			chunks: false,
 			children: false
 		},
-		before() {
+		after() {
 			cp.spawn("electron", ["."], {
 				shell: true,
 				env: process.env,
@@ -49,7 +54,7 @@ devServer: {
 				.on("close", code => process.exit(0))
 				.on("error", spawnError => console.log(spawnError));
 		}
-	}
+} */
 }
 
 module.exports = appConfig

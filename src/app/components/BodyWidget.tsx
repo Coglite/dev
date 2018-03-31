@@ -23,7 +23,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 		return (
 			<div className="body">
 				<div className="header">
-					<div className="title">Storm React Diagrams - Demo 5!!</div>
+					<div className="title">Storm React Diagramsdzz33 - zDemoddddz 5!!</div>
 				</div>
 				<div className="content">
 					<TrayWidget>

@@ -1,12 +1,13 @@
+import {hot} from 'react-hot-loader'
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 //import './styles/main.scss'
 import "./styles/main.scss";
 import "normalize.css/normalize.css"
+import './app.css'
 
-
-import {Diagram}  from "./Diagram";
+import Diagram  from "./Diagram";
 
 ReactDOM.render(
   <Diagram/>,

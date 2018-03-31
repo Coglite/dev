@@ -51,18 +51,15 @@ let createMainWindow = async () => {
 
   mainWindow.on('closed', function () {mainWindow = null});
 
-
-const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require('electron-devtools-installer');
-installExtension(REACT_DEVELOPER_TOOLS);
-installExtension(REDUX_DEVTOOLS);
+mainWindow.webContents.on('DOMContentLoaded', () => { console.log('dom loaded')})
 
 return mainWindow
+
 
 };
 
 
 app.on('ready', createMainWindow);
-
 
 
 app.on('window-all-closed', async () => {
@@ -76,7 +73,8 @@ app.on('activate', function () {
   }
 });
 
-process.on("SIGINT", () => {process.exit(-1);});
 
+
+process.on("SIGINT", () => {process.exit(-1);});
 process.on("SIGINT", () => {process.exit(-2);});
 

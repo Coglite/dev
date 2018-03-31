@@ -10,7 +10,7 @@ const getRoot = path.join.bind(path, ROOT);
 
 
 export const desktopConfig: webpack.Configuration = { 
-    target: "node",   
+    target: "electron-main",   
     mode: 'development',
     entry: getRoot('src/desktop/main.ts'),
     output: {
