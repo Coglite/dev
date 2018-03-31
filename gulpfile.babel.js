@@ -5,24 +5,23 @@ const execa = require('execa')
 const webpackStream = require('webpack-stream')
 const webpack = require('webpack')
 const {appConfig, desktopConfig} = require('./tasks/webpack.config')
-var webpackDevServer = require('webpack-dev-server')
 var del = require('del')
 
-//var webpackDevConfig = new webpackDevServer(webpack(appConfig))
 
-gulp.task('build.app', async () => {
+gulp.task('prod.app', async () => {
+  process.env.NODE_ENV = 'production'
   return gulp.src(["src/app/app.tsx"])
   .pipe(webpackStream(appConfig, webpack))
     .pipe(gulp.dest('dist/app'))
 })
 
-gulp.task('build.desktop', async () => {
+gulp.task('dev.app', async () => {execa('yarn dev')})
+
+gulp.task('desktop', async () => {
   return gulp.src(["src/desktop/main.ts"])
   .pipe(webpackStream(desktopConfig, webpack))
     .pipe(gulp.dest('dist/desktop'))
 })
-
-
 
 
 gulp.task("static", async () => {
@@ -36,14 +35,11 @@ gulp.task("static", async () => {
                     "src/**/*.png"])
                     .pipe(gulp.dest("dist"))})
 
-gulp.task('webpack', gulp.parallel('build.app', 'build.desktop', 'static'))
+gulp.task('webpack', gulp.parallel('dev.app', 'desktop', 'static'))
 
 gulp.task('clean', async () => del(['dist']));
 
-
 gulp.task('watch', () => {
-  gulp.watch(['src/app/**/*.ts'], gulp.parallel('build.app'));
-  gulp.watch(['src/app/**/*.tsx'], gulp.parallel('build.app'));
+  gulp.watch(['src/static/**/*'], gulp.parallel('static'));
 });
-
 

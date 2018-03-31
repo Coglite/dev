@@ -1,12 +1,12 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import path from 'path'
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const appConfig = {
   mode: "development",
   entry: ['./src/app/app'],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/app'),
     filename: 'app.js',
   },
   module: {
@@ -17,11 +17,12 @@ const appConfig = {
     {test: /\.css$/,use: ["style-loader", "css-loader"]},
     {test: /\.(ttf2?|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,loader: "file-loader"},
     {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,loader: "url-loader?limit=10000&mimetype=application/font-woff"},
-
     ],
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    //mainFields: ['browser','module','jsnext:main','main'],
+    //modules: ["src", "node_modules"]
   },
   plugins: [new HtmlWebpackPlugin({template: "src/static/html/app.html"}), new webpack.NamedModulesPlugin()]
 }

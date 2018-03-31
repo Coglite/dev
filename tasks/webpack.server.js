@@ -8,7 +8,7 @@ var nodeModules = fs.readdirSync(getRoot('node_modules'))
   .reduce((prev, module) => Object.assign(prev, {[module]: 'commonjs ' + module}), {})
 
 module.exports = {
-  mode: 'development'
+  mode: 'development',
   entry: [getRoot('src/server/server.js')],
   output: {
     path: path.join(__dirname, 'dist'),
