@@ -12,7 +12,7 @@ const SRC = getRoot('src')
 const appConfig: webpack.Configuration = {
   //dont target electron-renderer bc it fucks up
   mode: "development",
-  entry: [getRoot('src/app/app'), 'webpack-hot-middleware/client'],
+  entry: ['react-hot-loader/patch', getRoot('src/app/app'), 'webpack-hot-middleware/client'],
   output: {
     path: path.join(__dirname, 'dist/app'),
     filename: 'app.js',
@@ -35,8 +35,15 @@ const appConfig: webpack.Configuration = {
   plugins: [
             new HtmlWebpackPlugin({template: "src/app/app.html"}),
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin()
-           ],
+            new webpack.NamedModulesPlugin(),
+],
+
+  stats: {
+    modules: false,
+    chunkModules: false,
+    chunks: false,
+    children: false
+  }
 
 /*devServer: {
 		contentBase: path.join(__dirname, 'dist/app'),
@@ -56,5 +63,10 @@ const appConfig: webpack.Configuration = {
 		}
 } */
 }
+
+
+
+
+
 
 module.exports = appConfig

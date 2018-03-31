@@ -5,7 +5,7 @@ import { resolve } from 'app-root-path';
 
 
 
-//import { installExtensions } from './installExtensions';
+import { installExtensions } from './installExtensions';
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -17,6 +17,8 @@ const isProd = process.env.NODE_ENV === 'production' ? true : false;
 let mainWindow: any
 
 let createMainWindow = async () => {
+  await installExtensions();
+  
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -30,7 +32,13 @@ let createMainWindow = async () => {
       }
   });
   
-  const devPath = 'http://localhost:8080'; 
+
+  const devPath = format({
+    pathname: '//localhost:8888/',
+    protocol: 'http:',
+    slashes: true
+  });
+
   const prodPath = format({
     pathname: resolve('dist/app/index.html'),
     protocol: 'file:',
@@ -49,9 +57,10 @@ let createMainWindow = async () => {
     });
 
 
-  mainWindow.on('closed', function () {mainWindow = null});
-
-mainWindow.webContents.on('DOMContentLoaded', () => { console.log('dom loaded')})
+mainWindow.on('closed', function () {
+  mainWindow = null
+  //process.kill(process.pid)
+  });
 
 return mainWindow
 
@@ -63,7 +72,9 @@ app.on('ready', createMainWindow);
 
 
 app.on('window-all-closed', async () => {
-  await console.info('Desktop host gracefully shutting down...')
+  await console.info('Coglite Desktop Succesfully Closed')
+  //take this out in prod
+  //process.kill(process.pid);
   if (process.platform !== 'darwin') {app.quit()}
 });
 
