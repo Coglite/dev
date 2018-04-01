@@ -9,7 +9,7 @@
   "main": "dist/desktop/desktop.js",
   "scripts": {
     "prestart1": "yarn build.desktop",
-    "start": "ts-node webDevServer",
+    "start": "ts-node web.server",
     "build.desktop": "webpack --config=webpack.desktop.ts",
     "build.hot": "ts-node webDevServer",
     "clean": "rimraf dist",

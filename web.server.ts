@@ -18,7 +18,7 @@ const watching = desktopCompiler.watch({}, (err, stats) => {
     execa(electron, ["."], { stdio: "inherit" })
       .on("close", () => {
         watching.close();
-        process.kill(process.pid);
+        process.exit(0);
       });
   }
 });
@@ -36,9 +36,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
     stats: {colors: true},
 }));
     
-  app.use(require("webpack-hot-middleware")(compiler, {
-    reload: true
+app.use(require("webpack-hot-middleware")(compiler, {
+    //reload: true
 }));
+
 
 app.use('/api', function(req, res) {
     res.header("Content-Type",'application/json');
