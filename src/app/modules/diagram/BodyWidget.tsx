@@ -7,7 +7,7 @@ import { TrayItemWidget } from './TrayItemWidget';
 import { TrayWidget } from './TrayWidget';
 
 export interface BodyWidgetProps {
-	app?: DiagramApplication;
+	currentDiagram?: DiagramApplication;
 }
 
 export interface BodyWidgetState {}
@@ -22,7 +22,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 		return (
 			<div className="body">
 				<div className="header">
-					<div className="title">Storm React Diagrams- demo 5!</div>
+					<div className="title">Storm React Diagrams- demo 5!!</div>
 				</div>
 				<div className="content">
 					<TrayWidget>
@@ -34,7 +34,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 						onDrop={event => {
 							var data = JSON.parse(event.dataTransfer.getData("storm-diagram-node"));
 							var nodesCount = _.keys(
-								this.props.app
+								this.props.currentDiagram
 									.getDiagramEngine()
 									.getDiagramModel()
 									.getNodes()
@@ -48,10 +48,10 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 								node = new DefaultNodeModel("Node " + (nodesCount + 1), "rgb(0,192,255)");
 								node.addOutPort("Out");
 							}
-							var points = this.props.app.getDiagramEngine().getRelativeMousePoint(event);
+							var points = this.props.currentDiagram.getDiagramEngine().getRelativeMousePoint(event);
 							node.x = points.x;
 							node.y = points.y;
-							this.props.app
+							this.props.currentDiagram
 								.getDiagramEngine()
 								.getDiagramModel()
 								.addNode(node);
@@ -61,7 +61,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps, BodyWidgetState
 							event.preventDefault();
 						}}
 					>
-						<DiagramWidget className="srd-demo-canvas" diagramEngine={this.props.app.getDiagramEngine()} />
+						<DiagramWidget className="srd-demo-canvas" diagramEngine={this.props.currentDiagram.getDiagramEngine()} />
 					</div>
 				</div>
 			</div>
