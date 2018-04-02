@@ -3,18 +3,18 @@ import * as path from 'path';
 import {format} from 'url';
 import { resolve } from 'app-root-path';
 
-
-
 import { installExtensions } from './installExtensions';
 
+
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
+let mainWindow: any
+
 
 (process as NodeJS.EventEmitter).on('uncaughtException', (error: Error) => {
     console.error(error);
     console.log('[err-desktop]', error.message.toString(), JSON.stringify(error.stack));
 });
 
-let mainWindow: any
 
 let createMainWindow = async () => {
   installExtensions();
@@ -63,7 +63,6 @@ mainWindow.on('closed', function () {
   });
 
 return mainWindow
-
 
 };
 

@@ -1,9 +1,9 @@
 import { hot } from 'react-hot-loader'
 import * as React from "react";
-import { BodyWidget } from "./components/BodyWidget";
-import { Application } from "./SRD.Application";
+import { BodyWidget } from "./modules/diagram/BodyWidget";
+import { DiagramApplication } from "./modules/diagram/Diagram.Application";
 
-	var App = new Application();
+	var App = new DiagramApplication();
 	
 function Diagram(){
 	return <BodyWidget app={App}/>

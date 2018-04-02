@@ -1,7 +1,7 @@
 import * as SRD from "storm-react-diagrams";
 
 
-export class Application {
+export class DiagramApplication {
 	protected activeModel: SRD.DiagramModel;
 	protected diagramEngine: SRD.DiagramEngine;
 
