@@ -38,7 +38,6 @@ resolve: {
     //modules: ["src", "node_modules"]
   },
 plugins: [
-      //new CopyWebpackPlugin([{from: 'src/app/app.html'}]),
       new HtmlWebpackPlugin({template: "src/app/app.html"}),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
