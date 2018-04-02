@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { DefaultNodeModel, DiagramWidget } from 'storm-react-diagrams';
 
-import { Application } from '../Application';
+import { Application } from '../SRD.Application';
 import { TrayItemWidget } from './TrayItemWidget';
 import { TrayWidget } from './TrayWidget';
 

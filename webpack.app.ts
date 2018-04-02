@@ -10,17 +10,17 @@ const SRC = getRoot('src')
 
 
 const appConfig: webpack.Configuration = {
-  //dont target electron-renderer bc it fucks up
-  mode: "development",
-  entry: ['webpack-hot-middleware/client', getRoot('src/app/app')],
-  output: {
+//dont target electron-renderer bc it fucks up
+mode: "development",
+entry: ['webpack-hot-middleware/client', getRoot('src/app/app')],
+output: {
     publicPath: '/',
     path: path.join(__dirname, 'dist/app'),
     filename: 'app.js',
   },
-  module: {
-    rules: [
-    {test: /\.tsx?$/,use: ['babel-loader']},
+module: {
+  rules: [
+    {test: /\.[tj]sx?$/,use: ['babel-loader']},
     {test: /\.less$/,use: ["style-loader", "css-loader", "less-loader"]},
     {test: /\.scss$/,use: ["style-loader","css-loader","sass-loader"]},
     {test: /\.css$/,use: ["style-loader", "css-loader"]},
@@ -28,24 +28,33 @@ const appConfig: webpack.Configuration = {
     {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,loader: "url-loader?limit=10000&mimetype=application/font-woff"},
     ],
   },
-  resolve: {
+resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     mainFields: ['browser','module','jsnext:main','main'],
     //modules: ["src", "node_modules"]
   },
-  plugins: [
+plugins: [
       new HtmlWebpackPlugin({template: "src/app/app.html"}),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
       //new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}})
 ],
 
-  stats: {
+stats: {
     modules: false,
     chunkModules: false,
     chunks: false,
     children: false
   }
+}
+
+
+
+
+
+
+module.exports = appConfig
+
 
 /*devServer: {
 		contentBase: path.join(__dirname, 'dist/app'),
@@ -64,11 +73,3 @@ const appConfig: webpack.Configuration = {
 				.on("error", spawnError => console.log(spawnError));
 		}
 } */
-}
-
-
-
-
-
-
-module.exports = appConfig

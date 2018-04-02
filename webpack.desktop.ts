@@ -9,35 +9,42 @@ const getRoot = path.join.bind(path, ROOT);
 
 
 export const desktopConfig: webpack.Configuration = { 
-    target: "electron-main",   
-    mode: 'development',
-    entry: getRoot('src/desktop/main.ts'),
-    output: {
-     path: getRoot('dist/desktop'),
-     filename: 'desktop.js'
-     },
-    module: { rules: [
+target: "electron-main",   
+
+mode: 'development',
+
+entry: getRoot('src/desktop/main.ts'),
+
+output: {
+  path: getRoot('dist/desktop'),
+  filename: 'desktop.js'
+},
+
+module: { 
+  rules: [
       {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
-      ]},
+      ]
+},
     
-    resolve: { 
+resolve: { 
       extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
       mainFields: ['browser','module','jsnext:main','main'],
       //modules: [getRoot("src"), getRoot("node_modules")]
-     },
+},
     
-    devtool: "#source-map",
+devtool: "#source-map",
     
-    node: {
+node: {
       __dirname: false,
       __filename: false
-    },
-    externals: [nodeExternals()],
+},
 
-    plugins: [
-      new CleanWebpackPlugin('dist'),
-      //new ExecaPlugin(({onBuildEnd: [{args: ["."], cmd: "electron", stdio: 'inherit'}]})) 
-  ]
-  }
+externals: [nodeExternals()],
+
+plugins: [new CleanWebpackPlugin('dist')]
+
+}
 
 module.exports = desktopConfig
+
+      //new ExecaPlugin(({onBuildEnd: [{args: ["."], cmd: "electron", stdio: 'inherit'}]})) 
