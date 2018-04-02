@@ -1,14 +1,14 @@
-import * as path from 'path'
-import * as webpack from 'webpack'
-import * as nodeExternals from "webpack-node-externals";
-import * as CleanWebpackPlugin from 'clean-webpack-plugin';
+var path = require('path')
+var webpack = require('webpack')
+var nodeExternals = require("webpack-node-externals");
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);
 
 
-export const desktopConfig: webpack.Configuration = { 
+const desktopConfig = { 
 target: "electron-main",   
 
 mode: 'development',
@@ -32,7 +32,7 @@ resolve: {
       //modules: [getRoot("src"), getRoot("node_modules")]
 },
     
-devtool: "#source-map",
+//devtool: "#source-map",
     
 node: {
       __dirname: false,

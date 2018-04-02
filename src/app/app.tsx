@@ -6,6 +6,8 @@ import "./styles/main.scss";
 import "normalize.css/normalize.css"
 import './app.css'
 
+
+
 import Diagram  from "./Diagram";
 
 ReactDOM.render(

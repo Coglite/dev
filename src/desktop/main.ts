@@ -6,7 +6,7 @@ import { resolve } from 'app-root-path';
 import { installExtensions } from './installExtensions';
 
 
-const isProd = process.env.NODE_ENV === 'production' ? true : false;
+var isProd = process.env.NODE_ENV === 'production' ? true : false;
 let mainWindow: any
 
 
@@ -14,6 +14,21 @@ let mainWindow: any
     console.error(error);
     console.log('[err-desktop]', error.message.toString(), JSON.stringify(error.stack));
 });
+
+
+  const devPath = format({
+    pathname: '//localhost:8888/',
+    protocol: 'http:',
+    slashes: true
+  });
+
+  const prodPath = format({
+    pathname: resolve('dist/app/index.html'),
+    protocol: 'file:',
+    slashes: true
+  });
+  var url = isProd ? prodPath : devPath;
+
 
 
 let createMainWindow = async () => {
@@ -33,18 +48,6 @@ let createMainWindow = async () => {
   });
   
 
-  const devPath = format({
-    pathname: '//localhost:8888/',
-    protocol: 'http:',
-    slashes: true
-  });
-
-  const prodPath = format({
-    pathname: resolve('dist/app/index.html'),
-    protocol: 'file:',
-    slashes: true
-  });
-  const url = isProd ? prodPath : devPath;
   mainWindow.loadURL(url);
 
   mainWindow.webContents.openDevTools();
