@@ -1,0 +1,1356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mission should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Mission
+    addenda={
+        Array [
+            Object {
+              "endDate": "2016-02-08T16:04:30.880Z",
+              "fees": Object {
+                "amount": 192,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2014-09-16T19:47:14.920Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 494,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-05-09T01:26:37.729Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 337,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-02-09T23:22:53.535Z",
+              "workerId": "3",
+            },
+          ]
+    }
+    clientId="568a68c8c08f1907004483c8"
+    id={10}
+    managerId="4"
+    name="soluta aut quia"
+    partnerId="566acc3b96de2706000c948a"
+    removeMission={[Function]}
+    toggleMission={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <glamorous(div)>
+          <h5>
+                    soluta aut quia
+          </h5>
+          <Unknown>
+                    <code>
+                              568a68c8c08f1907004483c8
+                    </code>
+                    <code>
+                              566acc3b96de2706000c948a
+                    </code>
+                    <code>
+                              4
+                    </code>
+          </Unknown>
+          <div>
+                    (#
+                    3
+                     addenda)
+          </div>
+          <code>
+                    5 - 5 - 3
+          </code>
+</glamorous(div)>,
+        null,
+      ],
+      "className": "pt-callout",
+      "onMouseEnter": [Function],
+      "onMouseLeave": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <h5>
+              soluta aut quia
+</h5>,
+            <Unknown>
+              <code>
+                            568a68c8c08f1907004483c8
+              </code>
+              <code>
+                            566acc3b96de2706000c948a
+              </code>
+              <code>
+                            4
+              </code>
+</Unknown>,
+            <div>
+              (#
+              3
+               addenda)
+</div>,
+            <code>
+              5 - 5 - 3
+</code>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "soluta aut quia",
+            },
+            "ref": null,
+            "rendered": "soluta aut quia",
+            "type": "h5",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <code>
+                  568a68c8c08f1907004483c8
+</code>,
+                <code>
+                  566acc3b96de2706000c948a
+</code>,
+                <code>
+                  4
+</code>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "568a68c8c08f1907004483c8-0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "568a68c8c08f1907004483c8",
+                },
+                "ref": null,
+                "rendered": "568a68c8c08f1907004483c8",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "566acc3b96de2706000c948a-1",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "566acc3b96de2706000c948a",
+                },
+                "ref": null,
+                "rendered": "566acc3b96de2706000c948a",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "4-2",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "4",
+                },
+                "ref": null,
+                "rendered": "4",
+                "type": "code",
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "(#",
+              3,
+              " addenda)",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "5 - 5 - 3",
+            },
+            "ref": null,
+            "rendered": "5 - 5 - 3",
+            "type": "code",
+          },
+        ],
+        "type": [Function],
+      },
+      null,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <glamorous(div)>
+            <h5>
+                        soluta aut quia
+            </h5>
+            <Unknown>
+                        <code>
+                                    568a68c8c08f1907004483c8
+                        </code>
+                        <code>
+                                    566acc3b96de2706000c948a
+                        </code>
+                        <code>
+                                    4
+                        </code>
+            </Unknown>
+            <div>
+                        (#
+                        3
+                         addenda)
+            </div>
+            <code>
+                        5 - 5 - 3
+            </code>
+</glamorous(div)>,
+          null,
+        ],
+        "className": "pt-callout",
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <h5>
+                soluta aut quia
+</h5>,
+              <Unknown>
+                <code>
+                                568a68c8c08f1907004483c8
+                </code>
+                <code>
+                                566acc3b96de2706000c948a
+                </code>
+                <code>
+                                4
+                </code>
+</Unknown>,
+              <div>
+                (#
+                3
+                 addenda)
+</div>,
+              <code>
+                5 - 5 - 3
+</code>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "soluta aut quia",
+              },
+              "ref": null,
+              "rendered": "soluta aut quia",
+              "type": "h5",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <code>
+                    568a68c8c08f1907004483c8
+</code>,
+                  <code>
+                    566acc3b96de2706000c948a
+</code>,
+                  <code>
+                    4
+</code>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "568a68c8c08f1907004483c8-0",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "568a68c8c08f1907004483c8",
+                  },
+                  "ref": null,
+                  "rendered": "568a68c8c08f1907004483c8",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "566acc3b96de2706000c948a-1",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "566acc3b96de2706000c948a",
+                  },
+                  "ref": null,
+                  "rendered": "566acc3b96de2706000c948a",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "4-2",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "4",
+                  },
+                  "ref": null,
+                  "rendered": "4",
+                  "type": "code",
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "(#",
+                  3,
+                  " addenda)",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "5 - 5 - 3",
+              },
+              "ref": null,
+              "rendered": "5 - 5 - 3",
+              "type": "code",
+            },
+          ],
+          "type": [Function],
+        },
+        null,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Mission should match snapshot when hovered 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Mission
+    addenda={
+        Array [
+            Object {
+              "endDate": "2016-02-08T16:04:30.880Z",
+              "fees": Object {
+                "amount": 192,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2014-09-16T19:47:14.920Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 494,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-05-09T01:26:37.729Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 337,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-02-09T23:22:53.535Z",
+              "workerId": "3",
+            },
+          ]
+    }
+    clientId="568a68c8c08f1907004483c8"
+    id={10}
+    managerId="4"
+    name="soluta aut quia"
+    partnerId="566acc3b96de2706000c948a"
+    removeMission={[Function]}
+    toggleMission={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <glamorous(div)>
+          <h5>
+                    soluta aut quia
+          </h5>
+          <Unknown>
+                    <code>
+                              568a68c8c08f1907004483c8
+                    </code>
+                    <code>
+                              566acc3b96de2706000c948a
+                    </code>
+                    <code>
+                              4
+                    </code>
+          </Unknown>
+          <div>
+                    (#
+                    3
+                     addenda)
+          </div>
+          <code>
+                    5 - 5 - 3
+          </code>
+</glamorous(div)>,
+        <glamorous(div)>
+          <Blueprint.Button
+                    active={undefined}
+                    className="pt-minimal"
+                    icon="star-empty"
+                    onClick={[Function]}
+          />
+          <Blueprint.Button
+                    className="pt-intent-danger pt-minimal"
+                    icon="trash"
+                    onClick={[Function]}
+          />
+</glamorous(div)>,
+      ],
+      "className": "pt-callout",
+      "onMouseEnter": [Function],
+      "onMouseLeave": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <h5>
+              soluta aut quia
+</h5>,
+            <Unknown>
+              <code>
+                            568a68c8c08f1907004483c8
+              </code>
+              <code>
+                            566acc3b96de2706000c948a
+              </code>
+              <code>
+                            4
+              </code>
+</Unknown>,
+            <div>
+              (#
+              3
+               addenda)
+</div>,
+            <code>
+              5 - 5 - 3
+</code>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "soluta aut quia",
+            },
+            "ref": null,
+            "rendered": "soluta aut quia",
+            "type": "h5",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <code>
+                  568a68c8c08f1907004483c8
+</code>,
+                <code>
+                  566acc3b96de2706000c948a
+</code>,
+                <code>
+                  4
+</code>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "568a68c8c08f1907004483c8-0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "568a68c8c08f1907004483c8",
+                },
+                "ref": null,
+                "rendered": "568a68c8c08f1907004483c8",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "566acc3b96de2706000c948a-1",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "566acc3b96de2706000c948a",
+                },
+                "ref": null,
+                "rendered": "566acc3b96de2706000c948a",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "4-2",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "4",
+                },
+                "ref": null,
+                "rendered": "4",
+                "type": "code",
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "(#",
+              3,
+              " addenda)",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "5 - 5 - 3",
+            },
+            "ref": null,
+            "rendered": "5 - 5 - 3",
+            "type": "code",
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Blueprint.Button
+              active={undefined}
+              className="pt-minimal"
+              icon="star-empty"
+              onClick={[Function]}
+/>,
+            <Blueprint.Button
+              className="pt-intent-danger pt-minimal"
+              icon="trash"
+              onClick={[Function]}
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "active": undefined,
+              "className": "pt-minimal",
+              "icon": "star-empty",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "className": "pt-intent-danger pt-minimal",
+              "icon": "trash",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <glamorous(div)>
+            <h5>
+                        soluta aut quia
+            </h5>
+            <Unknown>
+                        <code>
+                                    568a68c8c08f1907004483c8
+                        </code>
+                        <code>
+                                    566acc3b96de2706000c948a
+                        </code>
+                        <code>
+                                    4
+                        </code>
+            </Unknown>
+            <div>
+                        (#
+                        3
+                         addenda)
+            </div>
+            <code>
+                        5 - 5 - 3
+            </code>
+</glamorous(div)>,
+          <glamorous(div)>
+            <Blueprint.Button
+                        active={undefined}
+                        className="pt-minimal"
+                        icon="star-empty"
+                        onClick={[Function]}
+            />
+            <Blueprint.Button
+                        className="pt-intent-danger pt-minimal"
+                        icon="trash"
+                        onClick={[Function]}
+            />
+</glamorous(div)>,
+        ],
+        "className": "pt-callout",
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <h5>
+                soluta aut quia
+</h5>,
+              <Unknown>
+                <code>
+                                568a68c8c08f1907004483c8
+                </code>
+                <code>
+                                566acc3b96de2706000c948a
+                </code>
+                <code>
+                                4
+                </code>
+</Unknown>,
+              <div>
+                (#
+                3
+                 addenda)
+</div>,
+              <code>
+                5 - 5 - 3
+</code>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "soluta aut quia",
+              },
+              "ref": null,
+              "rendered": "soluta aut quia",
+              "type": "h5",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <code>
+                    568a68c8c08f1907004483c8
+</code>,
+                  <code>
+                    566acc3b96de2706000c948a
+</code>,
+                  <code>
+                    4
+</code>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "568a68c8c08f1907004483c8-0",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "568a68c8c08f1907004483c8",
+                  },
+                  "ref": null,
+                  "rendered": "568a68c8c08f1907004483c8",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "566acc3b96de2706000c948a-1",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "566acc3b96de2706000c948a",
+                  },
+                  "ref": null,
+                  "rendered": "566acc3b96de2706000c948a",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "4-2",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "4",
+                  },
+                  "ref": null,
+                  "rendered": "4",
+                  "type": "code",
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "(#",
+                  3,
+                  " addenda)",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "5 - 5 - 3",
+              },
+              "ref": null,
+              "rendered": "5 - 5 - 3",
+              "type": "code",
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Blueprint.Button
+                active={undefined}
+                className="pt-minimal"
+                icon="star-empty"
+                onClick={[Function]}
+/>,
+              <Blueprint.Button
+                className="pt-intent-danger pt-minimal"
+                icon="trash"
+                onClick={[Function]}
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "active": undefined,
+                "className": "pt-minimal",
+                "icon": "star-empty",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "className": "pt-intent-danger pt-minimal",
+                "icon": "trash",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Mission should match snapshot when selected 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Mission
+    addenda={
+        Array [
+            Object {
+              "endDate": "2016-02-08T16:04:30.880Z",
+              "fees": Object {
+                "amount": 192,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2014-09-16T19:47:14.920Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 494,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-05-09T01:26:37.729Z",
+              "workerId": "5",
+            },
+            Object {
+              "fees": Object {
+                "amount": 337,
+                "currency": "EUR",
+                "unit": "day",
+              },
+              "startDate": "2017-02-09T23:22:53.535Z",
+              "workerId": "3",
+            },
+          ]
+    }
+    clientId="568a68c8c08f1907004483c8"
+    id={10}
+    isSelected={true}
+    managerId="4"
+    name="soluta aut quia"
+    partnerId="566acc3b96de2706000c948a"
+    removeMission={[Function]}
+    toggleMission={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <glamorous(div)>
+          <h5>
+                    soluta aut quia
+          </h5>
+          <Unknown>
+                    <code>
+                              568a68c8c08f1907004483c8
+                    </code>
+                    <code>
+                              566acc3b96de2706000c948a
+                    </code>
+                    <code>
+                              4
+                    </code>
+          </Unknown>
+          <div>
+                    (#
+                    3
+                     addenda)
+          </div>
+          <code>
+                    5 - 5 - 3
+          </code>
+</glamorous(div)>,
+        null,
+      ],
+      "className": "pt-intent-success pt-callout",
+      "onMouseEnter": [Function],
+      "onMouseLeave": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <h5>
+              soluta aut quia
+</h5>,
+            <Unknown>
+              <code>
+                            568a68c8c08f1907004483c8
+              </code>
+              <code>
+                            566acc3b96de2706000c948a
+              </code>
+              <code>
+                            4
+              </code>
+</Unknown>,
+            <div>
+              (#
+              3
+               addenda)
+</div>,
+            <code>
+              5 - 5 - 3
+</code>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "soluta aut quia",
+            },
+            "ref": null,
+            "rendered": "soluta aut quia",
+            "type": "h5",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <code>
+                  568a68c8c08f1907004483c8
+</code>,
+                <code>
+                  566acc3b96de2706000c948a
+</code>,
+                <code>
+                  4
+</code>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": "568a68c8c08f1907004483c8-0",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "568a68c8c08f1907004483c8",
+                },
+                "ref": null,
+                "rendered": "568a68c8c08f1907004483c8",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "566acc3b96de2706000c948a-1",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "566acc3b96de2706000c948a",
+                },
+                "ref": null,
+                "rendered": "566acc3b96de2706000c948a",
+                "type": "code",
+              },
+              Object {
+                "instance": null,
+                "key": "4-2",
+                "nodeType": "host",
+                "props": Object {
+                  "children": "4",
+                },
+                "ref": null,
+                "rendered": "4",
+                "type": "code",
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "(#",
+              3,
+              " addenda)",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "5 - 5 - 3",
+            },
+            "ref": null,
+            "rendered": "5 - 5 - 3",
+            "type": "code",
+          },
+        ],
+        "type": [Function],
+      },
+      null,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <glamorous(div)>
+            <h5>
+                        soluta aut quia
+            </h5>
+            <Unknown>
+                        <code>
+                                    568a68c8c08f1907004483c8
+                        </code>
+                        <code>
+                                    566acc3b96de2706000c948a
+                        </code>
+                        <code>
+                                    4
+                        </code>
+            </Unknown>
+            <div>
+                        (#
+                        3
+                         addenda)
+            </div>
+            <code>
+                        5 - 5 - 3
+            </code>
+</glamorous(div)>,
+          null,
+        ],
+        "className": "pt-intent-success pt-callout",
+        "onMouseEnter": [Function],
+        "onMouseLeave": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <h5>
+                soluta aut quia
+</h5>,
+              <Unknown>
+                <code>
+                                568a68c8c08f1907004483c8
+                </code>
+                <code>
+                                566acc3b96de2706000c948a
+                </code>
+                <code>
+                                4
+                </code>
+</Unknown>,
+              <div>
+                (#
+                3
+                 addenda)
+</div>,
+              <code>
+                5 - 5 - 3
+</code>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "soluta aut quia",
+              },
+              "ref": null,
+              "rendered": "soluta aut quia",
+              "type": "h5",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": Array [
+                  <code>
+                    568a68c8c08f1907004483c8
+</code>,
+                  <code>
+                    566acc3b96de2706000c948a
+</code>,
+                  <code>
+                    4
+</code>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": "568a68c8c08f1907004483c8-0",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "568a68c8c08f1907004483c8",
+                  },
+                  "ref": null,
+                  "rendered": "568a68c8c08f1907004483c8",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "566acc3b96de2706000c948a-1",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "566acc3b96de2706000c948a",
+                  },
+                  "ref": null,
+                  "rendered": "566acc3b96de2706000c948a",
+                  "type": "code",
+                },
+                Object {
+                  "instance": null,
+                  "key": "4-2",
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "4",
+                  },
+                  "ref": null,
+                  "rendered": "4",
+                  "type": "code",
+                },
+              ],
+              "type": Symbol(react.fragment),
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "(#",
+                  3,
+                  " addenda)",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "(#",
+                3,
+                " addenda)",
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "5 - 5 - 3",
+              },
+              "ref": null,
+              "rendered": "5 - 5 - 3",
+              "type": "code",
+            },
+          ],
+          "type": [Function],
+        },
+        null,
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
