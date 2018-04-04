@@ -90,3 +90,19 @@ Uncaught TypeError: Cannot read property 'stop_drag' of null
 file:///C:/Users/Jeremy/Desktop/Coglite/AI-Blocks/src/index.html At line: 29
 Uncaught TypeError: Cannot read property 'stop_drag' of null
 file:///C:/Users/Jeremy/Desktop/Coglite/AI-Blocks/src/index.html At line: 29
+
+New IA-Blocks session (4/4/2018 19:25:43): 
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'getBoundingClientRect' of null
+C:\Users\Jeremy\Desktop\Coglite\AI-Blocks\src\core.js At line: 199
+Uncaught TypeError: Cannot read property 'stop_drag' of null
+file:///C:/Users/Jeremy/Desktop/Coglite/AI-Blocks/src/index.html At line: 29
