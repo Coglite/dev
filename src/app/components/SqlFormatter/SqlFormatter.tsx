@@ -1,4 +1,3 @@
-// 型定義のため
 import './SqlFormatter.css';
 
 import { inject, observer } from 'mobx-react';
@@ -8,6 +7,7 @@ import { Form, Header, Icon, Segment } from 'semantic-ui-react';
 
 import { SqlCodeMirrorStore } from '../../stores/SqlCodeMirrorStore';
 import { SqlFormatterStore } from '../../stores/SqlFormatterStore';
+
 
 interface Iprops {
   sqlFormatter: SqlFormatterStore;
@@ -19,11 +19,7 @@ interface Iprops {
 @observer
 class SqlFormatter extends React.Component {
   render() {
-    const {
-      sqlFormatter,
-      sqlCodeMirror,
-    } = this.props as Iprops;
-
+    const {sqlFormatter,sqlCodeMirror} = this.props as Iprops;
     return (
       <Segment basic={true}>
         <Header as="h1" dividing={true}>

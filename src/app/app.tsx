@@ -17,8 +17,6 @@ import { SqlCodeMirrorStore } from './stores/SqlCodeMirrorStore';
 import { SqlFormatterStore } from './stores/SqlFormatterStore';
 
 
-
-
 const stores = {
   router: new RouterStore(),
   sqlFormatter: new SqlFormatterStore(),

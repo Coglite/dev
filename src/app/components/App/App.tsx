@@ -13,18 +13,16 @@ import SqlFormatter from '../SqlFormatter/SqlFormatter';
 import Top from '../Top/Top';
 import NotFound from './NotFound';
 
-interface Iprops {
+interface AppProps {
   router: RouterStore;
 }
+
 
 @inject('router')
 @observer
 class App extends React.Component {
   render() {
-    const {
-      router
-    } = this.props as Iprops;
-
+    const {router} = this.props as AppProps;
     return (
       <Router history={router.history}>
         <div className="App">
@@ -36,9 +34,9 @@ class App extends React.Component {
               <Route path="/json_formatter" component={JsonFormatter}/>
               <Route path="/qrcode" component={Qrcode}/>
               <Route component={NotFound}/>
-            </Switch>
-            <Footer />
+            </Switch>   
           </div>
+           <Footer />
         </div>
       </Router>
     );

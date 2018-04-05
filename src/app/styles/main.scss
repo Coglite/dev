@@ -11,12 +11,8 @@ body {
   padding: 0;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  color: #525252;
+* {
+    box-sizing: border-box;
 }
 
 a {

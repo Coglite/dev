@@ -8,18 +8,18 @@ const ROOT = path.resolve(__dirname, "..");
 const getRoot = path.join.bind(path, ROOT);
 
 
-module.exports = env => {
+module.exports = env => { 
 return {
+mode: `${env}`,
+
 entry: {
       desktop: getRoot("src/desktop/desktop.ts"),
       app: getRoot("src/app/app.tsx")
     },
 output: {
       filename: "[name].js",
-      path: path.resolve(__dirname, "../dist")
+      path: getRoot('dist')
     },
-
-mode: `${env}`,
 
 target: "node",
 
@@ -35,7 +35,7 @@ devtool: "source-map",
 
 module: {
   rules: [
-    {test: /\.[tj]sx?$/,use: ["ts-loader"]},
+    {test: /\.[tj]sx?$/, loader: "ts-loader", options: { transpileOnly: true }},
     {test: /\.less$/,use: ["style-loader", "css-loader", "less-loader"]},
     {test: /\.scss$/,use: ["style-loader","css-loader","sass-loader"]},
     {test: /\.css$/,use: ["style-loader", "css-loader"]},

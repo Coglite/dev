@@ -4,30 +4,27 @@ import { Icon, Menu } from 'semantic-ui-react';
 
 import { RouterStore } from '../../stores/RouterStore';
 
-interface Iprops {
+interface SidebarProps {
   router: RouterStore;
 }
 
 @inject('router')
 class Sidebar extends React.Component {
-  render() {
-    const {
-      router,
-    } = this.props as Iprops;
-
+  render() { 
+    const {router} = this.props as SidebarProps;
     return (
       <Menu size="small" fixed="left" vertical={true} inverted={true}>
         <Menu.Item header={true}>
-          Utility
+          Coglite
         </Menu.Item>
         <Menu.Item name={router.route.top.path} active={router.isActive(router.route.top.path)} onClick={router.goTo}>
           <Icon name="home" />TOP
         </Menu.Item>
         <Menu.Item name={router.route.sqlFormatter.path} active={router.isActive(router.route.sqlFormatter.path)} onClick={router.goTo}>
-          <Icon name="code" />SQL format
+          <Icon name="code" />SQL Editor
         </Menu.Item>
         <Menu.Item name={router.route.jsonFormatter.path} active={router.isActive(router.route.jsonFormatter.path)} onClick={router.goTo}>
-          <Icon name="code" />JSON format
+          <Icon name="code" />JSON Editor
         </Menu.Item>
         <Menu.Item name={router.route.qrcode.path} active={router.isActive(router.route.qrcode.path)} onClick={router.goTo}>
           <Icon name="qrcode" />QRCode
