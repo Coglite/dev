@@ -23,8 +23,8 @@ const service = new GlobalService();
 window.service = service;
 
 //import Analytics from 'electron-google-analytics';
-//window.analytics = new Analytics('UA-109954925-2');
-//window.analytics.pageview('http://ai-blocks.com', '/home', 'Start App')
+//window.analytics = new Analytics('UA-xxx');
+//window.analytics.pageview('http://coglite.com', '/home', 'Start App')
 //.then((response) => {console.log(response)})
 //.catch((err) => {console.log(err)});
 
