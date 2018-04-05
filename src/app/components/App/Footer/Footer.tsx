@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, Segment } from 'semantic-ui-react';
 
-class Footer extends React.Component {
+export class Footer extends React.Component {
   render() {
     return (
       <Segment basic={true} textAlign="right" attached="bottom" style={{bottom: 0}}>
@@ -13,4 +13,3 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;

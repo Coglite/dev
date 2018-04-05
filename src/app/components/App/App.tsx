@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 
 import { RouterStore } from '../../stores/RouterStore';
-import Footer from '../Footer/Footer';
+import {Footer} from './Footer';
 import JsonFormatter from '../JsonFormatter/JsonFormatter';
 import Qrcode from '../Qrcode/Qrcode';
 import Sidebar from '../Sidebar/Sidebar';
