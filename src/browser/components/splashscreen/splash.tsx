@@ -1,8 +1,8 @@
-
 import * as React from 'react';
 
 import { JupyterLabSession } from '../../../main/sessions';
 import { TitleBar } from '../titlebar';
+
 
 
 export namespace SplashScreen {

@@ -1,22 +1,29 @@
+// Copyright (c) Jupyter Development Team.
+// Distributed under the terms of the Modified BSD License.
 
-import { JupyterLab } from '@jupyterlab/application';
 import {
-    EditMenu,
-    FileMenu,
-    HelpMenu,
-    IMainMenu,
-    KernelMenu,
-    RunMenu,
-    SettingsMenu,
-    TabsMenu,
-    ViewMenu,
+    ArrayExt
+} from '@phosphor/algorithm';
+
+import {
+    Menu
+} from '@phosphor/widgets';
+
+import {
+    JupyterLab
+} from '@jupyterlab/application';
+
+import {
+    INativeMenu
+} from '../../../main/menu';
+
+import {
+    asyncRemoteRenderer
+} from '../../../asyncremote';
+
+import {
+    IMainMenu, FileMenu, EditMenu, ViewMenu, HelpMenu, KernelMenu, RunMenu, SettingsMenu, TabsMenu
 } from '@jupyterlab/mainmenu';
-import { ArrayExt } from '@phosphor/algorithm';
-import { Menu } from '@phosphor/widgets';
-
-import { asyncRemoteRenderer } from '../../../asyncremote';
-import { INativeMenu } from '../../../main/menu';
-
 
 
 /**

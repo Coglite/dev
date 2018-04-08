@@ -1,6 +1,3 @@
-// Copyright (c) Jupyter Development Team.
-// Distributed under the terms of the Modified BSD License.
-
 import * as React from 'react';
 
 let shell: Electron.Shell = (window as any).require('electron').remote.shell;

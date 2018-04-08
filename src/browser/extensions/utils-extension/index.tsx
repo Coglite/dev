@@ -1,76 +1,34 @@
-/*-----------------------------------------------------------------------------
-| Copyright (c) Jupyter Development Team.
-| Distributed under the terms of the Modified BSD License.
-|----------------------------------------------------------------------------*/
-
+import { JupyterLab, JupyterLabPlugin } from '@jupyterlab/application';
+import { ICommandPalette, ISplashScreen, IThemeManager, ThemeManager } from '@jupyterlab/apputils';
+import plugins from '@jupyterlab/apputils-extension';
+import { DataConnector, ISettingRegistry, SettingRegistry, StateDB } from '@jupyterlab/coreutils';
+import { IMainMenu, MainMenu } from '@jupyterlab/mainmenu';
 import {
-    ICommandPalette, IThemeManager, ISplashScreen
-} from '@jupyterlab/apputils';
-
-import {
-    IMainMenu
-} from '@jupyterlab/mainmenu';
-
-import {
-    ISessions
-} from '../../../main/sessions';
-
-import {
-    JSONObject
-} from '@phosphor/coreutils';
-
-import {
-    Application
-} from '../../app';
-
-import {
-    StateDB, ISettingRegistry, SettingRegistry, DataConnector
-} from '@jupyterlab/coreutils';
-
-import {
-    Menu, Widget
-} from '@phosphor/widgets';
-
-import {
-    JupyterLabPlugin, JupyterLab
-} from '@jupyterlab/application';
-
-import {
-    ElectronJupyterLab
-} from '../electron-extension';
-
-import {
-    NativeMenu
-} from './nativemenu';
-
-import {
-    ThemeManager
-} from '@jupyterlab/apputils';
-
-import {
-    TitleBar
-} from '../../components';
-
-import {
-    asyncRemoteRenderer
-} from '../../../asyncremote';
-
-import {
-    IElectronDataConnector
-} from '../../../main/utils';
-
+    CommandIDs as MainMenuExtensionCommandIDs,
+    createEditMenu,
+    createFileMenu,
+    createKernelMenu,
+    createRunMenu,
+    createSettingsMenu,
+    createTabsMenu,
+    createViewMenu,
+} from '@jupyterlab/mainmenu-extension';
+import { JSONObject } from '@phosphor/coreutils';
+import { Menu, Widget } from '@phosphor/widgets';
+import log from 'electron-log';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import plugins from '@jupyterlab/apputils-extension';
-import log from 'electron-log';
 
-import {
-    createEditMenu, createFileMenu, createKernelMenu, createRunMenu, createSettingsMenu, createTabsMenu, createViewMenu,
-    CommandIDs as MainMenuExtensionCommandIDs
-} from '@jupyterlab/mainmenu-extension';
+import { asyncRemoteRenderer } from '../../../asyncremote';
+import { ISessions } from '../../../main/sessions';
+import { IElectronDataConnector } from '../../../main/utils';
+import { Application } from '../../app';
+import { TitleBar } from '../../components';
+import { ElectronJupyterLab } from '../electron-extension';
+import { NativeMenu } from './nativemenu';
+
 
 let mainMenuExtension = import('@jupyterlab/mainmenu-extension');
-
 
 namespace CommandIDs {
     export
@@ -164,6 +122,27 @@ function buildTitleBar(app: ElectronJupyterLab): Widget {
     return titleBar;
 }
 
+function buildPhosphorMenu(app: ElectronJupyterLab): IMainMenu {
+    let menu = new MainMenu(app.commands);
+    let titleBar = buildTitleBar(app);
+
+    menu.id = 'jpe-MainMenu-widget';
+    titleBar.id = 'jpe-TitleBar-widget';
+
+    titleBar.addClass('jpe-mod-' + app.info.uiState);
+
+    let logo = new Widget();
+    logo.addClass('jp-MainAreaPortraitIcon');
+    logo.addClass('jpe-JupyterIcon');
+    logo.id = 'jp-MainLogo';
+
+    app.shell.addToTopArea(logo);
+
+    app.shell.addToTopArea(menu);
+    app.shell.addToTopArea(titleBar);
+    return menu;
+}
+
 function buildNativeMenu(app: ElectronJupyterLab, palette: ICommandPalette): IMainMenu {
     let menu = new NativeMenu(app);
 
@@ -193,8 +172,6 @@ function buildNativeMenu(app: ElectronJupyterLab, palette: ICommandPalette): IMa
  * Override main menu plugin in @jupyterlab/mainmenu-extension
  */
 mainMenuExtension.then(ext => {
-
-    let oldPlugin = ext.default;
     /**
      * A service providing an native menu bar.
      */
@@ -209,7 +186,7 @@ mainMenuExtension.then(ext => {
             if (uiState === 'linux' || uiState === 'mac') {
                 menu = buildNativeMenu(app, palette);
             } else {
-                menu = oldPlugin.activate(app, palette);
+                menu = buildPhosphorMenu(app);
             }
 
             return menu;

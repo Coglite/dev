@@ -1,4 +1,3 @@
-
 import log from 'electron-log';
 import * as React from 'react';
 
@@ -6,13 +5,6 @@ import { JupyterServer } from '../../utils';
 
 
 
-
-/**
- * The main ServerManager component. This component
- * allows configuring multiple Jupyter connections.
- *
- * @param props ServerManager properties
- */
 export
 class ServerManager extends React.Component<ServerManager.Props, ServerManager.State> {
 
