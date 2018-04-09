@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["dom","es6","es2015","es2016", "es2017"],
+    "noImplicitThis": true,
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "outDir": "build/server",
+    "baseUrl": ".",
+    "noUnusedLocals": false,
+    "paths": {"*": [ "*","src/*","app/scripts/*"]},
+  },
+
+  "files": ["./definitions/index.d.ts"],
+  "include": ["./src/app/**/*.ts","./test/**/*.ts"],
+  "exclude": ["node_modules", "build", ".batch"]
+
+}
