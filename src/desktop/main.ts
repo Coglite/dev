@@ -1,94 +1,42 @@
-import {app, BrowserWindow, Menu} from 'electron'
-import * as path from 'path';
-import {format} from 'url';
-import { resolve } from 'app-root-path';
+/**
+ * This file contains code that is initializing the app so the rest of the files run correctly.
+ *
+ * There is a few steps(IMPORTANT: those steps MUST be run in this exact order):
+ *   1. Add the src/ folder to the NODE_PATH to be able to do absolute import(Relative to src folder)
+ *   2. Update electron user data folder
+ *   3. Initialize the logger
+ *   4. Setup extension functions
+ *   5. Call startCogliteDesktop()  from startup.ts
+ */
 
-import { installExtensions } from './installExtensions';
+// 1. Add the src/ folder to the NODE_PATH to be able to do absolute import(Relative to src folder)
+// prob gonna drop this garbo 
+import * as path from "path";
+import "./init";
+
+// 2. Update electron user data folder
+import { app } from "electron";
+app.setPath("userData", path.join(app.getPath("appData"), "coglite"));
 
 
-var isProd = process.env.NODE_ENV === 'production' ? true : false;
-let mainWindow: any
+// 3. Initialize the logger -- 
+//this doesn't actually init anything now,the logger works already
+// just could wrap it in a fn to set the default if u wanted
+import { logger } from "./logger";
 
 
-(process as NodeJS.EventEmitter).on('uncaughtException', (error: Error) => {
-    console.error(error);
-    console.log('[err-desktop]', error.message.toString(), JSON.stringify(error.stack));
+// 4. Setup extension functions
+import "reflect-metadata";
+import "../common/extensions";
+
+
+// 5. Call startBatchLabs from startup.ts
+import {Constants as c} from './constants'
+var mainhtml = c.urls.main
+console.log(mainhtml)
+
+import { startCogliteDesktop } from "./startup";
+
+startCogliteDesktop().catch((e) => {
+    logger.error("Error starting batchlabs", e);
 });
-
-
-  const devPath = format({
-    pathname: '//localhost:8888/',
-    protocol: 'http:',
-    slashes: true
-  });
-
-  const prodPath = format({
-    pathname: resolve('dist/app/index.html'),
-    protocol: 'file:',
-    slashes: true
-  });
-  var url = isProd ? prodPath : devPath;
-
-
-
-let createMainWindow = async () => {
-  installExtensions();
-  
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      webSecurity: false,
-      nodeIntegration: false,
-      backgroundThrottling: false,
-      textAreasAreResizable: false,
-      nodeIntegrationInWorker: true,
-      experimentalCanvasFeatures: true,
-      experimentalFeatures: true
-      }
-  });
-  
-
-  mainWindow.loadURL(url);
-
-  mainWindow.webContents.openDevTools();
-
-  mainWindow.webContents.on("context-menu", (e: any, props: any) => {
-      Menu.buildFromTemplate([{
-          label: "Inspect element",
-          click() { mainWindow.webContents.inspectElement(props.x, props.y)}}])
-      .popup(mainWindow);
-    });
-
-
-mainWindow.on('closed', function () {
-  mainWindow = null
-  process.kill(process.pid)
-  });
-
-return mainWindow
-
-};
-
-
-app.on('ready', createMainWindow);
-
-
-app.on('window-all-closed', async () => {
-  await console.info('Coglite Desktop Succesfully Closed')
-  //take this out in prod
-  //process.kill(process.pid);
-  if (process.platform !== 'darwin') {app.quit()}
-});
-
-app.on('activate', function () {
-  if (mainWindow === null) {
-    createMainWindow()
-  }
-});
-
-
-
-process.on("SIGINT", () => {process.exit(-1);});
-process.on("SIGINT", () => {process.exit(-2);});
-

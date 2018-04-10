@@ -1,0 +1,16 @@
+
+/dist
+/tmp
+/out-tsc
+build
+dll
+node_modules
+/node_modules
+
+.batch
+.temp
+logs
+
+
+.DS_Store
+Thumbs.db

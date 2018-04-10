@@ -3,22 +3,26 @@ var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 var cp = require('child_process')
 const WriteFilePlugin = require("write-file-webpack-plugin");
-
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);
 const SRC = getRoot('src')
 
 
+const HTML_METADATA = {};
+
+
 //dont target electron-renderer bc it fucks up
 const appConfig = {
+
 mode: "development",
 
 entry: ['webpack-hot-middleware/client', getRoot('src/app/app')],
 
 output: {
     publicPath: '/',
-    path: path.join(__dirname, 'dist/app'),
+    path: getRoot('build/app'),
     filename: 'app.js',
 },
 
@@ -36,14 +40,27 @@ resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.html'],
     mainFields: ['browser','module','jsnext:main','main'],
     //modules: ["src", "node_modules"]
-  },
+},
 plugins: [
-      new HtmlWebpackPlugin({template: "src/app/app.html"}),
+      new HtmlWebpackPlugin({
+        template: "src/app/app.html",
+        inject: "body",
+        metadata: HTML_METADATA,
+        }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
-      new WriteFilePlugin()
+      new WriteFilePlugin(),
+      new AddAssetHtmlPlugin({
+      filepath: require.resolve('./build/dll/dll.vendor'),
+      includeSourcemap: false
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./build/dll/vendor-manifest.json'),
+      extensions: ['.js']
+    })
       //new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}})
-]
+],
 }
 
 module.exports = appConfig

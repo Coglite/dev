@@ -17,7 +17,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
         colors: true
         },
 }));
-    
+
 app.use(require("webpack-hot-middleware")(compiler));
 
 
@@ -26,7 +26,7 @@ app.use('/api', function(req, res) {
     res.sendFile(path.join(__dirname, './api/elf.json'));  
 });
 
-app.listen(8888, () => {
+app.listen(3178, () => {
     console.log('start listen on 8888')
 })
 

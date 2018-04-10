@@ -14,7 +14,7 @@
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": false,
     "noUnusedLocals": false,
-    "outDir": "dist",
+    "outDir": "build",
     "removeComments": true,
     "allowJs": true,
     "emitDecoratorMetadata": true,

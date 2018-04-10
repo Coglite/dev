@@ -17,8 +17,8 @@ mode: 'development',
 entry: getRoot('src/desktop/main.ts'),
 
 output: {
-  path: getRoot('dist/desktop'),
-  filename: 'desktop.js'
+  path: getRoot('build/desktop'),
+  filename: 'main.js'
 },
 
 module: { 
