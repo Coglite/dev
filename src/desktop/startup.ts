@@ -6,8 +6,6 @@ import { CogliteDesktopApp } from "./core";
 import { Constants } from "./constants";
 
 
-//app.setPath("userData", path.join(app.getPath("appData"), "coglite"));
-
 
 const pythonServer = new PythonRpcServerProcess();
 pythonServer.start();
@@ -40,8 +38,6 @@ export async function startCogliteDesktop() {
     }
 
 
-//app.on("ready", startCogliteDesktop);
-
 listenToSelectCertifcateEvent();
 
 process.on("exit", () => {
@@ -58,8 +54,3 @@ process.on("SIGINT", () => {
 });
 
 }
-
-//startApplication()
-// Creates the browser window.
-// This call needs to be done after electron app is ready.
-// Doesn't matter how the protocol is handled; error is fine 

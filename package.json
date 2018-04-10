@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "yarn build-node",
     "ts": "ts-node --project tsconfig.node.json",
-    "start.dev": "concurrently --kill-others \"npm run -s dev-server\" \"npm run -s dev-electron\"",
+    "dev": "concurrently --kill-others \"npm run -s dev-server\" \"npm run -s dev-electron\"",
     "start": "npm run -s electron:prod",
     "clean": "rimraf build/* dll/* python/dist/* python/build/*",
     "karma": "node --max_old_space_size=4096 node_modules/karma/bin/karma",

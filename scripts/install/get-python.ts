@@ -1,8 +1,7 @@
-// tslint:disable:no-console
 import * as path from "path";
-import { Constants } from "../../src/server/client-constants";
-import { execCommand } from "../../src/server/core";
-import { getPythonPath } from "../../src/server/python-process";
+import { Constants } from "../../src/desktop/constants";
+import { execCommand } from "../../src/desktop/core";
+import { getPythonPath } from "../../src/desktop/python-process";
 
 getPythonPath().then((pythonPath) => {
     console.log(pythonPath);

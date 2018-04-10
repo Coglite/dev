@@ -6,10 +6,11 @@
  *   2. Update electron user data folder
  *   3. Initialize the logger
  *   4. Setup extension functions
- *   5. Call startBatchLabs from startup.ts
+ *   5. Call startCogliteDesktop()  from startup.ts
  */
 
 // 1. Add the src/ folder to the NODE_PATH to be able to do absolute import(Relative to src folder)
+// prob gonna drop this garbo 
 import * as path from "path";
 import "./init";
 
@@ -18,7 +19,9 @@ import { app } from "electron";
 app.setPath("userData", path.join(app.getPath("appData"), "coglite"));
 
 
-// 3. Initialize the logger
+// 3. Initialize the logger -- 
+//this doesn't actually init anything now,the logger works already
+// just could wrap it in a fn to set the default if u wanted
 import { logger } from "./logger";
 
 

@@ -1,5 +1,5 @@
 const evalBanned = () => {
-    throw new Error("Eval is disabled in BatchLabs.");
+    throw new Error("Calling eval is disabled - common/extensions.");
 };
 
 if (typeof window !== "undefined") {
