@@ -43,7 +43,7 @@ module.exports = merge(config, {
         new ExtractTextPlugin("[name].[contenthash].css"),
         defineEnv(ENV),
 
-        new LoaderOptionsPlugin({
+        new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false,
             options: {

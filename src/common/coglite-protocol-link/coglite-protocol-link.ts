@@ -20,7 +20,8 @@ export class CogliteProtocolInvalidLinkError extends Error {
 }
 
 /**
- * Class containing information defined in a CogliteProtocolLink(link starting with ms-CogliteProtocol://)
+ * Class containing information defined in a CogliteProtocolLink(link starting with coglite://)
+ * see 
  */
 export class CogliteProtocolLink implements CogliteProtocolLinkAttributes {
     public action: CogliteProtocolLinkAction;
@@ -52,7 +53,7 @@ export class CogliteProtocolLink implements CogliteProtocolLinkAttributes {
     }
 
     public toString(): string {
-        const queryParams = new Url.URLSearchParams(this.queryParams);
+        const queryParams = new Url.URLSearchParams(this.queryParams as any);
         if (this.accountId) {
             queryParams.append("accountId", this.accountId);
         }

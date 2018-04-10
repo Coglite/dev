@@ -5,9 +5,9 @@
  */
 import * as path from "path";
 
-import { Constants } from "../src/client/client-constants";
-import { execCommand } from "../src/client/core";
-import { getPythonPath } from "../src/client/python-process";
+import { Constants } from "../src/desktop/constants";
+import { execCommand } from "../src/desktop/core";
+import { getPythonPath } from "../src/desktop/python-process";
 
 const setupPath = path.join(Constants.root, "python/setup.py");
 getPythonPath().then((pythonPath) => {

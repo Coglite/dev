@@ -10,7 +10,7 @@ const stream = new PrettyStream();
 stream.pipe(process.stderr);
 
 export const logger = bunyan.createLogger({
-    name: "Coglite Main",
+    name: "Coglite Desktop",
     level: "debug",
     streams: [
         {
@@ -18,7 +18,7 @@ export const logger = bunyan.createLogger({
         },
         {
             type: "rotating-file",
-            path: path.join(logsFolder, "client.log"),
+            path: path.join(logsFolder, "desktop.log"),
             period: "1d",       // daily rotation
             count: 3,           // keep 3 back copies
         },
@@ -42,7 +42,7 @@ export const pythonLogger = bunyan.createLogger({
 });
 
 export const renderLogger = bunyan.createLogger({
-    name: "Coglite Renderer",
+    name: "Coglite App",
     level: "debug",
     streams: [
         {

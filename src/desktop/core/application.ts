@@ -30,13 +30,6 @@ export class CogliteDesktopApp extends EventEmitter {
 
    private _registerLifeCycleEventHandlers() {     
         
-        //ipcMain.on("reload", () => {
-    //        this.mainWindow.send.webConents.reload();
-            //@FUTURE add any future windows here
-    //        this.mainWindow.createWindow();
-   //     });
-
-
         app.on("window-all-closed", () => {
             if (process.platform !== "darwin") {
                 app.quit();

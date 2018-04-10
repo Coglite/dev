@@ -10,7 +10,6 @@ const WriteFilePlugin = require("write-file-webpack-plugin");
 const { defineEnv } = require("./webpack.common");
 
 const webpackMergeDll = merge.strategy({ plugins: "replace" });
-const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 const ENV = "development";
 const host = "localhost";
@@ -57,7 +56,6 @@ module.exports = merge(config, {
                     "rxjs",
                     "mobx",
                     "mobx-react",
-                    "rxjs",
                     "immutable",
                     "moment",
                     "inflection",

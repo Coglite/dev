@@ -1,8 +1,6 @@
 const webpack = require("webpack");
 const helpers = require("./helpers");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
-const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { commonRules } = require("./webpack.common");
 
@@ -18,11 +16,11 @@ const METADATA = {
 const baseConfig = {
     entry: {
         "polyfills": helpers.root("src/app/polyfills"),
-        "app": helpers.root("src/app/app.tsx")
+        "app": helpers.root("src/app/index.tsx")
     },
 
     resolve: {
-        extensions: [".ts", ".js", ".json", ".scss", ".css", ".html"],
+        extensions: [".ts",".tsx", ".js", ".json", ".scss", ".css", ".html"],
         modules: [helpers.root(), helpers.root("src"), helpers.root("node_modules")],
     },
 
@@ -36,26 +34,12 @@ const baseConfig = {
         new CopyWebpackPlugin([
             //{ context: "src/client/splash-screen", from: "**/*", to: "client/splash-screen" },
             //{ context: "src/client/proxy", from: "**/*", to: "client/proxy" },
-            { context: "app/assets", from: "**/*", to: "assets" },
-            { from: "node_modules/monaco-editor/min/vs", to: "vendor/vs", },
+            { context: "src/app/assets", from: "**/*", to: "app/assets" },
+            { from: "node_modules/monaco-editor/min/vs", to: "app/vendor/vs", },
         ]),
-        new CommonsChunkPlugin({
-            name: "polyfills",
-            chunks: ["polyfills"],
-        }),
-        // This enables tree shaking of the vendor modules
-        new CommonsChunkPlugin({
-            name: "vendor",
-            chunks: ["app"],
-            minChunks: module => /node_modules/.test(module.resource),
-        }),
-        // Specify the correct order the scripts will be injected in
-        new CommonsChunkPlugin({
-            name: ["polyfills", "vendor"].reverse(),
-        }),
         new HtmlWebpackPlugin({
             template: "src/app/index.html",
-            chunksSortMode: "dependency",
+            //chunksSortMode: "dependency",
             inject: "body",
             metadata: METADATA,
         }),

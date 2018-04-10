@@ -122,7 +122,7 @@ export const APIErrorCodes = {
 };
 
 export const MetadataInternalKey = {
-    tags: "_bl_tags",
+    tags: "_cog_tags",
 };
 
 export const PollRate = {
@@ -155,13 +155,13 @@ export const IpcEvent = {
     logoutAndLogin: "LOGOUT_AND_LOGIN",
 };
 
-export const customProtocolName = "ms-batchlabs";
+export const customProtocolName = "coglite";
 
 /**
  * Name of events that needs to be passed between rendered and main
  */
 export const rendererEvents = {
-    batchlabsLink: "batchlabs-link",
+    cogliteProtocolLink: "coglite-link",
 };
 
 export const isRenderer = (process && process.type === "renderer");
