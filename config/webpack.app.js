@@ -5,9 +5,9 @@ var cp = require('child_process')
 const WriteFilePlugin = require("write-file-webpack-plugin");
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
-const ROOT = path.resolve(__dirname);
+const ROOT = path.resolve(__dirname, '..');
 const getRoot = path.join.bind(path, ROOT);
-const SRC = getRoot('src')
+//const SRC = getRoot('src')
 
 
 const HTML_METADATA = {};
@@ -43,7 +43,7 @@ resolve: {
 },
 plugins: [
       new HtmlWebpackPlugin({
-        template: "src/app/app.html",
+        template: getRoot("src/app/app.html"),
         inject: "body",
         metadata: HTML_METADATA,
         }),
@@ -51,12 +51,13 @@ plugins: [
       new webpack.NamedModulesPlugin(),
       new WriteFilePlugin(),
       new AddAssetHtmlPlugin({
-      filepath: require.resolve('./build/dll/dll.vendor'),
+      filepath: require.resolve('../build/dll/dll.vendor'),
       includeSourcemap: false
     }),
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require('./build/dll/vendor-manifest.json'),
+      manifest: getRoot('build/dll/vendor-manifest.json'),
+      //manifest: require('./build/dll/vendor-manifest.json'),
       extensions: ['.js']
     })
       //new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}})

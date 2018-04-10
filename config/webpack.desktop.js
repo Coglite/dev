@@ -4,7 +4,7 @@ var nodeExternals = require("webpack-node-externals");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
-const ROOT = path.resolve(__dirname);
+const ROOT = path.resolve(__dirname, '..');
 const getRoot = path.join.bind(path, ROOT);
 
 
@@ -26,7 +26,7 @@ module: {
       {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
       ]
 },
-    
+
 resolve: { 
       extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
       mainFields: ['browser','module','jsnext:main','main'],
@@ -40,7 +40,9 @@ node: {
 
 externals: [nodeExternals()],
 
-plugins: [new CleanWebpackPlugin('dist')]
+plugins: [
+      //new CleanWebpackPlugin('dist')
+      ]
 
 }
 

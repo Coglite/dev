@@ -8,9 +8,9 @@
   "copyright": "© 2017, Coglite inc.",
   "main": "build/desktop/main.js",
   "scripts": {
-    "prestart1": "yarn build.desktop",
-    "build.dll": "webpack --config=webpack.dll.js",
-    "start": "cross-env HOT=1 node webpack.devserver.js",
+    "postinstall": "yarn build.dll",
+    "build.dll": "webpack --config=config/webpack.dll.js",
+    "start": "cross-env HOT=1 node config/webpack.devserver.js",
     "start.prod": "cross-env NODE_ENV='production' electron .",
     "build.desktop": "webpack-cli --config=webpack.desktop.js",
     "build.app": "webpack-cli --config=webpack.app.ts",
