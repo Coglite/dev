@@ -2831,7 +2831,7 @@ commander@1.0.4:
   dependencies:
     keypress "0.1.x"
 
-commander@2, commander@2.15.x, commander@^2.12.1, commander@^2.9.0, commander@~2.15.0:
+commander@2, commander@2.15.x, commander@^2.12.1, commander@^2.15.1, commander@^2.9.0, commander@~2.15.0:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
 
@@ -4812,7 +4812,7 @@ fetch-cookie@~0.6.0:
     es6-denodeify "^0.1.1"
     tough-cookie "^2.3.1"
 
-"fetch-ponyfill@github:amarzavery/fetch-ponyfill#master":
+fetch-ponyfill@amarzavery/fetch-ponyfill#master:
   version "4.1.0"
   resolved "https://codeload.github.com/amarzavery/fetch-ponyfill/tar.gz/136e6f8192bdb2aa0b7983f0b3b4361c357be9db"
   dependencies:

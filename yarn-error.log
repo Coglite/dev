@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js dev
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
   C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\jerem\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python36-32\;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Users\jerem\AppData\Local\Yarn\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\CMake\bin;C:\Users\jerem\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\jerem\AppData\Local\Programs\Python\Python36-32\;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Users\jerem\AppData\Local\Yarn\bin
@@ -20,7 +20,9 @@ npm manifest:
     "license": "MIT",
     "main": "build/desktop/main.prod.js",
     "scripts": {
+      "postinstall": "build-node",
       "ts": "ts-node --project tsconfig.node.json",
+      "start.dev": "concurrently --kill-others \"npm run -s dev-server\" \"npm run -s dev-electron\"",
       "start": "npm run -s electron:prod",
       "clean": "rimraf build/* dll/* python/dist/* python/build/*",
       "karma": "node --max_old_space_size=4096 node_modules/karma/bin/karma",
@@ -41,7 +43,6 @@ npm manifest:
       "watch": "npm run webpack -- --watch --progress --profile --colors --display-error-details --display-cached",
       "electron": "electron build/desktop/main.js",
       "electron:prod": "cross-env NODE_ENV=production electron build/desktop/main.prod.js",
-      "dev": "concurrently --kill-others \"npm run -s dev-server\" \"npm run -s dev-electron\"",
       "dev-electron": "cross-env HOT=1 electron build/desktop/main.js",
       "dev-server": "npm run webpack-dev-server -- --hot --inline --colors --content-base src/app/",
       "tslint": "node -r ts-node/register node_modules/tslint/bin/tslint --project tsconfig.json -c tslint.json \"src/**/*.ts\" \"test/**/*.ts\" \"./*.js\" \"config/**/*.js\"",
@@ -94,7 +95,6 @@ npm manifest:
       "zone.js": "^0.8.26",
       "@tweenjs/tween.js": "~17.1.1",
       "chokidar": "~2.0.0",
-      "commander": "~2.13.0",
       "electron-updater": "~2.21.0",
       "get-proxy-settings": "~0.1.9",
       "global-tunnel-ng": "~2.1.1",
@@ -3034,7 +3034,7 @@ Lockfile:
     dependencies:
       keypress "0.1.x"
   
-  commander@2, commander@2.15.x, commander@^2.12.1, commander@^2.9.0, commander@~2.15.0:
+  commander@2, commander@2.15.x, commander@^2.12.1, commander@^2.15.1, commander@^2.9.0, commander@~2.15.0:
     version "2.15.1"
     resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
   
@@ -5015,7 +5015,7 @@ Lockfile:
       es6-denodeify "^0.1.1"
       tough-cookie "^2.3.1"
   
-  "fetch-ponyfill@github:amarzavery/fetch-ponyfill#master":
+  fetch-ponyfill@amarzavery/fetch-ponyfill#master:
     version "4.1.0"
     resolved "https://codeload.github.com/amarzavery/fetch-ponyfill/tar.gz/136e6f8192bdb2aa0b7983f0b3b4361c357be9db"
     dependencies:
@@ -13141,7 +13141,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c concurrently --kill-others "npm run -s dev-server" "npm run -s dev-electron"
+  Arguments: /d /s /c build-node
   Directory: D:\code\blueprintJS\@wip\batch-v2
   Output:
   

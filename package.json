@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "build/desktop/main.prod.js",
   "scripts": {
+    "postinstall": "yarn build-node",
     "ts": "ts-node --project tsconfig.node.json",
     "start.dev": "concurrently --kill-others \"npm run -s dev-server\" \"npm run -s dev-electron\"",
     "start": "npm run -s electron:prod",
