@@ -17,8 +17,8 @@ const METADATA = {
 
 const baseConfig = {
     entry: {
-        "polyfills": "./src/app/polyfills.browser",
-        "app": "./src/app/app.ts",
+        "polyfills": helpers.root("src/app/polyfills"),
+        "app": helpers.root("src/app/app.tsx")
     },
 
     resolve: {
@@ -54,7 +54,7 @@ const baseConfig = {
             name: ["polyfills", "vendor"].reverse(),
         }),
         new HtmlWebpackPlugin({
-            template: "app/index.html",
+            template: "src/app/index.html",
             chunksSortMode: "dependency",
             inject: "body",
             metadata: METADATA,
@@ -63,9 +63,7 @@ const baseConfig = {
         new webpack.ContextReplacementPlugin(/ajv(\\|\/)lib/, __dirname),
         new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/, __dirname),
         new webpack.ContextReplacementPlugin(/encoding/, __dirname),
-        new webpack.LoaderOptionsPlugin({
-            debug: true,
-        }),
+        new webpack.LoaderOptionsPlugin({debug: true}),
     ],
     target: "electron-renderer",
 };

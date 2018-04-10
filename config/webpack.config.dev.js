@@ -17,52 +17,33 @@ const host = "localhost";
 const port = process.env.PORT || 3178;
 
 module.exports = merge(config, {
+    
     devtool: "cheap-module-source-map",
-    // debug: true,
     devServer: {
         host,
         port,
     },
     output: {
-        path: path.join(__dirname, "../build/"),
+        path: helpers.root('build'),
         filename: "[name].js",
         sourceMapFilename: "[name].js.map",
         chunkFilename: "[id].chunk.js",
     },
     module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                loader: [
-                    {
-                        loader: "style-loader",
-                        options: {
-                            singleton: true,
-                        },
-                    },
-                    "css-loader",
-                    "sass-loader",
-                ],
-            },
-            {
-                test: /\.css$/,
-                loader: [
-                    {
-                        loader: "style-loader",
-                        options: {
-                            singleton: true,
-                        },
-                    },
-                    "css-loader",
-                ],
-            }
-        ],
-    },
+      rules: [
+
+{test: /\.scss$/, loader: [ {loader: 
+    "style-loader",options: {singleton: true}},
+    "css-loader",
+     "sass-loader"]},
+    
+{test: /\.css$/, loader: [{loader: "style-loader",options: {singleton: true}},"css-loader"]}
+ ],
+},
+
     plugins: [
         defineEnv(ENV),
-        new WriteFilePlugin({
-            test: /vendor\/vs.*/
-        }),
+        new WriteFilePlugin({test: /vendor\/vs.*/}),
         new DllBundlesPlugin({
             bundles: {
                 polyfills: [
@@ -71,13 +52,11 @@ module.exports = merge(config, {
                     "zone.js",
                 ],
                 vendor: [
-                    "@angular/platform-browser",
-                    "@angular/platform-browser-dynamic",
-                    "@angular/core",
-                    "@angular/common",
-                    "@angular/forms",
-                    "@angular/http",
-                    "@angular/router",
+                    "react",
+                    "react-dom",
+                    "rxjs",
+                    "mobx",
+                    "mobx-react",
                     "rxjs",
                     "immutable",
                     "moment",
