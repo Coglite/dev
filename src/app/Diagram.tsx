@@ -3,7 +3,7 @@ import * as React from "react";
 import { BodyWidget } from "./modules/diagram/BodyWidget";
 import { DiagramApplication } from "./modules/diagram/Diagram.Application";
 
-	var diagramDemo = new DiagramApplication();
+var diagramDemo = new DiagramApplication();
 	
 function Diagram(){
 	return <BodyWidget currentDiagram={diagramDemo}/>

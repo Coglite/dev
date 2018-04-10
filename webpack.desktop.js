@@ -8,7 +8,8 @@ const ROOT = path.resolve(__dirname);
 const getRoot = path.join.bind(path, ROOT);
 
 
-const desktopConfig = { 
+const desktopConfig = {
+//devtool: "#source-map",
 target: "electron-main",   
 
 mode: 'development',
@@ -29,11 +30,9 @@ module: {
 resolve: { 
       extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
       mainFields: ['browser','module','jsnext:main','main'],
-      //modules: [getRoot("src"), getRoot("node_modules")]
+      modules: [getRoot("src/desktop"), getRoot("node_modules")]
 },
-    
-//devtool: "#source-map",
-    
+
 node: {
       __dirname: false,
       __filename: false
@@ -47,4 +46,5 @@ plugins: [new CleanWebpackPlugin('dist')]
 
 module.exports = desktopConfig
 
-      //new ExecaPlugin(({onBuildEnd: [{args: ["."], cmd: "electron", stdio: 'inherit'}]})) 
+
+//new ExecaPlugin(({onBuildEnd: [{args: ["."], cmd: "electron", stdio: 'inherit'}]})) 

@@ -9,11 +9,11 @@
   "main": "dist/desktop/desktop.js",
   "scripts": {
     "prestart1": "yarn build.desktop",
-    "start": "node web.server.js",
+    "start": "node webpack.devserver.js",
     "start.prod": "cross-env NODE_ENV='production' electron .",
     "build.desktop": "webpack-cli --config=webpack.desktop.js",
     "build.app": "webpack-cli --config=webpack.app.ts",
-    "build.hot": "ts-node web.server",
+    "build.hot": "ts-node webpack.devserver.js",
     "clean": "rimraf dist",
     "updatedeps": "electron-builder install-app-deps",
     "preunit": "webpack --config=tasks/webpack.unit.config.js --env=test --display=none",
