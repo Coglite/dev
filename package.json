@@ -1,0 +1,265 @@
+{
+  "name": "foxfolio",
+  "productname": "Foxfolio",
+  "version": "0.0.7",
+  "description": "Cryptocurrency portfolio management application which automatically retrieves balances and trades using exchange APIs",
+  "scripts": {
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "build-dll": "cross-env NODE_ENV=development webpack --config webpack.config.renderer.dev.dll.js --colors",
+    "build-main": "cross-env NODE_ENV=production webpack --config webpack.config.main.prod.js --colors",
+    "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.config.renderer.prod.js --colors",
+    "dev": "cross-env START_HOT=1 npm run start-renderer-dev",
+    "lint": "cross-env NODE_ENV=development tslint --project .",
+    "lint-fix": "npm run lint -- --fix",
+    "lint-styles": "stylelint app/*.css app/components/*.css --syntax scss",
+    "lint-styles-fix": "stylefmt -r app/*.css app/components/*.css",
+    "prepackage": "node ./internals/scripts/EnableAppPackageJson.js",
+    "postpackage": "node ./internals/scripts/DisableAppPackageJson.js",
+    "package": "npm run build && build --publish never",
+    "package-all": "npm run build && build -mwl",
+    "package-deploy": "npm run prepackage && npm run build && build -wl && npm run sentry:new-release && npm run postpackage",
+    "package-deploy-mac": "npm run prepackage && npm run build && build -m && npm run postpackage",
+    "package-linux-windows-ci": "build -wl --publish=never",
+    "package-linux": "npm run prepackage && npm run build && build --linux && npm run postpackage",
+    "package-win": "npm run build && build --win --x64",
+    "postinstall": "concurrently \"npm run build-dll\" \"electron-builder install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
+    "prestart": "npm run build",
+    "prettier": "prettier --write \"{app,__{tests,mocks}__}/**/*.{ts,tsx}\"",
+    "sentry:new-release": "node ./internals/scripts/CreateSentryRelease.js",
+    "start": "cross-env NODE_ENV=production electron ./app/",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron ./app/main.dev",
+    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.renderer.dev.js",
+    "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 ./node_modules/.bin/jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:coverage-ci": "npm test -- --coverage && cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
+    "test-all": "npm run lint && npm run build && npm run test",
+    "test-watch": "npm test -- --watch"
+  },
+  "browserslist": "electron 1.8",
+  "devDependencies": {
+    "@sentry/cli": "1.30.4",
+    "@types/chart.js": "2.7.11",
+    "@types/classnames": "2.2.3",
+    "@types/history": "4.6.2",
+    "@types/jest": "22.2.2",
+    "@types/lodash": "4.14.106",
+    "@types/react": "16.3.8",
+    "@types/react-dom": "16.0.5",
+    "@types/react-hot-loader": "3.0.6",
+    "@types/react-redux": "5.0.16",
+    "@types/react-router": "4.0.23",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/react-router-redux": "5.0.13",
+    "@types/recharts": "1.0.18",
+    "@types/redux-form": "7.2.2",
+    "@types/redux-logger": "3.0.5",
+    "@types/shortid": "0.0.29",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "8.2.2",
+    "babel-jest": "22.4.3",
+    "babel-loader": "7.1.4",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-dev-expression": "0.2.1",
+    "babel-plugin-dynamic-import-webpack": "1.0.2",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-es2015-classes": "6.24.1",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-react-optimize": "1.0.1",
+    "babel-preset-stage-0": "6.24.1",
+    "babel-register": "^6.26.0",
+    "babili-webpack-plugin": "0.1.2",
+    "cache-loader": "1.2.2",
+    "chalk": "2.3.2",
+    "concurrently": "3.5.1",
+    "coveralls": "3.0.0",
+    "cross-env": "^5.1.4",
+    "cross-spawn": "6.0.5",
+    "css-loader": "0.28.11",
+    "electron": "1.8.4",
+    "electron-builder": "20.8.1",
+    "electron-devtools-installer": "2.2.3",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-to-json": "3.3.3",
+    "express": "4.16.3",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "fbjs-scripts": "0.8.2",
+    "file-loader": "1.1.11",
+    "fork-ts-checker-webpack-plugin": "0.4.1",
+    "html-webpack-plugin": "3.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "22.4.3",
+    "lodash": "4.17.5",
+    "minimist": "1.2.0",
+    "node-sass": "4.8.3",
+    "prettier": "1.11.1",
+    "react-test-renderer": "16.3.1",
+    "redux-logger": "3.0.6",
+    "rimraf": "2.6.2",
+    "sass-loader": "6.0.7",
+    "sinon": "4.5.0",
+    "spectron": "3.8.0",
+    "style-loader": "0.20.3",
+    "stylefmt": "6.0.0",
+    "stylelint": "9.2.0",
+    "stylelint-config-standard": "18.2.0",
+    "thread-loader": "1.1.5",
+    "ts-jest": "22.4.2",
+    "ts-loader": "4.2.0",
+    "tslint": "5.9.1",
+    "tslint-config-prettier": "1.10.0",
+    "tslint-react": "3.5.1",
+    "typescript": "2.8.1",
+    "url-loader": "1.0.1",
+    "webpack": "4.5.0",
+    "webpack-bundle-analyzer": "2.11.1",
+    "webpack-cli": "2.0.14",
+    "webpack-dev-server": "3.1.3",
+    "webpack-merge": "4.1.2",
+    "webpack-sources": "1.1.0"
+  },
+  "dependencies": {
+    "ccxt": "1.12.135",
+    "chart.js": "2.7.2",
+    "classnames": "2.2.5",
+    "csvtojson": "1.1.9",
+    "devtron": "1.4.0",
+    "downshift": "1.31.6",
+    "electron-debug": "1.5.0",
+    "electron-log": "2.2.14",
+    "electron-updater": "2.21.4",
+    "font-awesome": "4.7.0",
+    "format-number": "3.0.0",
+    "formsy-react": "1.1.4",
+    "history": "4.7.2",
+    "material-ui": "1.0.0-beta.41",
+    "material-ui-icons": "1.0.0-beta.36",
+    "moment": "2.22.0",
+    "prop-types": "15.6.1",
+    "raven-js": "3.24.1",
+    "react": "16.3.1",
+    "react-chartjs-2": "2.7.0",
+    "react-dom": "16.3.1",
+    "react-hot-loader": "^4.0.1",
+    "react-redux": "5.0.7",
+    "react-router": "4.2.0",
+    "react-router-dom": "4.2.2",
+    "react-router-redux": "5.0.0-alpha.9",
+    "recharts": "1.0.0-beta.9",
+    "redux": "3.7.2",
+    "redux-form": "7.3.0",
+    "redux-form-material-ui": "5.0.0-beta.2",
+    "redux-persist": "5.9.1",
+    "redux-thunk": "2.2.0",
+    "reselect": "3.0.1",
+    "shortid": "2.2.8",
+    "source-map-support": "0.5.4",
+    "whatwg-fetch": "2.0.4"
+  },
+  "build": {
+    "productName": "Foxfolio",
+    "appId": "de.foxfolio.foxfolio-desktop",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "app.html",
+      "main.prod.js",
+      "main.prod.js.map",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Finance",
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foxfolio/foxfolio-desktop.git"
+  },
+  "author": {
+    "name": "Andreas Greimel",
+    "email": "info@foxfol.io",
+    "url": "https://github.com/greimela"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/foxfolio/foxfolio-desktop/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "foxfolio",
+    "cryptocurrency"
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    },
+    "collectCoverageFrom": [
+      "app/**/*.ts?(x)",
+      "!**/*.prod.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/jestsetup.ts"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.ts?(x)"
+    ],
+    "transform": {
+      ".+\\.tsx?$": "ts-jest"
+    }
+  },
+  "homepage": "http://foxfol.io",
+  "resolutions": {
+    "webpack-sources": "1.1.0"
+  },
+  "devEngines": {
+    "node": ">=8.7",
+    "npm": ">=5.x"
+  }
+}

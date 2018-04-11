@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portfolio position with missing ticker 1`] = `
+<WithStyles(Component)
+  cardContent={
+    <UNDEFINED>
+      <div
+        className="Component-avatar-1"
+      >
+        <WithStyles(Component)
+          asset="ETH"
+          coinlist={Object {}}
+        />
+      </div>
+      <div
+        className="Component-content-2"
+      >
+        <WithStyles(GridWrapper)
+          container={true}
+        >
+          <WithStyles(GridWrapper)
+            item={true}
+            xs={4}
+          >
+            <div>
+              <WithStyles(Typography)
+                color="default"
+                component="span"
+                type="body2"
+              >
+                ETH
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                color="secondary"
+                component="span"
+                type="body2"
+              >
+                10.000
+              </WithStyles(Typography)>
+            </div>
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={3}
+          >
+            
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={3}
+          >
+            
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={2}
+          >
+            
+          </WithStyles(GridWrapper)>
+        </WithStyles(GridWrapper)>
+      </div>
+    </UNDEFINED>
+  }
+  collapseContent={
+    <Connect(WithTheme(Component))
+      fsym="ETH"
+      tsym="USD"
+    />
+  }
+/>
+`;
+
+exports[`Render portfolio position 1`] = `
+<WithStyles(Component)
+  cardContent={
+    <UNDEFINED>
+      <div
+        className="Component-avatar-1"
+      >
+        <WithStyles(Component)
+          asset="ETH"
+          coinlist={Object {}}
+        />
+      </div>
+      <div
+        className="Component-content-2"
+      >
+        <WithStyles(GridWrapper)
+          container={true}
+        >
+          <WithStyles(GridWrapper)
+            item={true}
+            xs={4}
+          >
+            <div>
+              <WithStyles(Typography)
+                color="default"
+                component="span"
+                type="body2"
+              >
+                ETH
+              </WithStyles(Typography)>
+              <WithStyles(Typography)
+                color="secondary"
+                component="span"
+                type="body2"
+              >
+                10.000
+              </WithStyles(Typography)>
+            </div>
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={3}
+          >
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "height": "100%",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <WithStyles(Typography)
+                color="default"
+                component="span"
+                style={
+                  Object {
+                    "padding": "auto",
+                  }
+                }
+                type="subheading"
+              >
+                10,000.00 USD
+              </WithStyles(Typography)>
+              
+            </div>
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={3}
+          >
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "height": "100%",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <WithStyles(Typography)
+                color="default"
+                component="span"
+                style={
+                  Object {
+                    "padding": "auto",
+                  }
+                }
+                type="subheading"
+              >
+                1,000.00 USD
+              </WithStyles(Typography)>
+              
+            </div>
+          </WithStyles(GridWrapper)>
+          <WithStyles(GridWrapper)
+            className="Component-right-3"
+            item={true}
+            xs={2}
+          >
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "height": "100%",
+                  "justifyContent": "flex-end",
+                }
+              }
+            >
+              <WithStyles(Typography)
+                color="default"
+                component="span"
+                style={
+                  Object {
+                    "padding": "auto",
+                  }
+                }
+                type="subheading"
+              >
+                <WithStyles(Component)
+                  change={5.2}
+                  muted={false}
+                />
+              </WithStyles(Typography)>
+              
+            </div>
+          </WithStyles(GridWrapper)>
+        </WithStyles(GridWrapper)>
+      </div>
+    </UNDEFINED>
+  }
+  collapseContent={
+    <Connect(WithTheme(Component))
+      fsym="ETH"
+      tsym="USD"
+    />
+  }
+/>
+`;

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es6",
+      "es7",
+      "es2017.object"
+    ],
+    "target": "es2016",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "ts-build",
+    "jsx": "react",
+    "strict": false,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "moduleResolution": "node"
+  },
+  "include":["app"],
+  "exclude": [
+    "node_modules", "dll"
+  ]
+}

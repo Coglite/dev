@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render wallet grid 1`] = `
+<div
+  className="container"
+>
+  <WithStyles(Typography)
+    type="headline"
+  >
+    Wallets
+  </WithStyles(Typography)>
+  <WithStyles(GridWrapper)
+    container={true}
+  >
+    <WithStyles(GridWrapper)
+      item={true}
+      key="BTC"
+      lg={6}
+      md={8}
+      sm={12}
+    >
+      <WithStyles(Component)
+        coinlist={Object {}}
+        onDelete={[Function]}
+        onEdit={[Function]}
+        wallet={
+          Object {
+            "address": "",
+            "currency": "BTC",
+            "quantity": 1,
+          }
+        }
+      />
+    </WithStyles(GridWrapper)>
+  </WithStyles(GridWrapper)>
+  <WithStyles(Button)
+    aria-label="add"
+    className="Component-button-1"
+    color="primary"
+    fab={true}
+    onClick={[Function]}
+  >
+    <pure(Add) />
+  </WithStyles(Button)>
+  <WalletDialog
+    close={[Function]}
+    coinlist={Object {}}
+    open={false}
+    save={[Function]}
+    wallet={
+      Object {
+        "address": "",
+        "currency": "",
+        "quantity": 0,
+      }
+    }
+  />
+</div>
+`;

@@ -1,0 +1,227 @@
+{
+    "devDependencies": {
+    "@sentry/cli": "^1.30.0",
+    "@types/chart.js": "^2.7.9",
+    "@types/classnames": "^2.2.3",
+    "@types/history": "^4.6.2",
+    "@types/jest": "^22.2.0",
+    "@types/lodash": "^4.14.104",
+    "@types/react": "^16.0.36",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-hot-loader": "^3.0.5",
+    "@types/react-redux": "^5.0.14",
+    "@types/react-router": "^4.0.21",
+    "@types/react-router-dom": "^4.2.4",
+    "@types/react-router-redux": "^5.0.11",
+    "@types/recharts": "^1.0.14",
+    "@types/redux-form": "^7.0.14",
+    "@types/redux-logger": "^3.0.5",
+    "@types/shortid": "^0.0.29",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^22.4",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "cache-loader": "^1.2.2",
+    "chalk": "^2.0.1",
+    "concurrently": "^3.5.0",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.0.0",
+    "cross-spawn": "^5.1.0",
+    "css-loader": "^0.28.3",
+    "electron": "^1.8.2",
+    "electron-builder": "^20.5.1",
+    "electron-devtools-installer": "^2.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "fbjs-scripts": "^0.8.0",
+    "file-loader": "^0.11.1",
+    "fork-ts-checker-webpack-plugin": "^0.4.0",
+    "html-webpack-plugin": "^2.29.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.4.2",
+    "lodash": "^4.17.5",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.5.3",
+    "prettier": "1.10.2",
+    "react-test-renderer": "^16.2.0",
+    "redux-logger": "^3.0.6",
+    "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
+    "sinon": "^2.3.5",
+    "spectron": "^3.7.0",
+    "style-loader": "^0.18.1",
+    "stylefmt": "^6.0.0",
+    "stylelint": "^7.12.0",
+    "stylelint-config-standard": "^16.0.0",
+    "thread-loader": "^1.1.5",
+    "ts-jest": "^22.4.1",
+    "ts-loader": "^4.0.1",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.7.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-dev-server": "^2.5.0",
+    "webpack-merge": "^4.1.0",
+    "webpack-sources": "1.0.1"
+  },
+  "dependencies": {
+    "ccxt": "^1.11.2",
+    "chart.js": "^2.7.1",
+    "classnames": "^2.2.5",
+    "csvtojson": "^1.1.9",
+    "devtron": "^1.4.0",
+    "downshift": "^1.26.1",
+    "electron-debug": "^1.2.0",
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.19.1",
+    "font-awesome": "^4.7.0",
+    "format-number": "^3.0.0",
+    "formsy-react": "^1.1.3",
+    "history": "^4.6.3",
+    "material-ui": "^1.0.0-beta.29",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "moment": "^2.20.1",
+    "prop-types": "^15.6.0",
+    "raven-js": "^3.21.0",
+    "react": "^16.2.0",
+    "react-chartjs-2": "^2.7.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "recharts": "^1.0.0-beta.9",
+    "redux": "^3.7.1",
+    "redux-form": "^7.1.2",
+    "redux-form-material-ui": "^5.0.0-beta.2",
+    "redux-persist": "^5.9.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "shortid": "^2.2.8",
+    "source-map-support": "^0.4.15",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "build": {
+    "productName": "Foxfolio",
+    "appId": "de.foxfolio.foxfolio-desktop",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "app.html",
+      "main.prod.js",
+      "main.prod.js.map",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "category": "Finance",
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foxfolio/foxfolio-desktop.git"
+  },
+  "author": {
+    "name": "Andreas Greimel",
+    "email": "info@foxfol.io",
+    "url": "https://github.com/greimela"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/foxfolio/foxfolio-desktop/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "foxfolio",
+    "cryptocurrency"
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    },
+    "collectCoverageFrom": [
+      "app/**/*.ts?(x)",
+      "!**/*.prod.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/jestsetup.ts"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.spec.ts?(x)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  },
+  "homepage": "http://foxfol.io",
+
+  "resolutions": {
+    "webpack-sources": "1.0.1"
+  },
+  "devEngines": {
+    "node": ">=8.7",
+    "npm": ">=5.x"
+  }
+}
