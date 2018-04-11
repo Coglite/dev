@@ -8,7 +8,7 @@
 [![Gitter](https://img.shields.io/gitter/room/foxfolio/foxfolio-desktop.js.svg?style=flat-square)](https://gitter.im/foxfolio-desktop/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [![Twitter Follow](https://img.shields.io/twitter/follow/foxfol_io.svg?label=Follow%20Foxfolio&style=flat-square)](https://twitter.com/foxfol_io)
 
-> Cryptocurrency portfolio management application which automatically retrieves balances and trades using exchange APIs
+> Cryptocurrency portzzfolio management application which automatically retrieves balances and trades using exchange APIs
 
 ![Foxfolio screenshot](resources/screenshots/foxfolio.png?raw=true)
 
