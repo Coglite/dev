@@ -13,12 +13,13 @@ const getRoot = path.join.bind(path, ROOT);
 const HTML_METADATA = {};
 
 
-//dont target electron-renderer bc it fucks up
 const appConfig = {
 
 mode: "development",
 
-entry: ['webpack-hot-middleware/client', getRoot('src/app/app')],
+target: 'electron-renderer',
+
+entry: ['webpack-hot-middleware/client', getRoot('src/app/index.tsx')],
 
 output: {
     publicPath: '/',
@@ -43,7 +44,7 @@ resolve: {
 },
 plugins: [
       new HtmlWebpackPlugin({
-        template: getRoot("src/app/app.html"),
+        template: getRoot("src/app/index.html"),
         inject: "body",
         metadata: HTML_METADATA,
         }),

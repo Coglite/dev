@@ -3,6 +3,7 @@
     "react-hot-loader/babel",
     "autobind-class-methods",
     "glamorous-displayname",
+    "@babel/plugin-proposal-decorators",
     "@babel/plugin-syntax-object-rest-spread",
     ["@babel/plugin-proposal-class-properties", {"loose": true}],
     "@babel/plugin-proposal-pipeline-operator",

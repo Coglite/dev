@@ -12,7 +12,7 @@
 // 1. Add the src/ folder to the NODE_PATH to be able to do absolute import(Relative to src folder)
 // prob gonna drop this garbo 
 import * as path from "path";
-import "./init";
+//import "./init";
 
 // 2. Update electron user data folder
 import { app } from "electron";

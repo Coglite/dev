@@ -23,7 +23,7 @@ output: {
 
 module: { 
   rules: [
-      {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
+      {test: /\.[t]sx?$/, exclude: /node_modules/, use: ["ts-loader"]}, 
       ]
 },
 
