@@ -1,7 +1,7 @@
 import {BatchServiceClient} from "azure-batch/lib/batchServiceClient";
 
 import * as models from "./azure-batch-models";
-import { ListProxy, mapGet, wrapOptions } from "../shared";
+import { ListProxy, mapGet, wrapOptions } from "./shared";
 
 export default class JobProxy {
 

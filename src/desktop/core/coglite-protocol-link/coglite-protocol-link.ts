@@ -1,5 +1,5 @@
 import * as Url from "url";
-import { Constants } from "../constants";
+import { Constants } from "../../constants";
 
 export enum CogliteProtocolLinkAction {
     route = "route",

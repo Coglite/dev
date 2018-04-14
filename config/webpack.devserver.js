@@ -20,14 +20,13 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require("webpack-hot-middleware")(compiler));
 
-
 app.use('/api', function(req, res) {
     res.header("Content-Type",'application/json');
     res.sendFile(path.join(__dirname, './api/elf.json'));  
 });
 
 app.listen(3178, () => {
-    console.log('start listen on 8888')
+    console.log('start listen on 3178')
 })
 
 var execa = require('execa')

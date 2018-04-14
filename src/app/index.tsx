@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import { webFrame } from "electron"
 import { css } from "glamor"
 
 
@@ -32,9 +31,10 @@ ReactDOM.render(
 
 
 //import "glamor/reset" // CSS reset
+
 css.global("html, body, root", {
-  //userSelect: "none",  // turn off text highlighting
-  //cursor: "default",  // reset the cursor pointer
+  userSelect: "none",  // turn off text highlighting
+  cursor: "default",  // reset the cursor pointer
   font: "caption",
   WebkitFontSmoothing: "subpixel-antialiased",
   textRendering: "optimizeLegibility",
@@ -43,10 +43,6 @@ css.global("html, body, root", {
   padding: '0px auto',
   overflow: 'hidden'
 })
-
-
-webFrame.setVisualZoomLevelLimits(1, 1)
-webFrame.setLayoutZoomLevelLimits(0, 0)
 
 
 document.addEventListener("dragover", event => event.preventDefault())

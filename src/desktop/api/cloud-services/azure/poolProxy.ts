@@ -1,8 +1,8 @@
 import {BatchServiceClient} from "azure-batch/lib/batchServiceClient";
 
 import * as models from "./azure-batch-models";
-import { BatchResult } from "../models";
-import { ListProxy, ProxyUtil, mapGet, wrapOptions } from "../shared";
+import { BatchResult } from "./models";
+import { ListProxy, ProxyUtil, mapGet, wrapOptions } from "./shared";
 
 export default class PoolProxy {
 

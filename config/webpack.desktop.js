@@ -23,7 +23,7 @@ output: {
 
 module: { 
   rules: [
-      {test: /\.[t]sx?$/, exclude: /node_modules/, use: ["ts-loader"]}, 
+      {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
       ]
 },
 
@@ -40,9 +40,7 @@ node: {
 
 externals: [nodeExternals()],
 
-plugins: [
-      //new CleanWebpackPlugin('dist')
-      ]
+plugins: []
 
 }
 

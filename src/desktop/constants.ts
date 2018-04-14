@@ -7,9 +7,8 @@ import {homedir} from 'os';
 
 var jetpack = require('fs-jetpack')
 const APP_ROOT_DIR = jetpack.cwd(app.getAppPath());
-//const manifest = appDir.read("package.json", "json");
 
-const packageConfig = APP_ROOT_DIR.read("package.json", "json");
+const packageJson = APP_ROOT_DIR.read("package.json", "json");
 
 
 const apiUrl = 'http://localhost:3500'
@@ -41,8 +40,6 @@ function getPort(port = portrange): Promise<number> {
     });
 }
 
-
-//const packageConfig = require(`${root}/package.json`);
 
 const urls = {
     main: {
@@ -84,6 +81,6 @@ export const Constants = {
     logsFolder,
     resourcesFolder,
     pythonServerPort,
-    version: packageConfig.version,
+    version: packageJson.version,
     customProtocolName
 };

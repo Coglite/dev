@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {AppBar, Switch,IconButton,Typography,Toolbar, Menu, MenuItem, FormControlLabel, FormGroup, Paper} from 'material-ui';
-//import {withStyles} from 'material-ui/styles';
+import {withStyles} from 'material-ui/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
@@ -21,7 +21,7 @@ export const menuButton: React.CSSProperties = {
 
 
 
-class AppBarBase extends React.Component<any, any> {
+class _Header extends React.Component<any, any> {
   state = {
     auth: true,
     anchorEl: undefined,
@@ -88,6 +88,6 @@ class AppBarBase extends React.Component<any, any> {
   }
 }
 
-let Header = AppBarBase;
+let Header = withStyles({}, {withTheme: true})(_Header);
 
 export { Header as default, Header }

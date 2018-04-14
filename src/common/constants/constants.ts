@@ -65,7 +65,7 @@ export const localStorageKey = {
     currentAccessToken: "current_access_token",
     accountSubscriptionFilter: "account_subscription_filter",
     subscriptions: "subscriptions",
-    batchAccounts: "batchAccounts",
+    azureBatchAccounts: "azure_batchAccounts",
     selectedAccountId: "selected-account-id",
     proxySettings: "proxy_settings",
     azureEnvironment: "azure_environment",

@@ -117,7 +117,7 @@ function parsePythonVersion(str: string): SemVersion {
 }
 
 /**
- * Check if the version is the right for batchlabs.
+ * Check if version meets required 3.5.
  * @param version Python version
  */
 function isValidVersion(version: SemVersion) {

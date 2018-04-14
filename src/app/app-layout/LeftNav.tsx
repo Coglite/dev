@@ -1,8 +1,8 @@
-import { withStyles, Paper} from 'material-ui'; //Paper //Drawer
-import { AccountBalanceWallet, Cloud, Dashboard, HelpOutline, Settings, SwapHoriz } from '@material-ui/icons';
 import * as React from 'react';
+import { withStyles, Paper} from 'material-ui';
+import { AccountBalanceWallet, Cloud, Dashboard, HelpOutline, Settings, SwapHoriz } from '@material-ui/icons';
 
-import { DrawerItem } from './sidebar.item';
+import { DrawerItem } from './DrawerItem';
 
 
 const leftNavStyles: React.CSSProperties = {
@@ -26,8 +26,6 @@ const styles = theme => ({
   }
 })
 
-
-
 type LeftNavProps = {
   classes?: any,
   invert?: any
@@ -43,22 +41,11 @@ const _LeftNav = (P: LeftNavProps) => (
               <DrawerItem route="/settings" icon={<Settings />} />
               <DrawerItem route="/about" icon={<HelpOutline />} />
 </Paper>
- </React.Fragment> 
+</React.Fragment> 
 );
 
-const LeftNav = withStyles(styles)(_LeftNav);
+const LeftNav = withStyles(styles, {withTheme: true})(_LeftNav);
 export {LeftNav as default, LeftNav}
 
 
-/*
-<React.Fragment>
-<Paper className={P.invert ? P.classes.leftNavInvert : P.classes.leftNav} >
-              <DrawerItem label="Portfolio" route="/" icon={<Dashboard />} />
-              <DrawerItem label="Trades" route="/trades" icon={<SwapHoriz />} />
-              <DrawerItem label="Accounts" route="/wallets" icon={<AccountBalanceWallet />} />
-              <DrawerItem label="Exchanges" route="/exchanges" icon={<Cloud />} />
-              <DrawerItem label="Settings" route="/settings" icon={<Settings />} />
-              <DrawerItem label="About" route="/about" icon={<HelpOutline />} />
-</Paper>
-</React.Fragment> 
-*/
+// add "label" if you want to use text ie: <DrawerItem label="Portfolio" route="/" icon={<Dashboard />} />

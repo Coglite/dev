@@ -67,27 +67,6 @@ export class CogliteDesktopApp extends EventEmitter {
         process.on("unhandledRejection", r => {
             logger.error("Unhandled promise error:", r);
         });
-        
-        /* -- maybe useful later but if we're using app.makeSingleInstance this makes no sense to use here
-        basically a noop 
-        app.on("window-all-closed", () => {
-            // Required or electron will close when closing last open window before next one open
-        });*/
-
-
-/*
-        app.on("login", async (event, webContents, request, authInfo, callback) => {
-            event.preventDefault();
-            try {
-                const { username, password } = await this.proxySettings.credentials();
-                callback(username, password);
-            } catch (e) {
-                logger.error("Unable to retrieve credentials for proxy settings", e);
-                this.quit();
-            }
-        });
-    }
-*/
 }
 
 

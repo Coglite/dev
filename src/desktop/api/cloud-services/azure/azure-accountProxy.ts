@@ -1,4 +1,4 @@
-import { ListProxy, wrapOptions } from "../shared";
+import { ListProxy, wrapOptions } from "./shared";
 
 export default class AccountProxy {
     constructor(private client: any) {

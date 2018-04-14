@@ -1,5 +1,5 @@
 import { BatchServiceClient } from "azure-batch/lib/batchServiceClient";
-import { ListProxy, wrapOptions } from "../shared";
+import { ListProxy, wrapOptions } from "./shared";
 
 export default class FileProxy {
 
