@@ -1,10 +1,11 @@
 import {hot} from 'react-hot-loader'
 import * as React from 'react';
-import {Router, Route, Switch} from 'react-router'
-import { AppLayout } from './app-layout/AppLayout';
+import {HashRouter, Route, Switch} from 'react-router-dom'
+import { AppLayout } from './views/layout/AppLayout';
 import {inject, observer} from 'mobx-react'
 
 import RoutesStore from './stores/RouterStore';
+import {PageRoutes} from './views/pages'
 
 interface RouterProps {
   router: RoutesStore;
@@ -19,13 +20,10 @@ export class CogliteAppRouter extends React.Component<any, any> {
 
 render() {
 const {router} = this.props as RouterProps;
-
 return (
-  <Router history={router.history} >
-    <Switch>
-      <Route exact path="/" component={AppLayout} />
-    </Switch>
-  </Router>
+  <HashRouter history={router.history} >
+    <AppLayout/> 
+  </HashRouter>
   );
  }
 }
