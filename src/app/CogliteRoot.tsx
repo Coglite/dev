@@ -1,24 +1,24 @@
 import 'reflect-metadata'
 import * as React from "react"
+import { hot } from 'react-hot-loader';
 import { css } from "glamor"
 
 import { Provider } from 'mobx-react';
 import { MuiThemeProvider, CssBaseline } from 'material-ui';
-import theme from '../../theme';
-import { AppLayout } from '../layout/AppLayout';
+import theme from './theme';
+import { AppLayout } from './views/app/AppLayout';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import {DashboardPage, PageRoutes} from '../pages'
+import {DashboardPage, PageRoutes} from './views/pages'
 
 
 //import RouterStore from '../../stores/RouterStore';
-
 const stores = {
   //router: new RouterStore(),
 };
 
 
 
-export class Base extends React.Component {
+class _CogliteRoot extends React.Component {
     public render(): JSX.Element {
         return (
           <Provider {...stores}>
@@ -34,6 +34,8 @@ export class Base extends React.Component {
         );
     }
 }
+
+export let CogliteRoot = hot(module)(_CogliteRoot)
 
 //import "glamor/reset" // CSS reset
 

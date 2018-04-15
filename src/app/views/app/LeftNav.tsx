@@ -31,15 +31,17 @@ type LeftNavProps = {
   invert?: any
 }
 
+
+
 const _LeftNav = (P: LeftNavProps) => (
 <React.Fragment>
 <Paper className={P.invert ? P.classes.leftNavInvert : P.classes.leftNav} >
               <DrawerItem route="/" icon={<Dashboard />} />
-              <DrawerItem route="/trades" icon={<SwapHoriz />} />
-              <DrawerItem route="/wallets" icon={<AccountBalanceWallet />} />
-              <DrawerItem route="/exchanges" icon={<Cloud />} />
-              <DrawerItem route="/settings" icon={<Settings />} />
-              <DrawerItem route="/about" icon={<HelpOutline />} />
+              <DrawerItem route="/pages/notebook" icon={<SwapHoriz />} />
+              <DrawerItem route="/pages/datasets" icon={<AccountBalanceWallet />} />
+              <DrawerItem route="/pages/cloud" icon={<Cloud />} />
+              <DrawerItem route="/pages/settings" icon={<Settings />} />
+              <DrawerItem route="/pages/about" icon={<HelpOutline />} />
 </Paper>
 </React.Fragment> 
 );

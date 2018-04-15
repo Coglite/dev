@@ -8,7 +8,10 @@
   "copyright": "© 2017, Coglite inc.",
   "main": "build/desktop.js",
   "scripts": {
-    "start": "run-p start:*",
+    "prestart": "yarn prestart:desktop",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.app.dev.js",
+    "prestart:desktop": "cross-env NODE_ENV=development webpack --config config/webpack.desktop.js",
+    "start.p": "run-p start:*",
     "start:app": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.app.dev.js",
     "start:desktop": "cross-env NODE_ENV=development webpack --config config/webpack.desktop.js && electron .",
     "build": "run-s build:*",

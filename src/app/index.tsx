@@ -1,4 +1,6 @@
-import { Base } from './views/root/base';
-import { mount } from './utils/mount';
+import * as ReactDOM from 'react-dom'
+import * as React from 'react'
+import {CogliteRoot} from './CogliteRoot'
 
-mount(Base, './views/root/base');
+
+ReactDOM.render(<CogliteRoot />, document.getElementById("root"));
