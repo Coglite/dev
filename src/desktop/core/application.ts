@@ -1,6 +1,6 @@
 import * as os from 'os'
 import {EventEmitter} from 'events'
-import { app, ipcMain } from "electron";
+import { app, ipcMain, BrowserWindow } from "electron";
 import {Constants} from '../constants'
 import { logger } from "../logger";
 import { MainWindow } from "./main-window";

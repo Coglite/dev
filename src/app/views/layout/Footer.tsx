@@ -10,7 +10,7 @@ const footerStyle: React.CSSProperties = {
   height: '25px',
   display: 'flex',
   flexDirection: 'row',
-  widgth: '100%',
+  width: '100%',
   bottom: '0',
   position: "fixed"
 };

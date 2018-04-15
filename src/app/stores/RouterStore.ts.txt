@@ -2,10 +2,10 @@
 import { Location } from 'history';
 
 import {action} from 'mobx';
-import {createHashHistory} from 'history';
+import {createBrowserHistory} from 'history';
 
 export default class RouterStore {
-  history = createHashHistory();
+  history = createBrowserHistory();
   route = {
     top: {
       path: '/',

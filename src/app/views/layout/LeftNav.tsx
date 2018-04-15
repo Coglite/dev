@@ -15,7 +15,7 @@ const leftNavStyles: React.CSSProperties = {
     paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
-    alignmentBaseline: 'center'
+    alignmentBaseline: 'central'
 };
 
 const styles = theme => ({

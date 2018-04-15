@@ -43,7 +43,7 @@ function getPort(port = portrange): Promise<number> {
 
 const urls = {
     main: {
-        dev: "http://localhost:3178/index.html",
+        dev: "http://localhost:8080/",
         prod: `file://${__dirname}/../../build/index.html`,
     },
     splash: {

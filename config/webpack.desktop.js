@@ -7,44 +7,37 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 const ROOT = path.resolve(__dirname, '..');
 const getRoot = path.join.bind(path, ROOT);
 
+const DESKTOP_SRC = path.resolve(__dirname, '..', 'src/desktop');
+const COMMON_SRC = path.resolve(__dirname, '..', 'src/common')
+const DESKTOP_OUT_PATH = path.resolve(__dirname, '..', 'build');
+
+
 
 const desktopConfig = {
-//devtool: "#source-map",
+
 target: "electron-main",   
 
-mode: 'development',
+mode: process.env.NODE_ENV || 'development',
 
-entry: getRoot('src/desktop/main.ts'),
+entry: {main: DESKTOP_SRC + '/main.ts'},
 
 output: {
-  path: getRoot('build/desktop'),
-  filename: 'main.js'
+  path:  DESKTOP_OUT_PATH,
+  filename: 'desktop.js'
 },
 
-module: { 
-  rules: [
-      {test: /\.[tj]sx?$/, exclude: /node_modules/, use: ["babel-loader"]}, 
-      ]
-},
 
-resolve: { 
-      extensions: [".ts", ".js", ".tsx", ".jsx", ".json", ".scss", ".css", ".html"],
-      mainFields: ['browser','module','jsnext:main','main'],
-      modules: [getRoot("src/desktop"), getRoot("node_modules")]
-},
+module: {rules: [{test: /\.ts$/,include: [DESKTOP_SRC, COMMON_SRC],use: [{loader: 'ts-loader'}]}]},
 
-node: {
-      __dirname: false,
-      __filename: false
-},
+resolve: {extensions: ['.js', '.json', '.ts']},
 
-externals: [nodeExternals()],
+plugins: [new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)})],
 
-plugins: []
-
+//externals: [nodeExternals()]
 }
 
 module.exports = desktopConfig
 
 
 //new ExecaPlugin(({onBuildEnd: [{args: ["."], cmd: "electron", stdio: 'inherit'}]})) 
+

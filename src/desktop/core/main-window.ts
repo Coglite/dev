@@ -6,6 +6,11 @@ import {EventEmitter} from 'events'
 const devServerUrl = Constants.urls.main.dev;
 const buildFileUrl = Constants.urls.main.prod;
 
+const INDEX_URL = process.env.NODE_ENV === 'development'
+            ? 'http:localhost:8080/'
+            : `file://${__dirname}/`;
+
+
 export class MainWindow extends EventEmitter {
 
     public createWindow() {
@@ -21,11 +26,10 @@ export class MainWindow extends EventEmitter {
 
             },
         });
+    //const url = process.env.HOT ? devServerUrl : buildFileUrl;
 
-    const url = process.env.HOT ? devServerUrl : buildFileUrl;
+    mainWindow.loadURL(INDEX_URL);
 
-    mainWindow.loadURL(url);
-
-    return mainWindow;
+    //return mainWindow;
  }
 }
