@@ -19,12 +19,10 @@ import "../common/extensions";
 
 
 // 3. Call script from startup.ts
-import {Constants as c} from './constants'
+
 import { logger } from "./logger";
 import { startCogliteDesktop } from "./startup";
 
-var mainhtml = c.urls.main
-console.log(mainhtml)
 
 startCogliteDesktop().catch((e) => {
     logger.error("Error starting Coglite Desktop", e);

@@ -10,7 +10,7 @@ interface Props {
 
 export function DrawerItem({ icon, label, route }: Props) {
   return (
-    <ListItem style={{display: 'inherit'}} button component={props => <NavLink {...props as any} exact to={route} />}>
+    <ListItem button component={props => <NavLink {...props as any} exact to={route} />}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={label} />
     </ListItem>

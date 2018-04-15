@@ -68,7 +68,7 @@ export class CogliteProtocolLink implements CogliteProtocolLinkAttributes {
         const url = Url.parse(link);
         if (url.protocol !== Constants.customProtocolName + ":") {
             throw new CogliteProtocolInvalidLinkError(link,
-                `Link '${link}' doesn't use right protocol ${Constants.customProtocolName}`);
+                `Link '${link}' doesn't use the correct protocol: ${Constants.customProtocolName}`);
         }
         const queryParams = new Url.URLSearchParams(url.query as string);
 

@@ -17,8 +17,7 @@ const cogliteDir = normalize(`${homedir()}/.coglite/`);
 const uploadDir = normalize(`${homedir()}/.coglite/uploads/`);
 
 
-// Root is relative to where this file is when in the build folder)
-//const root = path.join(__dirname, "../..");
+
 const root = path.join(app.getAppPath());
 
 

@@ -7,8 +7,8 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 const ROOT = path.resolve(__dirname, '..');
 const getRoot = path.join.bind(path, ROOT);
 
-const DESKTOP_SRC = path.resolve(__dirname, '..', 'src/desktop');
-const COMMON_SRC = path.resolve(__dirname, '..', 'src/common')
+const DESKTOP_SRC = getRoot('src/desktop');
+const COMMON_SRC = getRoot('src/common')
 const DESKTOP_OUT_PATH = path.resolve(__dirname, '..', 'build');
 
 
@@ -19,10 +19,10 @@ target: "electron-main",
 
 mode: process.env.NODE_ENV || 'development',
 
-entry: {main: DESKTOP_SRC + '/main.ts'},
+entry: {main: getRoot('src/desktop/main.ts')},
 
 output: {
-  path:  DESKTOP_OUT_PATH,
+  path:  getRoot('build'),
   filename: 'desktop.js'
 },
 

@@ -13,13 +13,11 @@ class _AppLayout extends React.Component<any, any> {
     return ( 
         <div style={{display: 'flex'}}>
             <LeftNav/>
-            <div style={{marginLeft: '64px'}}>
             <Header />
-             <div style={{marginTop: 50}}>
-             {(children)}
-             </div>           
+            <div style={{marginLeft: '64px',marginTop: 50 }}>  
+             {children}   
             </div>
-            <Paper><Footer/></Paper>
+            <Footer/>
         </div>
   )
  }

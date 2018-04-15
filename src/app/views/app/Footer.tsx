@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
+import { Paper } from 'material-ui';
 
 const version = '0.0.1';
 
@@ -12,11 +13,12 @@ const footerStyle: React.CSSProperties = {
   flexDirection: 'row',
   width: '100%',
   bottom: '0',
-  position: "fixed"
+  position: "absolute",
+  alignItems: 'center'
 };
 
-const footerCopyRightStyle: React.CSSProperties = {position:'fixed',left: '10px'}
-const footerVersionStyle: React.CSSProperties = {position: 'fixed',right: '10px'}
+const footerCopyRightStyle: React.CSSProperties = {position:'absolute',left: '10px'};
+const footerVersionStyle: React.CSSProperties = {position: 'absolute',right: '10px'};
 
 const styles = theme => ({
   footer: footerStyle,
@@ -38,14 +40,16 @@ type FooterProps = {
 }
 
 const FooterBase = (P: FooterProps) => (
-  <div className={P.invert ? P.classes.invertFooter : P.classes.footer} >
-    <Typography variant="caption"><div className={P.classes.footerCopyright}>{copyrightString}</div></Typography>
-    <Typography variant="caption"><div className={P.classes.footerVersion}>{`Version: ${version || 'pre-release'}`}</div></Typography>
-  </div>
+  <Paper className={P.invert ? P.classes.invertFooter : P.classes.footer} >
+    <Typography variant="caption">
+    <span className={P.classes.footerCopyright}>{copyrightString}</span>
+    <span className={P.classes.footerVersion}>{`Version: ${version || 'pre-release'}`}</span>
+    </Typography>
+  </Paper>
 );
 
 
-const Footer = withStyles(styles)(FooterBase);
+const Footer = withStyles(styles, {withTheme: true})(FooterBase);
 export {Footer as default, Footer}
 
 

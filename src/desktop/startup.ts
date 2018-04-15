@@ -43,7 +43,6 @@ listenToSelectCertifcateEvent();
 process.on("exit", () => {
     cogliteApp.quit()
     pythonServer.stop();
-    process.exit(0);
 });
 
 process.on("SIGINT", () => {
