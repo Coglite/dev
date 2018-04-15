@@ -5,7 +5,10 @@ import { css } from "glamor"
 import { Provider } from 'mobx-react';
 import { MuiThemeProvider, CssBaseline } from 'material-ui';
 import theme from '../../theme';
-import {Root} from './root.component';
+import { AppLayout } from '../layout/AppLayout';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import {DashboardPage, PageRoutes} from '../pages'
+
 
 //import RouterStore from '../../stores/RouterStore';
 
@@ -21,7 +24,11 @@ export class Base extends React.Component {
           <Provider {...stores}>
               <MuiThemeProvider theme={theme}>
               <CssBaseline/>
-                  <Root />
+                <HashRouter>
+                <AppLayout>          
+                    <PageRoutes/>
+                </AppLayout>
+                </HashRouter>
               </MuiThemeProvider>
           </Provider>
         );

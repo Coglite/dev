@@ -50,7 +50,7 @@ class _Header extends React.Component<any, any> {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit">
-              Title
+              Titlee
             </Typography>
         <FormGroup>
           <FormControlLabel

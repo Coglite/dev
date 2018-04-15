@@ -27,7 +27,10 @@ output: {
 },
 
 
-module: {rules: [{test: /\.ts$/,include: [DESKTOP_SRC, COMMON_SRC],use: [{loader: 'ts-loader'}]}]},
+module: {
+  rules: [
+    {test: /\.ts$/, include: [DESKTOP_SRC, COMMON_SRC], loader: 'ts-loader', options: { transpileOnly: true }}
+  ]},
 
 resolve: {extensions: ['.js', '.json', '.ts']},
 
