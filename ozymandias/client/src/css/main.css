@@ -1,0 +1,151 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    overflow-y: hidden;
+}
+
+#editor {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 360px;
+    left: 0;
+}
+
+#editor .CodeMirror {
+    height: 100%;
+    width: 100%;
+}
+
+.CodeMirror-scroll {
+    z-index: 0
+}
+
+#save span {  font-size: 18px;  }
+.key-binding { float: right; }
+.cm-s-default .cm-latex {  color: black;  }
+.cm-s-monokai .cm-latex {  color: white;  }
+
+.CodeMirror-dialog button, .panel input {
+    margin: 4px;
+    font-family: monospace;
+    font-size: inherit !important;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    padding: 4px;
+
+    -webkit-box-shadow:inset 0 0 0 1px;
+    -moz-box-shadow:inset 0 0 0 1px;
+    box-shadow:inset 0 0 0 1px;
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+.CodeMirror-dialog button:focus, .panel input:focus {
+    -webkit-box-shadow:inset 0 0 0 2px;
+    -moz-box-shadow:inset 0 0 0 2px;
+    box-shadow:inset 0 0 0 2px;
+
+    font-style: italic;
+    font-weight: bold;
+}
+
+.panel input:focus + span {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.CodeMirror-dialog button {
+    color: white;
+}
+
+.panel p {  margin: 0 16px;  }
+.panel h3 {  margin: 8px 4px;  }
+.panel ol {  margin-top: 0;  }
+.panel span {  margin: 0 4px;  }
+.panel input {  color: black;  }
+.panel {
+    overflow: auto;
+    background: #eb5;
+}
+
+.panel table {
+    margin: 4px;
+    max-height: 256px;
+    display: block;
+    overflow: auto;
+}
+
+.panel .focus {
+    font-weight: bold;
+    font-style: italic;
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+::-moz-placeholder {
+    color: black;
+}
+
+.prompt {
+    margin-top: 8px;
+}
+
+.CodeMirror-dialog ::-webkit-input-placeholder {
+    color: white;
+}
+.CodeMirror-dialog ::-moz-placeholder {
+    color: white;
+}
+
+.panel input[type=text] {
+    cursor: initial;
+    font-style: normal;
+    font-weight: normal;
+    padding: 6px;
+}
+
+.panel th, td {
+    text-align: start;
+    padding: 0 4px;
+}
+
+td pre {
+    margin: 0;
+}
+
+.panel .subproblems td {
+    vertical-align: top;
+}
+
+.CodeMirror-hints {  background: #bbb !important;  }
+li.CodeMirror-hint-active {  background: #272822 !important;  }
+
+span.katex-display {
+    text-align: left;
+}
+
+pre.cm-pretty, pre.cm-latex {
+    margin: 16px;
+    display: block;
+}
+
+.cm-e {
+    background: black;
+    opacity: 0.2;
+}
+
+.cm-s-monokai .cm-ce {
+    background: #373831;
+}
+
+.cm-s-default .cm-ce {
+    background: #e8f2ff;
+}

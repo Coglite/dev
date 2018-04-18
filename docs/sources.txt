@@ -1,0 +1,10 @@
+https://github.com/joeltg/visual-history.git
+
+https://github.com/joeltg/transclusion.git
+
+https://github.com/joeltg/grasp.git
+
+https://github.com/nDimensional/prototypical.git
+
+https://github.com/bijection/franchise-1.git
+

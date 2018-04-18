@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML Transclusions: Joel Gustafson</title>
+    <link rel="import" href="transclusion.html">
+</head>
+<body>
+    <article>
+        <h1>HTML Transclusions</h1>
+        <p><a href="/">Joel Gustafson</a></p>
+        <section>
+            <p>"Transclusion" is a word Ted Nelson made up to describe a thing that is both a quote and a hyperlink (or "jump link" if you have no friends) - you can think of it like individual DOM element import / export from external pages.</p>
+            <p>Usually we don't do that because it's only possible with iframes and those are scary (and atomic at page level).</p>
+            <p>
+                <label for="browsers-suck" class="margin-toggle">⊕</label>
+                <input checked type="checkbox" checked id="browsers-suck" class="margin-toggle">
+                <span class="marginnote">
+                    You need Chrome 55+ or FireFox Beta at the moment.
+                    Complain to your state senator.
+                </span>
+            </p>
+            <p>
+                But hold my beer, imma transclude some stuff with WebComponents & HTML Imports!
+            </p>
+            <p>Here's <a href="thing-one.html">Thing One</a> transcluded from this root thing:</p>
+            <html-import shadow href="thing-one.html"></html-import>
+            <p>And here's <a href="thing-two.html">Thing Two</a> transcluded from this root thing:</p>
+            <html-import shadow href="thing-two.html"></html-import>
+            <p>Wow, what neat cool fun things we can do with WebComponents!</p>
+            <p>Lookit the source code <a href="https://github.com/joeltg/transclusion">here</a>.</p>
+        </section>
+    </article>
+
+</body>
+</html>

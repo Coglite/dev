@@ -1,0 +1,31 @@
+{
+  "name": "mit-scheme",
+  "version": "0.4.9",
+  "description": "MIT Scheme wrapped in JavaScript",
+  "main": "index.js",
+  "config": {
+    "unsafe-perm": false
+  },
+  "scripts": {
+    "test": "nodejs test.js",
+    "install": "scripts/install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeltg/mit-scheme.git"
+  },
+  "keywords": [
+    "scheme",
+    "mit-scheme",
+    "lisp"
+  ],
+  "author": "Joel Gustafson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeltg/mit-scheme/issues"
+  },
+  "homepage": "https://github.com/joeltg/mit-scheme#readme",
+  "dependencies": {
+    "uuid": "^3.0.1"
+  }
+}
