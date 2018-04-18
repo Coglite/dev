@@ -1,4 +1,4 @@
-import { palette } from "./../views/theme/palette"
+import { palette } from "../styles/palette"
 import { createMuiTheme as Mui } from "material-ui/styles"
 import * as mobx from "mobx"
 import { observable, computed, action } from "mobx"
