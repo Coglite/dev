@@ -22,8 +22,8 @@ export const storeRoot = new StoreRoot()
 @observer
 export class App extends React.Component<IRootType, {}> {
   render() {
-    const theme = storeRoot.uiStore.muiTheme
-    const rmwcPath = storeRoot.uiStore.rmwcPath
+    const theme = storeRoot.appViewStore.muiTheme
+    const rmwcPath = storeRoot.appViewStore.rmwcPath
     const history = this.props.history
     return (
       <Provider store={storeRoot}>

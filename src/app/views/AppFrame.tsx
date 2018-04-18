@@ -245,16 +245,16 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 
   toggleMenuDrawer = () => {
-    this.props.store.uiStore.updateMenuDrawerState(!this.props.store.uiStore.isMenuDrawerOpen)
+    this.props.store.appViewStore.updateMenuDrawerState(!this.props.store.appViewStore.isMenuDrawerOpen)
   }
 
   toggleNodeDrawer = () => {
-    this.props.store.uiStore.updateNodeDrawerState(!this.props.store.uiStore.isNodeDrawerOpen)
+    this.props.store.appViewStore.updateNodeDrawerState(!this.props.store.appViewStore.isNodeDrawerOpen)
   }
 
   toggleNodeFormDrawer = () => {
-    this.props.store.uiStore.updateNodeFormDrawerState(
-      !this.props.store.uiStore.isNodeFormDrawerOpen,
+    this.props.store.appViewStore.updateNodeFormDrawerState(
+      !this.props.store.appViewStore.isNodeFormDrawerOpen,
     )
   }
 
@@ -264,7 +264,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 
   handleUserProfile = () => {
-    this.props.store.uiStore.updateTheme("velocity")
+    this.props.store.appViewStore.updateTheme("velocity")
     this.setState({ anchorEl: null })
   }
 
@@ -280,8 +280,8 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
 
   handleThemeDialogClose = (selectedOption: string, action: string) => {
     if (action === "ok") {
-      const uiStore = this.props.store.uiStore
-      uiStore.updateTheme(selectedOption)
+      const appViewStore = this.props.store.appViewStore
+      appViewStore.updateTheme(selectedOption)
     } else {
       //no-op
     }
@@ -307,7 +307,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
 
   render() {
     const { classes } = this.props
-    const { isMenuDrawerOpen, isNodeDrawerOpen, isNodeFormDrawerOpen } = this.props.store.uiStore
+    const { isMenuDrawerOpen, isNodeDrawerOpen, isNodeFormDrawerOpen } = this.props.store.appViewStore
     const { anchorEl, tabValue } = this.state
     const userActionOpen = Boolean(anchorEl)
 
@@ -463,6 +463,8 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                 </div>
               </Toolbar>
             </AppBar>
+
+
             <Drawer
               variant="permanent"
               classes={{
@@ -535,6 +537,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                 </List>
               </div>
             </Drawer>
+            
             <main
               className={classNames(classes.content, {
                 [classes.contentRightShift]: isNodeDrawerOpen || isNodeFormDrawerOpen,
@@ -542,7 +545,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
             >
               <TabContainer tabValue={tabValue} classRules={classes}>
                 {this.props.children}
-              </TabContainer>
+              </TabContainer>    
             </main>
             {nodeFormDrawer}
             {nodeDrawer}
@@ -551,7 +554,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
             classes={{ paper: classes.dialog }}
             open={this.state.themeDialogOpen}
             onOptionDialogClose={this.handleThemeDialogClose}
-            selectedOption={this.props.store.uiStore.themeId}
+            selectedOption={this.props.store.appViewStore.themeId}
             options={["myriad", "velocity", "ranger"]}
             dialogOptions={{ dialogTitle: "Choose Theme", cancelText: "Cancel", okText: "Update" }}
           />

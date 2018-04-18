@@ -3,7 +3,7 @@ import { createMuiTheme as Mui } from "material-ui/styles"
 import * as mobx from "mobx"
 import { observable, computed, action } from "mobx"
 
-class UiStore {
+export class AppViewStore {
   @observable themeId = "myriad"
   @observable isMenuDrawerOpen = false
   @observable isNodeDrawerOpen = false
@@ -68,4 +68,4 @@ class UiStore {
   }
 }
 
-export { UiStore }
+
