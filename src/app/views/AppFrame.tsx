@@ -43,7 +43,7 @@ const appMenuDrawerWidth = 240
 const nodeDrawerWidth = 180
 const nodeFormDrawerWidth = 150
 
-const styles: StyleRulesCallback<"root"> = theme => ({
+const appFrameStyles: StyleRulesCallback<"root"> = theme => ({
   gridRoot: {
     flexGrow: 1,
     width: "100vw",
@@ -563,6 +563,6 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 }
 
-export default cogWrap(AppFrame, styles, true)
+export default cogWrap(AppFrame, appFrameStyles, true)
 
 //export default inject("store")(injectSheet(styles)(observer(AppFrame)))
