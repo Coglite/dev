@@ -13,7 +13,7 @@ export const AppView = observer((props: ICogStore) => {
   const { ...muiTheme } = props.uiStore.muiTheme
   const { ...history } = props.history
   return (
-    <Provider {...cogStore}>
+    <Provider store={cogStore}>
       <ThemeProvider theme={muiTheme}>
         <div id="rootBlock">
           <CssBaseline />

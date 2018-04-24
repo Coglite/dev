@@ -2,8 +2,7 @@ import { WithStyles } from "material-ui"
 import { IReactComponent, inject, observer } from "mobx-react"
 import * as React from "react"
 import injectSheet from "react-jss"
-import { StoreRoot } from "../../stores/storeRoot"
-import { cogStore } from "../../stores"
+import { ICogStore } from "../../stores"
 
 /**
  * @param wrappedComponent {IReactComponent} The base component to be wrapped
@@ -22,7 +21,7 @@ export const cogWrap = (
       const Wrapper = props => {
         return <StyledComponent {...props} {...props.store.uiStore} />
       }
-      return inject(cogStore)(observer(Wrapper))
+      return inject("store")(observer(Wrapper))
     } else {
       return inject("store")(StyledComponent)
     }
@@ -32,7 +31,7 @@ export const cogWrap = (
 }
 
 export interface IStoreProps {
-  store?: StoreRoot
+  store: ICogStore
 }
 
 export interface IStyledProps extends IStoreProps, WithStyles<any> {}
