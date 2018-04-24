@@ -1,12 +1,18 @@
 import * as React from "react"
 import { ListItem, ListItemIcon, ListItemText } from "material-ui/List"
 import InboxIcon from "material-ui-icons/MoveToInbox"
+
+/*
 import DraftsIcon from "material-ui-icons/Drafts"
 import StarIcon from "material-ui-icons/Star"
 import SendIcon from "material-ui-icons/Send"
 import MailIcon from "material-ui-icons/Mail"
 import DeleteIcon from "material-ui-icons/Delete"
 import ReportIcon from "material-ui-icons/Report"
+*/
+
+import { UiStore } from "../stores/UiStore"
+
 import Grid from "material-ui/Grid"
 import * as classNames from "classnames"
 import Drawer from "material-ui/Drawer"
@@ -26,46 +32,33 @@ import LabelOutline from "material-ui-icons/LabelOutline"
 import BorderRight from "material-ui-icons/BorderRight"
 import Menu, { MenuItem } from "material-ui/Menu"
 import Tabs, { Tab } from "material-ui/Tabs"
-import * as _ from "lodash"
-import { cogWrap, IStyledProps } from "./utils/sharedUtil"
+
 import { ConfirmOptionDialog } from "./utils/ConfirmOptionDialog"
-
-//import {Drawer/} from './utils/DrawerLink'
-
-/* import Image from "material-ui-image" */
 
 const cogliteLogo = require("../assets/coglite-logo-dark-gold-box.png")
 
 import { layoutStyles } from "./layout.styles"
 import { TabContainer } from "./TabContainer"
 
+import { observer, inject } from "mobx-react"
+
 interface IAppFrameState {
   anchorEl: any
-  sliderValue: any
+  //sliderValue: any
   tabValue: number
   themeDialogOpen: boolean
 }
 
-export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
+import { withStyles } from "material-ui/styles"
+
+@inject("store")
+@observer
+export class AppFrame extends React.Component<any, IAppFrameState> {
   state: IAppFrameState = {
     anchorEl: null,
-    sliderValue: undefined,
+    //sliderValue: undefined,
     tabValue: 0,
     themeDialogOpen: false,
-  }
-
-  toggleMenuDrawer = () => {
-    this.props.store.uiStore.updateMenuDrawerState(!this.props.store.uiStore.isMenuDrawerOpen)
-  }
-
-  toggleNodeDrawer = () => {
-    this.props.store.uiStore.updateNodeDrawerState(!this.props.store.uiStore.isNodeDrawerOpen)
-  }
-
-  toggleNodeFormDrawer = () => {
-    this.props.store.uiStore.updateNodeFormDrawerState(
-      !this.props.store.uiStore.isNodeFormDrawerOpen,
-    )
   }
 
   handleUserAction = (event?: any) => {
@@ -79,7 +72,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 
   handleUserSettings = event => {
-    //no-op
+    /*no-op*/
   }
 
   handleTabChange = (event, tabValue) => {
@@ -93,19 +86,14 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
       const uiStore = this.props.store.uiStore
       uiStore.updateTheme(selectedOption)
     } else {
-      //no-op
+      /*no-op*/
     }
+
     this.setState({ themeDialogOpen: false })
   }
 
-  handleAppBarTransition = _.debounce(() => {
-    //Broke the 4th Wall Right here ---
-    window.dispatchEvent(new Event("resize"))
-  }, 100)
-
-  handleDrawerTransition = event => {
-    //no-op
-  }
+  //handleAppBarTransition = _.debounce(() => {window.dispatchEvent(new Event("resize"))}, 100)
+  //handleDrawerTransition = event => {/*no-op */}
 
   renderDevTool() {
     if (process.env.NODE_ENV !== "production") {
@@ -117,7 +105,8 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
 
   render() {
     const { classes } = this.props
-    const { isMenuDrawerOpen, isNodeDrawerOpen, isNodeFormDrawerOpen } = this.props.store.uiStore
+    const { menuDrawerToggle, nodeDrawerToggle, nodeFormDrawerToggle } = this.props.store
+      .uiStore as UiStore
     const { anchorEl, tabValue } = this.state
     const userActionOpen = Boolean(anchorEl)
 
@@ -125,14 +114,14 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
       <Drawer
         variant="persistent"
         anchor="right"
-        open={isNodeDrawerOpen}
+        open={nodeDrawerToggle.open ? true : false}
         classes={{
           paper: classes.nodeDrawerPaper,
           paperAnchorRight: classes.nodeDrawerPaperAnchorRight,
         }}
       >
         <div className={classes.nodeDrawerHeader}>
-          <IconButton onClick={this.toggleNodeDrawer}>
+          <IconButton onClick={() => nodeDrawerToggle.openDrawer(false)}>
             <ArrowForwardIcon />
           </IconButton>
         </div>
@@ -178,14 +167,14 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
       <Drawer
         variant="persistent"
         anchor="right"
-        open={isNodeFormDrawerOpen}
+        open={nodeFormDrawerToggle.open}
         classes={{
           paper: classes.nodeFormDrawerPaper,
           paperAnchorRight: classes.nodeFormDrawerPaperAnchorRight,
         }}
       >
         <div className={classes.nodeFormDrawerHeader}>
-          <IconButton onClick={this.toggleNodeFormDrawer}>
+          <IconButton onClick={() => nodeFormDrawerToggle.openDrawer(false)}>
             <Close />
           </IconButton>
         </div>
@@ -201,17 +190,20 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
         <div className={classes.root}>
           <div className={classes.appFrame}>
             <AppBar
-              className={classNames(classes.appBar, isMenuDrawerOpen && classes.appBarLeftShift, {
-                [classes.appBarRightShift]: isNodeDrawerOpen || isNodeFormDrawerOpen,
-              })}
-              onTransitionEnd={this.handleAppBarTransition}
+              className={classNames(
+                classes.appBar,
+                menuDrawerToggle.open && classes.appBarLeftShift,
+                {
+                  [classes.appBarRightShift]: nodeDrawerToggle.open || nodeFormDrawerToggle.open,
+                },
+              )}
             >
-              <Toolbar disableGutters={!isMenuDrawerOpen}>
+              <Toolbar disableGutters={!menuDrawerToggle.open}>
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
-                  onClick={this.toggleMenuDrawer}
-                  className={classNames(classes.menuButton, isMenuDrawerOpen && classes.hide)}
+                  onClick={() => menuDrawerToggle.openDrawer(true)}
+                  className={classNames(classes.menuButton, menuDrawerToggle.open && classes.hide)}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -228,6 +220,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                   <Tab label="Item Four" href="#" />
                   <Tab label="Item Five" href="#" />
                 </Tabs>
+
                 <div>
                   <IconButton
                     aria-owns={userActionOpen ? "menu-appbar" : null}
@@ -240,7 +233,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                   <IconButton
                     aria-owns={userActionOpen ? "menu-appbar" : null}
                     aria-haspopup="true"
-                    onClick={() => this.toggleNodeFormDrawer()}
+                    onClick={() => nodeFormDrawerToggle.openDrawer(true)}
                     color="inherit"
                   >
                     <BorderRight />
@@ -248,7 +241,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                   <IconButton
                     aria-owns={userActionOpen ? "menu-appbar" : null}
                     aria-haspopup="true"
-                    onClick={() => this.toggleNodeDrawer()}
+                    onClick={() => nodeDrawerToggle.openDrawer(true)}
                     color="inherit"
                   >
                     <FormatAlignRight />
@@ -279,16 +272,15 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
               classes={{
                 paper: classNames(
                   classes.drawerPaper,
-                  !isMenuDrawerOpen && classes.drawerPaperClose,
+                  !menuDrawerToggle.open && classes.drawerPaperClose,
                 ),
               }}
-              open={isMenuDrawerOpen}
-              onTransitionEnd={this.handleDrawerTransition}
+              open={menuDrawerToggle.open ? true : false}
             >
               <div className={classes.drawerInner}>
                 <div className={classes.drawerHeader}>
                   <img src={cogliteLogo} style={{ padding: 0 }} className={classes.headerLogo} />
-                  <IconButton onClick={this.toggleMenuDrawer}>
+                  <IconButton onClick={() => menuDrawerToggle.openDrawer(false)}>
                     <ArrowBackIcon />
                   </IconButton>
                 </div>
@@ -301,63 +293,23 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                       </ListItemIcon>
                       <ListItemText primary="Inbox" />
                     </ListItem>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <StarIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Starred" />
-                    </ListItem>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <SendIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Send mail" />
-                    </ListItem>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <DraftsIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Drafts" />
-                    </ListItem>
-                  </div>
-                </List>
-                <Divider />
-                <List>
-                  <div>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <MailIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="All mail" />
-                    </ListItem>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <DeleteIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Trash" />
-                    </ListItem>
-                    <ListItem button>
-                      <ListItemIcon>
-                        <ReportIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Spam" />
-                    </ListItem>
                   </div>
                 </List>
               </div>
             </Drawer>
             <main
               className={classNames(classes.content, {
-                [classes.contentRightShift]: isNodeDrawerOpen || isNodeFormDrawerOpen,
+                [classes.contentRightShift]: nodeDrawerToggle.open || nodeFormDrawerToggle.open,
               })}
             >
-              <TabContainer tabValue={tabValue} classRules={classes}>
+              <TabContainer tabValue={tabValue} className={classes}>
                 {this.props.children}
               </TabContainer>
             </main>
             {nodeFormDrawer}
             {nodeDrawer}
           </div>
+
           <ConfirmOptionDialog
             classes={{ paper: classes.dialog }}
             open={this.state.themeDialogOpen}
@@ -372,6 +324,4 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 }
 
-export default cogWrap(AppFrame, layoutStyles, true)
-
-//export default inject("store")(injectSheet(styles)(observer(AppFrame)))
+export default withStyles(layoutStyles, { withTheme: true })(AppFrame)

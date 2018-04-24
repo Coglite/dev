@@ -1,15 +1,18 @@
 import { palette } from "./../views/theme/palette"
 import { createMuiTheme as Mui } from "material-ui/styles"
 import { observable, computed, action } from "mobx"
+//import {BooleanStore} from './values/Boolean'
 
-export class SidenavViewModel {
+export class ToggleOpenValue {
   @observable open = false
+
   @action
-  setOpen = (open: boolean) => {
+  openDrawer = (open: boolean) => {
     this.open = open
   }
+
   @action
-  handleClose = () => {
+  closeDrawer = () => {
     this.open = false
   }
 }
@@ -17,9 +20,11 @@ export class SidenavViewModel {
 class UiStore {
   @observable title = "Coglite"
   @observable themeId = "myriad"
-  @observable isMenuDrawerOpen = false
-  @observable isNodeDrawerOpen = false
-  @observable isNodeFormDrawerOpen = false
+  @observable menuDrawerToggle = new ToggleOpenValue()
+  @observable nodeDrawerToggle = new ToggleOpenValue()
+  @observable nodeFormDrawerToggle = new ToggleOpenValue()
+  @observable themeDialogToggle = new ToggleOpenValue()
+
   @observable isThemeDialogOpen = false
 
   constructor() {}
@@ -41,21 +46,6 @@ class UiStore {
   @action
   updateTheme(themeId) {
     this.themeId = themeId
-  }
-
-  @action
-  updateMenuDrawerState(isMenuDrawerOpen) {
-    this.isMenuDrawerOpen = isMenuDrawerOpen
-  }
-
-  @action
-  updateNodeDrawerState(isNodeDrawerOpen) {
-    this.isNodeDrawerOpen = isNodeDrawerOpen
-  }
-
-  @action
-  updateNodeFormDrawerState(isNodeFormDrawerOpen) {
-    this.isNodeFormDrawerOpen = isNodeFormDrawerOpen
   }
 
   @action

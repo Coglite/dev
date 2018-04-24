@@ -84,9 +84,8 @@ export const layoutStyles: StyleRulesCallback<"root"> = theme => ({
     }),
   },
   // Make the items inside not wrap when transitioning:
-  drawerInner: {
-    width: appMenuDrawerWidth,
-  },
+  drawerInner: { width: appMenuDrawerWidth },
+
   drawerHeader: {
     display: "flex",
     alignItems: "center",
