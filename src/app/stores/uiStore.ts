@@ -2,7 +2,20 @@ import { palette } from "./../views/theme/palette"
 import { createMuiTheme as Mui } from "material-ui/styles"
 import { observable, computed, action } from "mobx"
 
+export class SidenavViewModel {
+  @observable open = false
+  @action
+  setOpen = (open: boolean) => {
+    this.open = open
+  }
+  @action
+  handleClose = () => {
+    this.open = false
+  }
+}
+
 class UiStore {
+  @observable title = "Coglite"
   @observable themeId = "myriad"
   @observable isMenuDrawerOpen = false
   @observable isNodeDrawerOpen = false
@@ -24,7 +37,6 @@ class UiStore {
       },
     })
   }
-
 
   @action
   updateTheme(themeId) {
@@ -54,6 +66,12 @@ class UiStore {
   @action
   closeThemeDialog() {
     this.isThemeDialogOpen = false
+  }
+
+  @observable uiError: Error
+  @action
+  onError = (error: Error) => {
+    this.uiError = error
   }
 }
 

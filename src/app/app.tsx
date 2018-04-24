@@ -1,38 +1,29 @@
 // This is the top-most component in the app.
 import * as React from "react"
 import { Router } from "react-router"
-import { SynchronizedHistory } from "mobx-react-router"
 import CssBaseline from "material-ui/CssBaseline"
 import AppFrame from "./views/AppFrame"
 import Routes from "./routes"
-import { StoreRoot } from "./stores/storeRoot"
 import { ThemeProvider } from "react-jss"
 import { Provider, observer } from "mobx-react"
 
-interface IRootType {
-  history: SynchronizedHistory
-}
+import { cogStore, ICogStore } from "./stores"
 
-export const storeRoot = new StoreRoot()
-
-@observer
-export class App extends React.Component<IRootType, {}> {
-  render() {
-    const theme = storeRoot.uiStore.muiTheme
-    const history = this.props.history
-    return (
-      <Provider store={storeRoot}>
-        <ThemeProvider theme={theme}>
-          <div id="rootBlock">
-            <CssBaseline />
-            <AppFrame>
-              <Router history={history}>
-                <Routes />
-              </Router>
-            </AppFrame>
-          </div>
-        </ThemeProvider>
-      </Provider>
-    )
-  }
-}
+export const AppView = observer((props: ICogStore) => {
+  const { ...muiTheme } = props.uiStore.muiTheme
+  const { ...history } = props.history
+  return (
+    <Provider {...cogStore}>
+      <ThemeProvider theme={muiTheme}>
+        <div id="rootBlock">
+          <CssBaseline />
+          <AppFrame>
+            <Router history={history}>
+              <Routes />
+            </Router>
+          </AppFrame>
+        </div>
+      </ThemeProvider>
+    </Provider>
+  )
+})
