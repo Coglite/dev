@@ -7,14 +7,12 @@ import SendIcon from "material-ui-icons/Send"
 import MailIcon from "material-ui-icons/Mail"
 import DeleteIcon from "material-ui-icons/Delete"
 import ReportIcon from "material-ui-icons/Report"
-import { StyleRulesCallback } from "material-ui/styles/withStyles"
 import Grid from "material-ui/Grid"
 import * as classNames from "classnames"
 import Drawer from "material-ui/Drawer"
 import AppBar from "material-ui/AppBar"
 import Toolbar from "material-ui/Toolbar"
 import List from "material-ui/List"
-//import Typography from "material-ui/Typography"
 import Divider from "material-ui/Divider"
 import IconButton from "material-ui/IconButton"
 import MenuIcon from "material-ui-icons/Menu"
@@ -25,7 +23,6 @@ import AccountCircle from "material-ui-icons/AccountCircle"
 import FormatAlignRight from "material-ui-icons/FormatAlignRight"
 import Input from "material-ui-icons/Input"
 import LabelOutline from "material-ui-icons/LabelOutline"
-//import ChevronRight from "material-ui-icons/ChevronRight"
 import BorderRight from "material-ui-icons/BorderRight"
 import Menu, { MenuItem } from "material-ui/Menu"
 import Tabs, { Tab } from "material-ui/Tabs"
@@ -39,203 +36,14 @@ import { ConfirmOptionDialog } from "./utils/ConfirmOptionDialog"
 
 const cogliteLogo = require("../assets/coglite-logo-dark-gold-box.png")
 
-const appMenuDrawerWidth = 240
-const nodeDrawerWidth = 180
-const nodeFormDrawerWidth = 150
-
-const appFrameStyles: StyleRulesCallback<"root"> = theme => ({
-  gridRoot: {
-    flexGrow: 1,
-    width: "100vw",
-    height: "100vh",
-    padding: 0,
-    margin: 0,
-  },
-  root: {
-    width: "100%",
-    zIndex: 1,
-    overflow: "hidden",
-  },
-  appFrame: {
-    position: "relative",
-    display: "flex",
-    width: "100%",
-    height: "100%",
-  },
-  appBar: {
-    position: "absolute",
-    /* zIndex: theme.zIndex.drawer + 1, */
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarLeftShift: {
-    marginLeft: appMenuDrawerWidth,
-    width: `calc(100% - ${appMenuDrawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  appBarRightShift: {
-    width: (props: any) => {
-      let shiftWidth = 0
-      if (props.isMenuDrawerOpen) shiftWidth += appMenuDrawerWidth
-      if (props.isNodeDrawerOpen) shiftWidth += nodeDrawerWidth
-      if (props.isNodeFormDrawerOpen) shiftWidth += nodeFormDrawerWidth
-      return `calc(100% - ${shiftWidth}px)`
-    },
-    marginRight: (props: any) => {
-      let shiftWidth = 0
-      if (props.isNodeDrawerOpen) shiftWidth += nodeDrawerWidth
-      if (props.isNodeFormDrawerOpen) shiftWidth += nodeFormDrawerWidth
-      return shiftWidth
-    },
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 60,
-    marginRight: 36,
-  },
-  hide: {
-    display: "none",
-  },
-  drawerPaper: {
-    position: "relative",
-    height: "100%",
-    width: appMenuDrawerWidth,
-    overflow: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    width: 60,
-    overflow: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  // Make the items inside not wrap when transitioning:
-  drawerInner: {
-    width: appMenuDrawerWidth,
-  },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 8px",
-    boxShadow: theme.shadows["4"],
-    ...theme.mixins.toolbar,
-  },
-  flex: {
-    flex: 1,
-  },
-  headerLogo: {
-    position: "relative",
-    padding: 0,
-    width: "120px",
-    height: "40px",
-  },
-
-  nodeDrawerPaper: {
-    position: "relative",
-    width: nodeDrawerWidth,
-  },
-  nodeDrawerPaperAnchorRight: {
-    left: "auto",
-    right: 0,
-  },
-  nodeDrawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
-    ...theme.mixins.toolbar,
-  },
-  nodeFormDrawerPaper: {
-    position: "relative",
-    width: nodeFormDrawerWidth,
-  },
-  nodeFormDrawerPaperAnchorRight: {
-    left: "auto",
-    right: props => {
-      if (!props.isNodeDrawerOpen && props.isNodeFormDrawerOpen) {
-        return -nodeDrawerWidth
-      } else {
-        return 0
-      }
-    },
-  },
-  nodeFormDrawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: "0 8px",
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    width: "100%",
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 2,
-    height: "calc(100% - 56px)",
-    marginTop: 56,
-    [theme.breakpoints.up("sm")]: {
-      height: "calc(100% - 64px)",
-      marginTop: 64,
-    },
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: -(nodeDrawerWidth + nodeFormDrawerWidth),
-  },
-  contentRightShift: {
-    transition: theme.transitions.create("marginRight", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: (props: any) => {
-      let currentMargin
-      if (props.isNodeDrawerOpen && props.isNodeFormDrawerOpen) currentMargin = 0
-      else if (props.isNodeDrawerOpen) currentMargin = -nodeFormDrawerWidth
-      else if (props.isNodeFormDrawerOpen) currentMargin = -nodeDrawerWidth
-      return currentMargin
-    },
-  },
-  dialog: {
-    width: "80%",
-    maxHeight: 435,
-  },
-  tabContainer: {
-    position: "relative",
-    height: "100%",
-    width: "100%",
-  },
-})
+import { layoutStyles } from "./layout.styles"
+import { TabContainer } from "./TabContainer"
 
 interface IAppFrameState {
   anchorEl: any
   sliderValue: any
   tabValue: number
   themeDialogOpen: boolean
-}
-
-interface ITabContainerProps {
-  children: React.ReactNode
-  tabValue: number
-  classRules: any
-}
-
-const TabContainer: React.SFC<ITabContainerProps> = props => {
-  return <div className={props.classRules.tabContainer}>{props.children}</div>
 }
 
 export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
@@ -465,6 +273,7 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
                 </div>
               </Toolbar>
             </AppBar>
+
             <Drawer
               variant="permanent"
               classes={{
@@ -563,6 +372,6 @@ export class AppFrame extends React.Component<IStyledProps, IAppFrameState> {
   }
 }
 
-export default cogWrap(AppFrame, appFrameStyles, true)
+export default cogWrap(AppFrame, layoutStyles, true)
 
 //export default inject("store")(injectSheet(styles)(observer(AppFrame)))

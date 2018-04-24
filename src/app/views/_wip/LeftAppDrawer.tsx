@@ -1,67 +1,29 @@
-import withStyles, { StyleRulesCallback } from "material-ui/styles/withStyles"
+import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+import DeleteIcon from "@material-ui/icons/Delete"
+import DraftsIcon from "@material-ui/icons/Drafts"
+import MailIcon from "@material-ui/icons/Mail"
+import InboxIcon from "@material-ui/icons/MoveToInbox"
+import ReportIcon from "@material-ui/icons/Report"
+import SendIcon from "@material-ui/icons/Send"
+import StarIcon from "@material-ui/icons/Star"
+import * as classNames from "classnames"
 import {
+  Divider,
   Drawer,
   IconButton,
   List,
-  Divider,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from "material-ui"
-import * as classNames from "classnames"
-
+import withStyles from "material-ui/styles/withStyles"
 import * as React from "react"
 
-import InboxIcon from "@material-ui/icons/MoveToInbox"
-import DraftsIcon from "@material-ui/icons/Drafts"
-import StarIcon from "@material-ui/icons/Star"
-import SendIcon from "@material-ui/icons/Send"
-import MailIcon from "@material-ui/icons/Mail"
-import DeleteIcon from "@material-ui/icons/Delete"
-import ReportIcon from "@material-ui/icons/Report"
-import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+import { cogWrap, IStyledProps } from "./utils/sharedUtil"
 
 const cogliteLogo = require("../assets/coglite-logo-dark-gold-box.png")
 
-//@ts-ignore
-const styles: StyleRulesCallback = theme => ({
-  drawerPaper: {
-    position: "relative",
-    height: "100%",
-    width: props => props.appMenuDrawerWidth,
-    overflow: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    width: 60,
-    overflow: "hidden",
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  // Make the items inside not wrap when transitioning:
-  drawerInner: {
-    width: props => props.appMenuDrawerWidth,
-  },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 8px",
-    boxShadow: theme.shadows["4"],
-    ...theme.mixins.toolbar,
-  },
-  headerLogo: {
-    position: "relative",
-    padding: 0,
-    width: "120px",
-    height: "40px",
-  },
-})
+import { layoutStyles } from "./layout.styles"
 
 type LeftAppDrawerProps = {
   classes?: any
@@ -144,4 +106,4 @@ const _LeftAppDrawer = (props: LeftAppDrawerProps) => (
   </Drawer>
 )
 
-export const LeftAppDrawer = withStyles(styles, { withTheme: true })(_LeftAppDrawer)
+export const LeftAppDrawer = cogWrap(layoutStyles, { withTheme: true })(_LeftAppDrawer)

@@ -1,4 +1,3 @@
-// This is the top-most component in the app.
 import * as React from "react"
 import { Router } from "react-router"
 import CssBaseline from "material-ui/CssBaseline"
