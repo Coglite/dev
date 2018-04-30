@@ -3,9 +3,9 @@ import { RouterStore } from "./RouterStore"
 import { UiStore } from "./UiStore"
 
 export interface ICogStore {
-  routerStore: RouterStore
-  uiStore: UiStore
-  history: History
+  routerStore?: RouterStore
+  uiStore?: UiStore
+  history?: History
 }
 
 class CogStore implements ICogStore {

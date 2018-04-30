@@ -25,9 +25,6 @@
     "lint": "tslint --project .",
     "pack": "electron-builder --dir",
     "updatedeps": "electron-builder install-app-deps",
-    "precommit": "lint-staged",
-    "prepush": "npm-run-all",
-    "sanity": "npm-run-all clean typecheck lint test clean compile clean",
     "start1": "ts-node fuse",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
@@ -64,7 +61,7 @@
     "react-transition-group": "2.3.1",
     "rmwc": "1.5.3",
     "storm-react-diagrams": "5.1.1",
-    "typestyle": "1.7.2"
+    "typestyle": "^1.7.2"
   },
   "devDependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
@@ -89,7 +86,7 @@
     "babel-preset-react": "6.24.1",
     "coveralls": "3.0.0",
     "cross-env": "5.1.4",
-    "csstips": "0.2.3",
+    "csstips": "^0.2.3",
     "electron": "1.8.4",
     "electron-builder": "20.8.1",
     "fuse-box": "3.2.1",
@@ -98,7 +95,6 @@
     "gulp-postcss": "^7.0.1",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
-    "husky": "0.14.3",
     "jest": "22.4.3",
     "jest-expect-contain-deep": "1.0.1",
     "lint-staged": "7.0.4",

@@ -1,23 +1,21 @@
 import * as React from "react"
-import { Switch, Route } from "react-router-dom"
-import Canvas from "./views/pages/Diagram/Canvas"
+import { Route, Switch } from "react-router-dom"
 import {
-  NotebookPage,
-  DatasetsPage,
-  ChartsPage,
-  DashboardPage,
-  CloudPage,
-  SettingsPage,
   AboutPage,
-} from "./views/pages"
+  ChartsPage,
+  CloudPage,
+  DashboardPage,
+  DatasetsPage,
+  SettingsPage,
+} from "./components"
 
+import { NotebookView } from "./components/notebook/View"
 
-export default () => (
+export let AppRoutes = (props) => (
   <Switch>
-    <Route path="/second" render={() => <Canvas num="2" someProp={100} />} />
-    <Route path="/" render={() => <Canvas num="2" someProp={100} />} />
+    <Route path="/" component={NotebookView} />
     <Route path="/pages/dashboard" component={DashboardPage} />
-    <Route path="/pages/notebook" component={NotebookPage} />
+    <Route path="/pages/notebook" component={NotebookView} />
     <Route path="/pages/datasets" component={DatasetsPage} />
     <Route path="/pages/charts" component={ChartsPage} />
     <Route path="/pages/cloud" component={CloudPage} />

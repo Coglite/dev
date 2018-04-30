@@ -1,0 +1,51 @@
+    html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body, button, input, textarea, select {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "HelveticaNeue-Light", "Ubuntu", "Droid Sans", sans-serif;
+        font-size: 15px;
+        border-radius: 2px;
+    }
+
+    a, button {
+        transition: all .2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus {
+        outline-width: 0;
+    }
+
+    button {
+        background: #3A96DD;
+        border: none;
+        border-radius: 2px;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+    }
+    button:hover {
+        background: #0063B1;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+
+    .fill-parent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }

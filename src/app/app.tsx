@@ -1,10 +1,9 @@
 import * as React from "react"
-import { Router } from "react-router"
-import CssBaseline from "material-ui/CssBaseline"
-import AppFrame from "./views/AppFrame"
-import Routes from "./routes"
-import { ThemeProvider } from "react-jss"
+import { Router } from "react-router-dom"
+import { AppRoutes } from "./routes"
 import { Provider, observer } from "mobx-react"
+import CssBaseline from "material-ui/CssBaseline"
+import { ThemeProvider } from "react-jss"
 
 import { cogStore, ICogStore } from "./stores"
 
@@ -14,15 +13,18 @@ export const AppView = observer((props: ICogStore) => {
   return (
     <Provider store={cogStore}>
       <ThemeProvider theme={muiTheme}>
-        <div id="rootBlock">
+        <div>
           <CssBaseline />
-          <AppFrame>
+          <div className="fill-parent">
             <Router history={history}>
-              <Routes />
+              <AppRoutes />
             </Router>
-          </AppFrame>
-        </div>
+          </div>
+        </div>    
       </ThemeProvider>
     </Provider>
   )
 })
+
+document.addEventListener("dragover", event => event.preventDefault())
+document.addEventListener("drop", event => event.preventDefault())

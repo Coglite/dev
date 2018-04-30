@@ -1,9 +1,8 @@
-import { palette } from "./../views/theme/palette"
+import { palette } from "../styles/palette"
 import { createMuiTheme as Mui } from "material-ui/styles"
 import { observable, computed, action } from "mobx"
-//import {BooleanStore} from './values/Boolean'
 
-export class ToggleOpenValue {
+class ToggleOpenValue {
   @observable open = false
 
   @action
@@ -17,6 +16,14 @@ export class ToggleOpenValue {
   }
 }
 
+export class TabValue {
+  @observable tabValue = 0
+  @action
+  setTab(event, tabValue) {
+    this.tabValue = tabValue
+  }
+}
+
 class UiStore {
   @observable title = "Coglite"
   @observable themeId = "myriad"
@@ -26,6 +33,10 @@ class UiStore {
   @observable themeDialogToggle = new ToggleOpenValue()
 
   @observable isThemeDialogOpen = false
+
+  @observable appBarSettingsMenuToggle = new ToggleOpenValue()
+
+  @observable appTabs = new TabValue()
 
   constructor() {}
 

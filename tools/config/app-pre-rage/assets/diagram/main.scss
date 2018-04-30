@@ -1,0 +1,11 @@
+@import "base/DiagramWidget";
+@import "base/LinkLayerWidget";
+@import "base/NodeLayerWidget";
+@import "base/NodeWidget";
+@import "base/PortWidget";
+
+//defaults
+@import "defaults/DefaultNodeWidget";
+@import "defaults/DefaultPortWidget";
+@import "defaults/DefaultLabelWidget";
+@import "defaults/DefaultLinkWidget";
