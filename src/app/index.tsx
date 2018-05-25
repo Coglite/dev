@@ -1,16 +1,8 @@
 import * as React from 'react';
-import { bootstrap } from './bootstrap';
-import { Workflow, WorkflowStepSimple } from './models/workflow';
-import {StepCodeEditor} from './components/step-code-editor'
+import * as ReactDOM from 'react-dom'
+import { DesignerApp } from './components/workflow-toolbar/designer-screen';
 
 
-bootstrap(
-    document.getElementById('root'), 
-    false, 
-    true,
-    new Workflow(),
-    (step: WorkflowStepSimple, fieldName: string) => {
-        return <StepCodeEditor step={step} fieldName={fieldName}/>
-    },
-    (url: string, text: string) => <a href={url} target="_blank">{text}</a>
-);
+ReactDOM.render(<DesignerApp />, document.getElementById('root'));
+
+

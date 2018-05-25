@@ -165,6 +165,24 @@ export class DesignerScreen extends React.Component<DesignerScreenProps, {}> {
             </div>
         </div >;
     }
+};
+
+@observer
+export class DesignerApp extends React.Component<any, any> {
+constructor(props, context?){
+    super(props)
+}
+
+render(){
+    let theme = {};
+    return(
+        <JssProvider jss={jss}>
+            <ThemeProvider theme={theme}>
+                <DesignerScreen />
+            </ThemeProvider>
+        </JssProvider>
+    )
+ }
 }
 
 export function render() {

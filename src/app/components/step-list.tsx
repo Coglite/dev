@@ -109,20 +109,21 @@ export interface StepListProps {
     state: EditorState;
     onStepSelect?: (step: WorkflowStep) => void
     classes?:any;
+    drake: Dragula.Drake;
 }
 
 
 @injectSheet(styles)
 @observer
 export class StepList extends React.Component<StepListProps, {}> {
-    private drake: Dragula.Drake;
+    public drake: Dragula.Drake;
     public state = {
         dragging: false,
         deleting: false
     };
      deleteDiv: HTMLElement;
 
-    constructor(props: StepListProps) {
+    constructor(props) {
         super(props);
     }
 
@@ -210,6 +211,7 @@ export class StepList extends React.Component<StepListProps, {}> {
         }
     }
 
+
 /*
     componentDidMount() {
         let container = ReactDOM.findDOMNode(this),
@@ -252,7 +254,7 @@ export class StepList extends React.Component<StepListProps, {}> {
     }
 */
     componentWillUnmount() {
-        this.drake.destroy();
+        //this.props.drake.destroy();
     }
 
     private stepClasses(step: WorkflowStep) {
