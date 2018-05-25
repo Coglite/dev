@@ -12,6 +12,7 @@ import { WorkflowStepSimple, Workflow } from '../../models/workflow';
 import { CatalogSelect } from './catalog-select';
 import { CenteredContent } from '../../util/centered-content';
 
+
 const jssStyles = (theme: any) => ({
     editor: {
         composes: 'pure-u-g'
