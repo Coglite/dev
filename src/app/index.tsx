@@ -1,18 +1,16 @@
-import * as ReactDOM from 'react-dom'
-import * as React from 'react'
-import {CogliteRoot} from './CogliteRoot'
+import * as React from 'react';
+import { bootstrap } from './bootstrap';
+import { Workflow, WorkflowStepSimple } from './models/workflow';
+import {StepCodeEditor} from './components/step-code-editor'
 
 
-import { createHashHistory } from "history"
-import { RouterStore, syncHistoryWithStore } from "mobx-react-router"
-
-const browserHistory = createHashHistory()
-const routingStore = new RouterStore()
-
-import "./styles.css"
-
-const history = syncHistoryWithStore(browserHistory, routingStore)
-
-
-
-ReactDOM.render(<CogliteRoot history={history} />, document.getElementById("root"));
+bootstrap(
+    document.getElementById('root'), 
+    false, 
+    true,
+    new Workflow(),
+    (step: WorkflowStepSimple, fieldName: string) => {
+        return <StepCodeEditor step={step} fieldName={fieldName}/>
+    },
+    (url: string, text: string) => <a href={url} target="_blank">{text}</a>
+);

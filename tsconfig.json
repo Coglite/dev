@@ -11,8 +11,6 @@
     "noImplicitReturns": true,
     "outDir": "dist"
   },
-  "include": ["src", "typings", "fuse.ts", "./storybook/views"],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src", "typings"],
+  "exclude": ["node_modules"]
 }

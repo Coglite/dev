@@ -46,7 +46,3 @@ var cssOut = fs.readFileSync('./src/app/styles.css', 'utf8')
 var CssStats = cssstats(cssOut)
 
 gulp.task('css:stats', () => {console.log(CssStats)})
-
-
-
-

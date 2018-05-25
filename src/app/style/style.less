@@ -1,0 +1,173 @@
+.workflow-editor.base-web-style  {
+    [class *= "pure-u"], [class = "pure-g"] {
+        font-family: 'Lato' !important;
+
+        input {
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        input.code {
+            font-family: 'Courier New' !important;
+        }
+    }
+
+}
+
+.workflow-editor.base-ide-style  {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+
+    @media screen and (min-width: 64em) {
+        overflow-y: hidden;
+    }
+
+    > div {
+        @media screen and (min-width: 64em) {
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+
+    fieldset {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        min-width: 0;
+    }
+
+    label {
+        margin-bottom: 0;
+    }
+}
+
+.select-medium {
+    .Select-control {
+        height: 70px;
+
+        .Select-value:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+
+        .Select-input {
+            input {
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .Select-menu-outer {
+        max-height: 400px;
+        z-index: 5;
+
+        .Select-menu {
+            max-height: 398px;
+        }
+    }
+}
+
+.select-normal {
+    .Select-control {
+        .Select-input {
+            input {
+                border: none;
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.select-large {
+    .Select-control {
+        height: 100px;
+
+        .Select-value:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+
+        .Select-input {
+            input {
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .Select-menu-outer {
+        max-height: 400px;
+        z-index: 5;
+
+        .Select-menu {
+            max-height: 398px;
+        }
+    }
+}
+
+.block {
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.block-force {
+    margin-bottom: 10px;
+}
+
+.block-sm {
+    @media screen and (max-width: 47.99em) {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.block-md {
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 64em) {
+        margin-bottom: 0px;
+    }
+}
+
+.not-block-md {
+    @media screen and (max-width: 63.99em) {
+        margin-bottom: 0px;
+
+        &:not(:last-child) {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+.pure-g > div, .pure-g > label {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.pure-form label {
+    margin: 0px;
+}
+
+.tooltip {
+    a, a:hover, a:active, a:visited {
+        color: #ddd;
+        text-decoration: none;
+        font-weight: 700;
+
+        &:hover, &:active {
+            color: #fff;
+        }
+    }
+}

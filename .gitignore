@@ -11,3 +11,5 @@ dev-app-update.yml
 coverage/
 src/app/assets/*.scss
 src/app/styled-index.tsx
+tools/
+dist/

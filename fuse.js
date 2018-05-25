@@ -1,4 +1,4 @@
-const {FuseBox,SassPlugin,CSSPlugin,WebIndexPlugin,Sparky,UglifyJSPlugin,QuantumPlugin,EnvPlugin, CopyPlugin} = require("fuse-box");
+const {FuseBox,SassPlugin,CSSPlugin,WebIndexPlugin,Sparky,UglifyJSPlugin,QuantumPlugin,EnvPlugin, CopyPlugin, LESSPlugin} = require("fuse-box");
 const express = require("express");
 const path = require("path");
 const {spawn} = require("child_process");
@@ -19,6 +19,7 @@ Sparky.task("build:app", () => {
         plugins: [
             EnvPlugin({ NODE_ENV: production ? "production" : "development" }),
             [SassPlugin(), CSSPlugin()],
+            [LESSPlugin(), CSSPlugin()],
             WebIndexPlugin({
                 title: "Coglite Desktop",
                 template: "src/app/index.html",
@@ -83,10 +84,7 @@ Sparky.task("build:desktop", () => {
 
         return fuse.run().then(() => {
             spawn("node", [`${__dirname}/node_modules/electron/cli.js`, __dirname], {stdio: "inherit"})
-            .on("exit", code => {
-                console.log(`electron process exited with code ${code}`)
-                process.exit(code)
-            })
+            .on("exit", () => process.exit(0))
         });
     }
 
