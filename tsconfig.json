@@ -1,16 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": false,
-    "noUnusedLocals": true,
-    "strictNullChecks": false,
-    "noImplicitReturns": true,
-    "outDir": "dist"
-  },
-  "include": ["src", "typings"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "esnext",
+        "jsx": "react",
+        "experimentalDecorators": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "docs", "resources", "tools"]
 }

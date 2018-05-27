@@ -1,105 +1,117 @@
-const {FuseBox,SassPlugin,CSSPlugin,WebIndexPlugin,Sparky,UglifyJSPlugin,QuantumPlugin,EnvPlugin, CopyPlugin, LESSPlugin} = require("fuse-box");
-const express = require("express");
-const path = require("path");
-const {spawn} = require("child_process");
+const { spawn } = require('child_process');
+const { CSSResourcePlugin, CSSPlugin, EnvPlugin, FuseBox, QuantumPlugin, SassPlugin, Sparky, CopyPlugin } = require('fuse-box');
 
-let producer
-const production = process.env.NODE_ENV === "production" || false
+
+let isProduction = false;
 
 const OUTPUT_DIR = "dist"
 const ASSETS = ["*.jpg", "*.png", "*.jpeg", "*.gif", "*.svg"]
 
-Sparky.task("build:app", () => {
-    const fuse = FuseBox.init({
-        homeDir: "src/app",
-        output: "dist/app/$name.js",
-        hash: production,
-        target: "electron",
-        cache: !production,
-        plugins: [
-            EnvPlugin({ NODE_ENV: production ? "production" : "development" }),
-            [SassPlugin(), CSSPlugin()],
-            [LESSPlugin(), CSSPlugin()],
-            WebIndexPlugin({
-                title: "Coglite Desktop",
-                template: "src/app/index.html",
-                path: production ? "." : "/app/"
-            }),
-            production && QuantumPlugin({
-                bakeApiIntoBundle : 'app',
-                target : 'electron',
-                treeshake: true,
-                removeExportsInterop: false,
-                uglify: true
-            })
-        ]
-    });
+let VENDOR_CSS = [
+  "node_modules/@blueprintjs/core/lib/css/blueprint.css",
+  //"node_modules/antd/dist/antd.css"
+]
 
-    if (!production) {
-        fuse.dev({ root: false }, server => {
-            const dist = path.join(__dirname, "dist");
-            const app = server.httpServer.app;
-            app.use("/app/", express.static(path.join(dist, 'app')));
-            app.get("*", function(req, res) {
-                res.sendFile(path.join(dist, "app/index.html"));
-            });
-        })
-    }
+Sparky.task("copy-html", () => Sparky
+    .src("src/app/index.html")
+    .dest("build/app/$name"));
 
-    const app = fuse.bundle("app")
-        .instructions('> [index.tsx] + fuse-box-css')
-        .plugin(CSSPlugin())
-        .plugin(CopyPlugin({ useDefault: false, files: ASSETS, dest: "assets", resolve: "assets/" }))
+Sparky.task("copy-external-css", () => Sparky
+    .src(VENDOR_CSS)
+    .dest("build/app/assets/css/$name"));
 
-    if (!production) {
-        app.hmr().watch()
-    }
+Sparky.task("copy-desktop-assets", () => Sparky.src("**/*.ttf", { base: "src/desktop/assets" }).dest("build/desktop/assets"));
+Sparky.task("copy-app-assets", () => Sparky.src("**/*.ttf", { base: "src/app/assets" }).dest("build/app/assets"));
 
-    return fuse.run()
-});
 
-Sparky.task("build:desktop", () => {
-    const fuse = FuseBox.init({
-        homeDir: "src/desktop",
-        output: "dist/desktop/$name.js",
-        target: "server",
-        cache: !production,
-        plugins: [
-            EnvPlugin({ NODE_ENV: production ? "production" : "development" }),
-            production && QuantumPlugin({
-                bakeApiIntoBundle : 'desktop',
-                target : 'server',
-                treeshake: true,
-                removeExportsInterop: false,
-                uglify: true
-            })
-        ]
-    });
-
-    const app = fuse.bundle("desktop")
-        .instructions('> [main.ts]')
-
-    if (!production) {
-        app.watch()
-
-        return fuse.run().then(() => {
-            spawn("node", [`${__dirname}/node_modules/electron/cli.js`, __dirname], {stdio: "inherit"})
-            .on("exit", () => process.exit(0))
+Sparky.task(
+    "build:desktop",
+    ["copy-desktop-assets"],
+    () => {
+        const fuse = FuseBox.init({
+            homeDir: "src/desktop",
+            output: "build/desktop/$name.js",
+            target: "server@esnext",
+            useTypescriptCompiler : true,
+            cache: !isProduction,
+            plugins: [
+                EnvPlugin({ NODE_ENV: isProduction ? "production" : "development" }),
+                isProduction && QuantumPlugin({
+                    bakeApiIntoBundle: "desktop",
+                    target: "server@esnext",
+                    treeshake: true,
+                    uglify: true,
+                }),
+            ],
         });
-    }
 
-    return fuse.run()
-});
+        const bundle = fuse
+            .bundle("desktop")
+            .target("server")
+            .instructions("> [main.ts]");
+
+        if (!isProduction) {
+            bundle.watch();
+
+            return fuse.run().then(() => {
+                spawn('electron',[".", "--colors"],{ shell: true, stdio: "inherit" })
+                .on('exit', () => process.exit(0))
+            });
+        }
+
+        return fuse.run();
+    });
+
+Sparky.task(
+    "build:app",
+    ["copy-html", "copy-external-css", "copy-app-assets"],
+    () => {
+        const fuse = FuseBox.init({
+            homeDir: "src/app",
+            output: "build/app/$name.js",
+            target: "electron@esnext",
+            useTypescriptCompiler : true,
+            cache: !isProduction,
+            plugins: [
+                EnvPlugin({ NODE_ENV: isProduction ? "production" : "development" }),
+                [/node_modules.*\.css$/,SassPlugin(), CSSResourcePlugin({inline: true}),CSSPlugin()],
+                isProduction && QuantumPlugin({
+                    bakeApiIntoBundle: "app",
+                    target: "electron@esnext",
+                    treeshake: true,
+                    uglify: true,
+                }),
+            ],
+        });
+
+        if (!isProduction) {fuse.dev({port: 9696, httpServer: false,})}
+
+        const bundle = fuse
+            .bundle("app")
+            .target("electron")
+            .instructions("> [index.tsx] + fuse-box-css")
+            .plugin(CopyPlugin({ useDefault: false, files: ASSETS, dest: "assets", resolve: "assets/" }));
+
+        if (!isProduction) {
+            bundle
+            .plugin([SassPlugin({importer: true}), CSSPlugin()])
+            .plugin(CSSPlugin())
+            .watch()
+            .hmr();
+        }
+
+        bundle.plugin([
+            SassPlugin({importer: true,macros: { "$home": "src/app/styles/" }}),
+            CSSPlugin({group: "styles.css", outFile: "build/app/styles.css"})
+            ]);
+
+        return fuse.run();
+    });
 
 
-// dev
-Sparky.task("default", ["clean:dist", "clean:cache", "build:app", "build:desktop"], () => {});
-
-// clean
-Sparky.task("clean:dist", () => Sparky.src("dist/*").clean("dist/"));
+Sparky.task("clean:build", () => Sparky.src("build/*").clean("build/"));
 Sparky.task("clean:cache", () => Sparky.src(".fusebox/*").clean(".fusebox/"));
-Sparky.task("clean:all", ["clean:dist", "clean:cache"]);
+Sparky.task("default", ["clean:build", "clean:cache", "build:app", "build:desktop"], () => { });
 
-// prod
-Sparky.task("set-production-env", () => production = true);
-Sparky.task("dist", ["clean:dist", "clean:cache", "set-production-env", "build:desktop", "build:app"], () => {})
+Sparky.task("set-prod-env", () => isProduction = true);
+Sparky.task("build:production", ["set-prod-env", "default"], () => { });

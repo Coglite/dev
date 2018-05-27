@@ -3,7 +3,12 @@ import { app, BrowserWindow, Menu } from "electron";
 import {format} from 'url';
 import { resolve } from 'app-root-path';
 import { join } from "path";
-import { initMenu } from "./settings/menu";
+
+
+//import { setMenu } from './menu'
+import { store } from "./store";
+
+
 
 let mainWindow: BrowserWindow;
 
@@ -17,8 +22,13 @@ var isProd = process.env.NODE_ENV === 'production' ? true : false;
 });
 
 
+
+
+
+
   const devPath = format({pathname: '//localhost:8888/',protocol: 'http:', slashes: true});
   const prodPath = format({pathname: resolve('dist/app/index.html'), protocol: 'file:', slashes: true });
+  //@ts-ignore
   const fuseboxPath = format({pathname: join(appPath, "dist/app/index.html"), protocol: "file:", slashes: true});
 
 //@ts-ignore
@@ -26,9 +36,8 @@ var isProd = process.env.NODE_ENV === 'production' ? true : false;
 
 
 //dont open devtools in this function or u'll get error spam on startup
-let createMainWindow = async () => {
-  initMenu();
 
+export let createMainWindow = () => {
     mainWindow = new BrowserWindow({
         width: 960,
         height: 640,
@@ -36,13 +45,11 @@ let createMainWindow = async () => {
             webSecurity: false,
             experimentalFeatures: true,
             experimentalCanvasFeatures: true,
-            nodeIntegrationInWorker: true,
-            nodeIntegration: true,
             plugins: true
         }
     });
 
-    mainWindow.loadURL(fuseboxPath);
+    mainWindow.loadURL(`file:///${app.getAppPath()}/build/app/index.html`);
 
     mainWindow.webContents.on("context-menu", (e: any, props: any) => {
       Menu.buildFromTemplate([{
@@ -59,12 +66,15 @@ let createMainWindow = async () => {
 
     mainWindow.on('closed', () => {mainWindow = null, process.kill(process.pid)});
     //mainWindow.on("close", () => {mainWindow = null}); not sure which is better to use here?
+    
     return mainWindow
-
 };
 
 
-app.on("ready", async () => {createMainWindow()});
+app.on("ready", async () => {
+    //setMenu()
+    store.dispatch({ type: 'NEW_WINDOW' }) 
+    });
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
@@ -74,6 +84,6 @@ app.on("window-all-closed", () => {
 
 app.on("activate", () => {
     if (mainWindow === null) {
-        createMainWindow();
+        store.dispatch({ type: 'NEW_WINDOW' })
     }
 });
