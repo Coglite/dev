@@ -33,7 +33,7 @@ const HelloStyle = style(
 
 const Hello = () => (
   <div className={HelloStyle}>
-    <h1>Hello SuperNova!</h1>
+    <h1>Hello Supgirl!</h1>
     <p>SuperNova is a simple boilerplate using amazing stuff.</p>
     <img src={icons} />
   </div>
