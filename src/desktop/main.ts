@@ -1,43 +1,13 @@
 require('dotenv').config()
 import { app, BrowserWindow, Menu } from "electron";
-import {format} from 'url';
-import { resolve } from 'app-root-path';
-import { join } from "path";
-
 
 //import { setMenu } from './menu'
 import { store } from "./store";
 
-
-
-let mainWindow: BrowserWindow;
-
-const appPath = app.getAppPath()
-
-var isProd = process.env.NODE_ENV === 'production' ? true : false;
-
-(process as NodeJS.EventEmitter).on('uncaughtException', (error: Error) => {
-    console.error(error);
-    console.log('[err-desktop]', error.message.toString(), JSON.stringify(error.stack));
-});
-
-
-
-
-
-
-  const devPath = format({pathname: '//localhost:8888/',protocol: 'http:', slashes: true});
-  const prodPath = format({pathname: resolve('dist/app/index.html'), protocol: 'file:', slashes: true });
-  //@ts-ignore
-  const fuseboxPath = format({pathname: join(appPath, "dist/app/index.html"), protocol: "file:", slashes: true});
-
-//@ts-ignore
- var url = isProd ? prodPath : devPath;
-
+let mainWindow;
 
 //dont open devtools in this function or u'll get error spam on startup
-
-export let createMainWindow = () => {
+export let createMainWindow = async () => {
     mainWindow = new BrowserWindow({
         width: 960,
         height: 640,
@@ -50,6 +20,7 @@ export let createMainWindow = () => {
     });
 
     mainWindow.loadURL(`file:///${app.getAppPath()}/build/app/index.html`);
+
 
     mainWindow.webContents.on("context-menu", (e: any, props: any) => {
       Menu.buildFromTemplate([{
@@ -64,8 +35,8 @@ export let createMainWindow = () => {
         installExtension(MOBX_DEVTOOLS);
         installExtension(REDUX_DEVTOOLS);
 
-    mainWindow.on('closed', () => {mainWindow = null, process.kill(process.pid)});
-    //mainWindow.on("close", () => {mainWindow = null}); not sure which is better to use here?
+    //mainWindow.on('closed', () => {mainWindow = null, process.kill(process.pid)});
+    mainWindow.on("close", () => {mainWindow = null}); //not sure which is better to use here?
     
     return mainWindow
 };
