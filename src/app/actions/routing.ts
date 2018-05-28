@@ -1,4 +1,3 @@
-import returnof from 'returnof'
 
 export const goTo = (route: string) => ({
   type: 'GOTO',
@@ -7,7 +6,5 @@ export const goTo = (route: string) => ({
   }
 })
 
-const goToReturn = returnof(goTo)
-
 export type RoutingAction =
-  | typeof goToReturn
+  | ReturnType<typeof goTo>

@@ -1,0 +1,198 @@
+@import url(node_modules/cesium/Build/Cesium/Widgets/widgets.css);
+
+/*
+ * A class used to mark elements that are user-selectable
+ */
+.user-selectable {
+    user-select: auto;
+}
+
+/*
+ * Disable highlighting/selecting across the application
+ * Solution taken from https://github.com/electron/electron/issues/2538
+ */
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * We must add some other style for :focus to help UX/a11y
+ */
+input, button, textarea, :focus {
+    outline: none;
+}
+
+/*
+ * -webkit-scrollbar customization taken from
+ * https://css-tricks.com/examples/WebKitScrollbars/
+ */
+::-webkit-scrollbar {
+    width: 0.8em;
+    height: 0.8em;
+}
+
+::-webkit-scrollbar-track {
+    /* blueprint's @gray5 */
+    background: rgba(191, 204, 214, 0.2);
+    /*-webkit-box-shadow: inset 0 0 0.4em rgba(0, 0, 0, 0.3);*/
+    /*-webkit-border-radius: 0.8em;*/
+    /*border-radius: 0.8em;*/
+}
+
+::-webkit-scrollbar-thumb {
+    /* blueprint's @gray5 */
+    background: rgba(191, 204, 214, 0.6);
+    /*-webkit-box-shadow: inset 0 0 0.4em rgba(0, 0, 0, 0.5);*/
+    /*-webkit-border-radius: 0.8em;*/
+    /*border-radius: 0.8em;*/
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    /* blueprint's @gray5 */
+    background: rgba(191, 204, 214, 0.4);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0)
+}
+
+.cate-color-bars-popover .pt-popover-content {
+    max-height: 20em;
+    overflow-y: auto;
+}
+
+.cate-list-box {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* blueprint's @dark-grey1 */
+    border: 1px solid #182026;
+    /* blueprint's @dark-grey3, the standard dark theme color */
+    background-color: #293742;
+}
+
+.cate-list-box li {
+    padding: 0.2em 0.4em;
+    /* blueprint's @dark-grey1 */
+    border-bottom: 1px solid #182026;
+}
+
+.cate-list-box li:last-child {
+    border-bottom: none
+}
+
+.cate-list-box li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+ul.cate-list-box li.cate-selected {
+    background-color: rgba(128, 128, 255, 0.6);
+}
+
+.cate-split-pane-hor {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    flex: auto; /* same as "flex: 1 1 auto;" */
+}
+
+.cate-split-pane-ver {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: auto; /* same as "flex: 1 1 auto;" */
+}
+
+.cate-splitter-hor {
+    flex: none;
+    border: none;
+    outline: none;
+    width: 4px;
+    min-height: 100%;
+    max-height: 100%;
+    /*background-color: yellow;*/
+    cursor: col-resize;
+}
+
+.cate-splitter-ver {
+    flex: none;
+    border: none;
+    outline: none;
+    height: 4px;
+    min-width: 100%;
+    max-width: 100%;
+    /*background-color: yellow;*/
+    cursor: row-resize;
+}
+
+.cate-panel-header {
+    display: flex;
+    margin: 0;
+    padding: 0.3em;
+
+    /* blueprint @grey1 */
+    border-top: 1px solid #5C7080;
+    border-bottom: 1px solid #5C7080;
+
+    /*font-size: medium;*/
+    /*font-weight: bolder;*/
+
+    /* blueprint @light-grey5 */
+    color: #F5F8FA;
+    /* blueprint @dark-grey2 */
+    background-color: #202B33;
+    align-items: center;
+}
+
+.cate-panel-header-item {
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+
+.cate-panel-text {
+    flex: 1 0 auto;
+    text-align: left;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+span.cate-icon-small {
+    font-size: 12px;
+    font-weight: lighter;
+    padding-left: 2px;
+    transition: color 0.5s linear;
+    /* blueprint's @blue4 used for selection in pt-dark */
+    color: rgba(43, 149, 214, 0.1);
+}
+
+span.cate-icon-small:hover {
+    /* blueprint's @blue4 used for selection in pt-dark */
+    color: rgba(43, 149, 214, 1.0);
+}
+
+/* <<<< Cesium ============================================================ */
+
+/*
+ * Override cesium-widget from Cesium
+ */
+.cesium-widget {
+    position: relative;
+}
+
+/*
+ * Override cesium-widget from Cesium
+ */
+.cesium-widget, .cesium-widget canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* >>>> Cesium ============================================================ */
+
+
+
+

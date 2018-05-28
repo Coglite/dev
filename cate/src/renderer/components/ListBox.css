@@ -1,0 +1,23 @@
+/*
+ * TODO (forman): Note this file is not yet used. The styles defined in here are currently in app/styles.css
+ * However, it could work, if we copy all CSS files in src to app after compilation with tsc.
+ */
+
+.cate-list-box {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ddd;
+}
+
+.cate-list-box li {
+    padding: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+.cate-list-box li:last-child {
+    border-bottom: none
+}
+
+.cate-list-box li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

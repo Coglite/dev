@@ -10,11 +10,8 @@ const INITIAL_STATE = {
   value: 0
 }
 
-const increment = (state: CounterState) =>
-  set(state, _ => _.value)(value => value + 1)
-
-const decrement = (state: CounterState) =>
-  set(state, _ => _.value)(value => value - 1)
+const increment = (state: CounterState) => set(state, _ => _.value)(value => value + 1)
+const decrement = (state: CounterState) => set(state, _ => _.value)(value => value - 1)
 
 const counterReducer: Reducer<CounterState> =
   (state: CounterState = INITIAL_STATE, action: Action) =>
@@ -22,5 +19,6 @@ const counterReducer: Reducer<CounterState> =
       .is('INCREMENT', () => increment(state))
       .is('DECREMENT', () => decrement(state))
       .else(state)
+
 
 export default counterReducer

@@ -11,8 +11,7 @@ const INITIAL_STATE = {
   route: '/home'
 }
 
-const goTo = (state: RoutingState, route: string) =>
-  set(state, _ => _.route)(route)
+const goTo = (state: RoutingState, route: string) => set(state, _ => _.route)(route);
 
 const routingReducer: Reducer<RoutingState> =
   (state: RoutingState = INITIAL_STATE, action: RoutingAction) =>
