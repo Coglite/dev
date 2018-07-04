@@ -1,0 +1,30 @@
+.SelectionPanel {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 0;
+  min-width: 0;
+  color: #eee;
+  background-color: #222;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  transition: width 0.2s, min-width 0.2s;
+  user-select: none !important;
+
+  .resizer {
+    min-width: 6px;
+
+    &:hover {
+      cursor: ew-resize;
+    }
+  }
+
+  .content {
+    padding: 0 6px;
+  }
+}

@@ -1,0 +1,20 @@
+.SidebarGroup-header {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 2px 5px;
+}
+
+.SidebarGroup-header-icon {
+  padding-right: 10px;
+}
+
+.SidebarGroup-header-title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.SidebarGroup-empty {
+  color: #999;
+  font-style: italic;
+}

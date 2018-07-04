@@ -1,0 +1,15 @@
+.Sidebar-header {
+  color: #eee;
+  font-size: 13px;
+  padding: 5px;
+  border-bottom: 1px solid #666;
+}
+
+.Sidebar-checkbox-filters {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Sidebar-checkbox-filters .form-check {
+  margin: 0;
+}
